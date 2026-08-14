@@ -12,53 +12,229 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
+    background:
+        radial-gradient(circle at top, #292929 0%, #111 35%, #080808 100%);
     color: #222;
+    min-height: 100vh;
 }
 
+
+/* ========================= */
+/* ENCABEZADO */
+/* ========================= */
+
 header {
-    background: #111;
+    background: linear-gradient(145deg, #080808, #202020);
     color: white;
     text-align: center;
-    padding: 25px 15px;
+    padding: 28px 15px 35px;
     position: sticky;
     top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    z-index: 50;
+    box-shadow: 0 3px 18px rgba(0,0,0,.5);
+    border-bottom: 1px solid #333;
+}
+
+.logo-diamond {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 14px;
+    transform: rotate(45deg);
+    border: 3px solid #d4af37;
+    background: linear-gradient(
+        135deg,
+        #fff7b2,
+        #d4af37 45%,
+        #8c6b13
+    );
+    box-shadow:
+        0 0 15px rgba(212,175,55,.35),
+        inset 0 0 10px rgba(255,255,255,.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-diamond span {
+    transform: rotate(-45deg);
+    font-size: 39px;
+    color: #111;
 }
 
 header h1 {
-    margin: 0;
+    margin: 8px 0 0;
     font-size: 30px;
+    letter-spacing: 2px;
+    color: #fff;
 }
 
 header p {
-    margin: 6px 0 0;
-    opacity: .85;
+    margin: 7px 0 0;
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: bold;
 }
 
+
+/* ========================= */
+/* CONTENEDOR */
+/* ========================= */
+
 .container {
-    max-width: 700px;
+    max-width: 760px;
     margin: auto;
-    padding: 15px;
+    padding: 22px 15px 40px;
+}
+
+
+/* ========================= */
+/* TITULO MENU */
+/* ========================= */
+
+.menu-intro {
+    text-align: center;
+    color: white;
+    margin: 5px 0 25px;
+}
+
+.menu-intro h2 {
+    margin: 0;
+    font-size: 23px;
+}
+
+.menu-intro p {
+    margin: 7px 0 0;
+    color: #bbb;
+    font-size: 14px;
+}
+
+
+/* ========================= */
+/* DIAMANTES */
+/* ========================= */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+    padding: 10px 12px 30px;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 145px;
+    cursor: pointer;
+}
+
+.diamond {
+    width: 132px;
+    height: 132px;
+    transform: rotate(45deg);
+    background:
+        linear-gradient(
+            135deg,
+            #fff8c9 0%,
+            #d4af37 35%,
+            #a27c18 70%,
+            #f0d76a 100%
+        );
+    border: 3px solid #f4dc72;
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.55),
+        0 0 15px rgba(212,175,55,.25),
+        inset 0 0 14px rgba(255,255,255,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .22s ease;
+}
+
+.diamond:hover {
+    transform: rotate(45deg) scale(1.06);
+}
+
+.diamond:active {
+    transform: rotate(45deg) scale(.96);
+}
+
+.diamond-content {
+    transform: rotate(-45deg);
+    text-align: center;
+    width: 105px;
+}
+
+.diamond-icon {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.diamond-title {
+    font-size: 13px;
+    line-height: 1.15;
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+}
+
+
+/* ========================= */
+/* SECCIONES */
+/* ========================= */
+
+.category-section {
+    display: none;
+    margin-bottom: 28px;
+    animation: sectionOpen .25s ease;
+}
+
+.category-section.active {
+    display: block;
+}
+
+@keyframes sectionOpen {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .category-title {
-    font-size: 22px;
-    margin: 25px 0 12px;
-    border-bottom: 2px solid #111;
-    padding-bottom: 7px;
+    background: linear-gradient(135deg, #171717, #292929);
+    color: white;
+    border-left: 4px solid #d4af37;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 5px 0 14px;
+    font-size: 21px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.35);
 }
+
+
+/* ========================= */
+/* PRODUCTOS */
+/* ========================= */
 
 .product {
     background: white;
-    border-radius: 13px;
+    border-radius: 14px;
     padding: 17px;
     margin-bottom: 12px;
-    box-shadow: 0 2px 7px rgba(0,0,0,.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
 .product-name {
@@ -77,33 +253,57 @@ header p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
+    gap: 10px;
+    margin-top: 13px;
 }
 
 .price {
     font-size: 18px;
     font-weight: bold;
+    color: #111;
 }
 
 .add-btn {
-    background: #111;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #111, #333);
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 9px;
     padding: 10px 17px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .add-btn:active {
-    transform: scale(.97);
+    transform: scale(.96);
 }
+
+
+/* ========================= */
+/* VOLVER */
+/* ========================= */
+
+.back-menu {
+    width: 100%;
+    margin: 5px 0 15px;
+    padding: 12px;
+    background: #222;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.65);
+    background: rgba(0,0,0,.72);
     z-index: 100;
     padding: 15px;
     overflow-y: auto;
@@ -113,12 +313,15 @@ header p {
     background: white;
     max-width: 520px;
     margin: 20px auto;
-    border-radius: 15px;
+    border-radius: 17px;
     padding: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.5);
 }
 
 .modal-box h2 {
     margin-top: 0;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
 }
 
 .modal-box label {
@@ -172,19 +375,27 @@ header p {
 
 .confirm-btn {
     background: #111;
-    color: white;
+    color: #d4af37;
+    border: 1px solid #d4af37 !important;
 }
+
+
+/* ========================= */
+/* CARRITO */
+/* ========================= */
 
 .cart {
     background: white;
-    border-radius: 14px;
-    padding: 18px;
-    margin-top: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    border-radius: 16px;
+    padding: 19px;
+    margin-top: 15px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.3);
 }
 
 .cart h2 {
     margin-top: 0;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
 }
 
 .cart-item {
@@ -213,8 +424,8 @@ header p {
 }
 
 .quantity-controls button {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border: none;
     border-radius: 6px;
     background: #ddd;
@@ -223,7 +434,7 @@ header p {
 
 .total {
     text-align: right;
-    font-size: 23px;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 15px;
 }
@@ -233,6 +444,11 @@ header p {
     color: #777;
     padding: 15px;
 }
+
+
+/* ========================= */
+/* FORMULARIO */
+/* ========================= */
 
 form {
     margin-top: 20px;
@@ -281,32 +497,231 @@ form textarea {
     color: #555;
 }
 
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
 footer {
     text-align: center;
     padding: 30px 15px;
-    color: #777;
+    color: #aaa;
     font-size: 13px;
 }
 
 .hidden {
-    display: none !important;
+    display: none;
+}
+
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 430px) {
+
+    .category-grid {
+        gap: 24px 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .diamond {
+        width: 118px;
+        height: 118px;
+    }
+
+    .diamond-content {
+        width: 95px;
+    }
+
+    .diamond-title {
+        font-size: 11px;
+    }
+
+    .diamond-icon {
+        font-size: 25px;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
+
+<!-- ========================= -->
+<!-- HEADER -->
+<!-- ========================= -->
+
 <header>
-<h1>💎 DIAMANTE FOODS</h1>
+
+<div class="logo-diamond">
+    <span>💎</span>
+</div>
+
+<h1>DIAMANTE FOODS</h1>
+
 <p>Tu pedido fácil y rápido</p>
+
 </header>
+
 
 <div class="container">
 
-<!-- TACOS -->
 
-<h2 class="category-title">🌮 Tacos de Bistec</h2>
+<!-- ========================= -->
+<!-- INTRO -->
+<!-- ========================= -->
+
+<div class="menu-intro">
+
+<h2>🍽️ Nuestro menú</h2>
+
+<p>Selecciona una categoría para comenzar tu pedido.</p>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- DIAMANTES -->
+<!-- ========================= -->
+
+<div id="categoryMenu" class="category-grid">
+
+
+<div class="category" onclick="showCategory('tacosSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">🌮</span>
+
+<div class="diamond-title">
+Tacos de<br>Bistec
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="category" onclick="showCategory('caprichosSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">🌮</span>
+
+<div class="diamond-title">
+Caprichos
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="category" onclick="showCategory('quesSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">🧀</span>
+
+<div class="diamond-title">
+Quesadillas
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="category" onclick="showCategory('alitasSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">🍗</span>
+
+<div class="diamond-title">
+Alitas y<br>Boneless
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="category" onclick="showCategory('complementosSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">🍟</span>
+
+<div class="diamond-title">
+Complementos
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="category" onclick="showCategory('extrasSection')">
+
+<div class="diamond">
+
+<div class="diamond-content">
+
+<span class="diamond-icon">➕</span>
+
+<div class="diamond-title">
+Extras
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- ========================= -->
+<!-- TACOS -->
+<!-- ========================= -->
+
+<div id="tacosSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+🌮 Tacos de Bistec
+</h2>
 
 <div class="product">
 
@@ -320,19 +735,34 @@ Elige la cantidad y después el tipo de tortilla.
 
 <div class="product-bottom">
 
-<span class="price">Desde $15</span>
+<span class="price">
+Desde $15
+</span>
 
 <button class="add-btn" onclick="openTacos()">
 Agregar
 </button>
 
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- CAPRICHOS -->
+<!-- ========================= -->
 
-<h2 class="category-title">🌮 Caprichos</h2>
+<div id="caprichosSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+🌮 Caprichos
+</h2>
 
 <div class="product">
 
@@ -346,19 +776,34 @@ Elige la cantidad y después el tipo de tortilla.
 
 <div class="product-bottom">
 
-<span class="price">Desde $18</span>
+<span class="price">
+Desde $18
+</span>
 
 <button class="add-btn" onclick="openCaprichos()">
 Agregar
 </button>
 
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- QUESADILLAS -->
+<!-- ========================= -->
 
-<h2 class="category-title">🧀 Quesadillas</h2>
+<div id="quesSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+🧀 Quesadillas
+</h2>
 
 <div class="product">
 
@@ -372,19 +817,34 @@ Quesadillas
 
 <div class="product-bottom">
 
-<span class="price">Desde $45</span>
+<span class="price">
+Desde $45
+</span>
 
 <button class="add-btn" onclick="openQuesadillas()">
 Agregar
 </button>
 
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- ALITAS -->
+<!-- ========================= -->
 
-<h2 class="category-title">🍗 Alitas y Boneless</h2>
+<div id="alitasSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+🍗 Alitas y Boneless
+</h2>
 
 <div class="product">
 
@@ -398,120 +858,195 @@ Alitas y Boneless
 
 <div class="product-bottom">
 
-<span class="price">Desde $120</span>
+<span class="price">
+Desde $120
+</span>
 
 <button class="add-btn" onclick="openAlitas()">
 Agregar
 </button>
 
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- COMPLEMENTOS -->
+<!-- ========================= -->
 
-<h2 class="category-title">🍟 Complementos</h2>
+<div id="complementosSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+🍟 Complementos
+</h2>
+
 
 <div class="product">
-<div class="product-name">Papas Sencillas</div>
-<div class="product-description">Incluyen catsup.</div>
+
+<div class="product-name">
+Papas Sencillas
+</div>
+
+<div class="product-description">
+Incluyen catsup.
+</div>
 
 <div class="product-bottom">
+
 <span class="price">$40</span>
 
 <button class="add-btn"
 onclick="openSimple('Papas Sencillas',40,'Incluyen catsup')">
 Agregar
 </button>
+
 </div>
+
 </div>
 
 
 <div class="product">
-<div class="product-name">Papas Preparadas</div>
+
+<div class="product-name">
+Papas Preparadas
+</div>
+
 <div class="product-description">
 Incluyen queso amarillo y catsup.
 </div>
 
 <div class="product-bottom">
+
 <span class="price">$50</span>
 
 <button class="add-btn"
 onclick="openSimple('Papas Preparadas',50,'Incluyen queso amarillo y catsup')">
 Agregar
 </button>
+
 </div>
+
 </div>
 
 
 <div class="product">
-<div class="product-name">Salchipapas</div>
+
+<div class="product-name">
+Salchipapas
+</div>
+
 <div class="product-description">
 Incluyen queso amarillo y catsup.
 </div>
 
 <div class="product-bottom">
+
 <span class="price">$60</span>
 
 <button class="add-btn"
 onclick="openSimple('Salchipapas',60,'Incluyen queso amarillo y catsup')">
 Agregar
 </button>
+
 </div>
+
 </div>
 
 
 <div class="product">
-<div class="product-name">Papas Locas</div>
+
+<div class="product-name">
+Papas Locas
+</div>
+
 <div class="product-description">
-Papas, salchicha y pollo.
+Incluyen papas, salchicha y pollo.
 </div>
 
 <div class="product-bottom">
+
 <span class="price">$80</span>
 
-<button class="add-btn" onclick="openPapasLocas()">
+<button class="add-btn"
+onclick="openPapasLocas()">
 Agregar
 </button>
+
 </div>
+
 </div>
 
 
 <div class="product">
-<div class="product-name">Dedos de Queso</div>
+
+<div class="product-name">
+Dedos de Queso
+</div>
+
 <div class="product-description">
 Incluyen papas y un aderezo.
 </div>
 
 <div class="product-bottom">
+
 <span class="price">$90</span>
 
-<button class="add-btn" onclick="openDedos()">
+<button class="add-btn"
+onclick="openDedos()">
 Agregar
 </button>
+
 </div>
+
 </div>
 
 
 <div class="product">
-<div class="product-name">Aros de Cebolla</div>
+
+<div class="product-name">
+Aros de Cebolla
+</div>
+
 <div class="product-description">
 Incluyen papas y un aderezo.
 </div>
 
 <div class="product-bottom">
+
 <span class="price">$80</span>
 
-<button class="add-btn" onclick="openAros()">
+<button class="add-btn"
+onclick="openAros()">
 Agregar
 </button>
+
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- EXTRAS -->
+<!-- ========================= -->
 
-<h2 class="category-title">➕ Extras</h2>
+<div id="extrasSection" class="category-section">
+
+<button class="back-menu" onclick="backToMenu()">
+← Volver al menú
+</button>
+
+<h2 class="category-title">
+➕ Extras
+</h2>
 
 <div class="product">
 
@@ -525,40 +1060,57 @@ Cada salsa o aderezo adicional cuesta $15.
 
 <div class="product-bottom">
 
-<span class="price">$15 c/u</span>
+<span class="price">
+$15 c/u
+</span>
 
-<button class="add-btn" onclick="openExtras()">
+<button class="add-btn"
+onclick="openExtras()">
 Agregar
 </button>
 
 </div>
+
+</div>
+
 </div>
 
 
+<!-- ========================= -->
 <!-- CARRITO -->
+<!-- ========================= -->
 
 <div class="cart">
 
 <h2>🛒 Tu pedido</h2>
 
 <div id="cartItems">
+
 <div class="empty">
 Todavía no has agregado productos.
 </div>
+
 </div>
 
 <div class="total">
+
 Total: $<span id="total">0</span>
+
 </div>
 
+
 <div class="notice">
-Todos los productos pueden llevar comentarios o indicaciones especiales.
+
+💡 Todos los productos pueden llevar comentarios o indicaciones especiales.
+
 </div>
 
 
 <form>
 
-<label>Nombre</label>
+<label>
+Nombre
+</label>
 
 <input
 type="text"
@@ -566,7 +1118,9 @@ id="name"
 placeholder="Tu nombre">
 
 
-<label>Dirección</label>
+<label>
+Dirección
+</label>
 
 <input
 type="text"
@@ -574,14 +1128,18 @@ id="address"
 placeholder="Calle, número y colonia">
 
 
-<label>Referencias</label>
+<label>
+Referencias
+</label>
 
 <textarea
 id="references"
 placeholder="Casa azul, frente a la tienda, etc."></textarea>
 
 
-<label>Método de pago</label>
+<label>
+Método de pago
+</label>
 
 <select id="payment" onchange="checkPayment()">
 
@@ -602,7 +1160,9 @@ Transferencia
 
 <div id="cashPaymentBox" class="hidden">
 
-<label>¿Con cuánto vas a pagar?</label>
+<label>
+¿Con cuánto vas a pagar?
+</label>
 
 <input
 type="number"
@@ -631,11 +1191,15 @@ onclick="sendWhatsApp()">
 
 
 <footer>
-Diamante Foods · Gracias por tu preferencia ❤️
+
+💎 Diamante Foods · Gracias por tu preferencia ❤️
+
 </footer>
 
 
+<!-- ========================= -->
 <!-- MODAL -->
+<!-- ========================= -->
 
 <div class="modal" id="modal">
 
@@ -650,7 +1214,9 @@ Configurar producto
 
 <div id="tacosOptions" class="hidden">
 
-<label>Cantidad de tacos</label>
+<label>
+Cantidad de tacos
+</label>
 
 <select id="tacosQty" onchange="checkMixedTacos()">
 
@@ -667,7 +1233,9 @@ Configurar producto
 </select>
 
 
-<label>Tipo de tortilla</label>
+<label>
+Tipo de tortilla
+</label>
 
 <select id="tacosTortilla" onchange="checkMixedTacos()">
 
@@ -688,13 +1256,17 @@ Mixtos
 
 <div id="mixedTacos" class="option-box hidden">
 
-<label>¿Cuántos de maíz?</label>
+<label>
+¿Cuántos de maíz?
+</label>
 
-<select id="tacosMaiz" onchange="syncMixed('tacosMaiz','tacosHarina','tacosQty')"></select>
+<select id="tacosMaiz"></select>
 
-<label>¿Cuántos de harina?</label>
+<label>
+¿Cuántos de harina?
+</label>
 
-<select id="tacosHarina" onchange="syncMixed('tacosHarina','tacosMaiz','tacosQty')"></select>
+<select id="tacosHarina"></select>
 
 </div>
 
@@ -705,7 +1277,9 @@ Mixtos
 
 <div id="caprichosOptions" class="hidden">
 
-<label>Cantidad de caprichos</label>
+<label>
+Cantidad de caprichos
+</label>
 
 <select id="capQty" onchange="checkMixedCap()">
 
@@ -722,7 +1296,9 @@ Mixtos
 </select>
 
 
-<label>Tipo de tortilla</label>
+<label>
+Tipo de tortilla
+</label>
 
 <select id="capTortilla" onchange="checkMixedCap()">
 
@@ -743,13 +1319,17 @@ Mixtos
 
 <div id="mixedCap" class="option-box hidden">
 
-<label>¿Cuántos de maíz?</label>
+<label>
+¿Cuántos de maíz?
+</label>
 
-<select id="capMaiz" onchange="syncMixed('capMaiz','capHarina','capQty')"></select>
+<select id="capMaiz"></select>
 
-<label>¿Cuántos de harina?</label>
+<label>
+¿Cuántos de harina?
+</label>
 
-<select id="capHarina" onchange="syncMixed('capHarina','capMaiz','capQty')"></select>
+<select id="capHarina"></select>
 
 </div>
 
@@ -760,7 +1340,9 @@ Mixtos
 
 <div id="quesOptions" class="hidden">
 
-<label>Cantidad</label>
+<label>
+Cantidad
+</label>
 
 <select id="quesQty" onchange="checkMixedQues()">
 
@@ -775,7 +1357,9 @@ Mixtos
 </select>
 
 
-<label>Tipo de tortilla</label>
+<label>
+Tipo de tortilla
+</label>
 
 <select id="quesTortilla" onchange="checkMixedQues()">
 
@@ -796,13 +1380,17 @@ Mixtas
 
 <div id="mixedQues" class="option-box hidden">
 
-<label>¿Cuántas de maíz?</label>
+<label>
+¿Cuántas de maíz?
+</label>
 
-<select id="quesMaiz" onchange="syncMixed('quesMaiz','quesHarina','quesQty')"></select>
+<select id="quesMaiz"></select>
 
-<label>¿Cuántas de harina?</label>
+<label>
+¿Cuántas de harina?
+</label>
 
-<select id="quesHarina" onchange="syncMixed('quesHarina','quesMaiz','quesQty')"></select>
+<select id="quesHarina"></select>
 
 </div>
 
@@ -813,7 +1401,9 @@ Mixtas
 
 <div id="alitasOptions" class="hidden">
 
-<label>Cantidad</label>
+<label>
+Cantidad
+</label>
 
 <select id="alitasQty" onchange="updateAlitasOptions()">
 
@@ -832,11 +1422,13 @@ Mixtas
 </select>
 
 
-<label>Tipo</label>
+<label>
+Tipo
+</label>
 
 <select id="alitasTipo">
 
-<option value="" selected disabled>
+<option value="" selected>
 Selecciona una opción
 </option>
 
@@ -855,11 +1447,15 @@ Mixtos
 </select>
 
 
-<label>Salsas</label>
+<label>
+Salsas
+</label>
+
+<div id="sauceSelectors">
 
 <select class="sauce sauce1">
 
-<option value="" selected disabled>
+<option value="" selected>
 Selecciona una salsa *
 </option>
 
@@ -871,9 +1467,9 @@ Selecciona una salsa *
 </select>
 
 
-<select class="sauce sauce2">
+<select class="sauce sauce2" style="display:none;">
 
-<option value="">
+<option value="" selected>
 Agregar otra salsa (opcional)
 </option>
 
@@ -884,12 +1480,18 @@ Agregar otra salsa (opcional)
 
 </select>
 
+</div>
 
-<label>Aderezos</label>
+
+<label>
+Aderezos
+</label>
+
+<div id="dressingSelectors">
 
 <select class="dressing dressing1">
 
-<option value="" selected disabled>
+<option value="" selected>
 Selecciona un aderezo *
 </option>
 
@@ -901,9 +1503,9 @@ Selecciona un aderezo *
 </select>
 
 
-<select class="dressing dressing2">
+<select class="dressing dressing2" style="display:none;">
 
-<option value="">
+<option value="" selected>
 Agregar otro aderezo (opcional)
 </option>
 
@@ -915,9 +1517,9 @@ Agregar otro aderezo (opcional)
 </select>
 
 
-<select class="dressing dressing3">
+<select class="dressing dressing3" style="display:none;">
 
-<option value="">
+<option value="" selected>
 Agregar otro aderezo (opcional)
 </option>
 
@@ -928,8 +1530,12 @@ Agregar otro aderezo (opcional)
 
 </select>
 
+</div>
 
-<label>Salsa</label>
+
+<label>
+¿Cómo quieres la salsa?
+</label>
 
 <select id="sauceMode">
 
@@ -946,7 +1552,7 @@ Salsa aparte
 </div>
 
 
-<!-- SIMPLES -->
+<!-- SIMPLE -->
 
 <div id="simpleOptions" class="hidden">
 
@@ -960,7 +1566,9 @@ Salsa aparte
 
 <div id="papasLocasOptions" class="hidden">
 
-<label>Salsa</label>
+<label>
+Salsa
+</label>
 
 <select id="papasLocasSalsa">
 
@@ -979,7 +1587,9 @@ Salsa aparte
 
 <div id="dedosOptions" class="hidden">
 
-<label>Aderezo</label>
+<label>
+Aderezo
+</label>
 
 <select id="dedosAderezo">
 
@@ -997,7 +1607,9 @@ Salsa aparte
 
 <div id="arosOptions" class="hidden">
 
-<label>Aderezo</label>
+<label>
+Aderezo
+</label>
 
 <select id="arosAderezo">
 
@@ -1015,7 +1627,9 @@ Salsa aparte
 
 <div id="extrasOptions" class="hidden">
 
-<label>¿Qué quieres agregar?</label>
+<label>
+¿Qué quieres agregar?
+</label>
 
 <select id="extraType">
 
@@ -1047,7 +1661,6 @@ placeholder="Ejemplo: sin cebolla, poca salsa, etc."></textarea>
 <div class="modal-buttons">
 
 <button
-type="button"
 class="cancel-btn"
 onclick="closeModal()">
 
@@ -1056,11 +1669,10 @@ Cancelar
 </button>
 
 <button
-type="button"
 class="confirm-btn"
 onclick="confirmProduct()">
 
-Agregar al pedido
+💎 Agregar al pedido
 
 </button>
 
@@ -1073,23 +1685,77 @@ Agregar al pedido
 
 <script>
 
+
+/* ========================= */
+/* VARIABLES */
+/* ========================= */
+
 let cart = [];
+
 let currentType = "";
+
 let currentProduct = {};
 
 const whatsappNumber = "528134332517";
 
 
-/* =========================
-   UTILIDADES
-========================= */
+/* ========================= */
+/* NAVEGACIÓN DEL MENÚ */
+/* ========================= */
+
+function showCategory(id) {
+
+    document.getElementById("categoryMenu").style.display = "none";
+
+    document.querySelectorAll(".category-section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function backToMenu() {
+
+    document.querySelectorAll(".category-section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+    document.getElementById("categoryMenu")
+        .style.display = "grid";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ========================= */
+/* MODAL */
+/* ========================= */
 
 function hideAllOptions() {
 
     document.querySelectorAll(
         "#tacosOptions,#caprichosOptions,#quesOptions,#alitasOptions,#simpleOptions,#papasLocasOptions,#dedosOptions,#arosOptions,#extrasOptions"
     ).forEach(el => {
+
         el.classList.add("hidden");
+
     });
 
 }
@@ -1099,31 +1765,35 @@ function openModal(title) {
 
     hideAllOptions();
 
-    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalTitle")
+        .textContent = title;
 
-    document.getElementById("comment").value = "";
+    document.getElementById("comment")
+        .value = "";
 
-    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal")
+        .style.display = "block";
 
 }
 
 
 function closeModal() {
 
-    document.getElementById("modal").style.display = "none";
+    document.getElementById("modal")
+        .style.display = "none";
 
 }
 
 
-/* =========================
-   TACOS
-========================= */
+/* ========================= */
+/* TACOS */
+/* ========================= */
 
 function openTacos() {
 
     currentType = "tacos";
 
-    openModal("Tacos de Bistec");
+    openModal("🌮 Tacos de Bistec");
 
     document.getElementById("tacosOptions")
         .classList.remove("hidden");
@@ -1136,24 +1806,26 @@ function openTacos() {
 function checkMixedTacos() {
 
     const qty =
-        parseInt(document.getElementById("tacosQty").value);
+        parseInt(
+            document.getElementById("tacosQty").value
+        );
 
     const select =
         document.getElementById("tacosTortilla");
 
     const mixedOption =
-        select.querySelector('option[value="Mixtos"]');
-
-    const box =
-        document.getElementById("mixedTacos");
-
+        select.querySelector(
+            'option[value="Mixtos"]'
+        );
 
     if (qty === 1) {
 
         mixedOption.style.display = "none";
 
         if (select.value === "Mixtos") {
+
             select.value = "Maíz";
+
         }
 
     } else {
@@ -1161,6 +1833,10 @@ function checkMixedTacos() {
         mixedOption.style.display = "block";
 
     }
+
+
+    const box =
+        document.getElementById("mixedTacos");
 
 
     if (select.value === "Mixtos") {
@@ -1182,15 +1858,15 @@ function checkMixedTacos() {
 }
 
 
-/* =========================
-   CAPRICHOS
-========================= */
+/* ========================= */
+/* CAPRICHOS */
+/* ========================= */
 
 function openCaprichos() {
 
     currentType = "caprichos";
 
-    openModal("Caprichos");
+    openModal("🌮 Caprichos");
 
     document.getElementById("caprichosOptions")
         .classList.remove("hidden");
@@ -1203,24 +1879,26 @@ function openCaprichos() {
 function checkMixedCap() {
 
     const qty =
-        parseInt(document.getElementById("capQty").value);
+        parseInt(
+            document.getElementById("capQty").value
+        );
 
     const select =
         document.getElementById("capTortilla");
 
     const mixedOption =
-        select.querySelector('option[value="Mixtos"]');
-
-    const box =
-        document.getElementById("mixedCap");
-
+        select.querySelector(
+            'option[value="Mixtos"]'
+        );
 
     if (qty === 1) {
 
         mixedOption.style.display = "none";
 
         if (select.value === "Mixtos") {
+
             select.value = "Maíz";
+
         }
 
     } else {
@@ -1228,6 +1906,10 @@ function checkMixedCap() {
         mixedOption.style.display = "block";
 
     }
+
+
+    const box =
+        document.getElementById("mixedCap");
 
 
     if (select.value === "Mixtos") {
@@ -1249,15 +1931,15 @@ function checkMixedCap() {
 }
 
 
-/* =========================
-   QUESADILLAS
-========================= */
+/* ========================= */
+/* QUESADILLAS */
+/* ========================= */
 
 function openQuesadillas() {
 
     currentType = "quesadillas";
 
-    openModal("Quesadillas");
+    openModal("🧀 Quesadillas");
 
     document.getElementById("quesOptions")
         .classList.remove("hidden");
@@ -1270,24 +1952,26 @@ function openQuesadillas() {
 function checkMixedQues() {
 
     const qty =
-        parseInt(document.getElementById("quesQty").value);
+        parseInt(
+            document.getElementById("quesQty").value
+        );
 
     const select =
         document.getElementById("quesTortilla");
 
     const mixedOption =
-        select.querySelector('option[value="Mixtas"]');
-
-    const box =
-        document.getElementById("mixedQues");
-
+        select.querySelector(
+            'option[value="Mixtas"]'
+        );
 
     if (qty === 1) {
 
         mixedOption.style.display = "none";
 
         if (select.value === "Mixtas") {
+
             select.value = "Maíz";
+
         }
 
     } else {
@@ -1295,6 +1979,10 @@ function checkMixedQues() {
         mixedOption.style.display = "block";
 
     }
+
+
+    const box =
+        document.getElementById("mixedQues");
 
 
     if (select.value === "Mixtas") {
@@ -1316,14 +2004,20 @@ function checkMixedQues() {
 }
 
 
-/* =========================
-   MEZCLAS
-========================= */
+/* ========================= */
+/* MEZCLAS */
+/* ========================= */
 
-function populateMix(qtyId, maizId, harinaId) {
+function populateMix(
+    qtyId,
+    maizId,
+    harinaId
+) {
 
     const qty =
-        parseInt(document.getElementById(qtyId).value);
+        parseInt(
+            document.getElementById(qtyId).value
+        );
 
     const maiz =
         document.getElementById(maizId);
@@ -1347,9 +2041,6 @@ function populateMix(qtyId, maizId, harinaId) {
     }
 
 
-    // Por defecto: mitad y mitad.
-    // Si es impar, el maíz lleva uno más.
-
     const maizInicial =
         Math.ceil(qty / 2);
 
@@ -1358,66 +2049,98 @@ function populateMix(qtyId, maizId, harinaId) {
 
 
     maiz.value = maizInicial;
+
     harina.value = harinaInicial;
 
-}
 
-
-function syncMixed(changedId, otherId, qtyId) {
-
-    const qty =
-        parseInt(document.getElementById(qtyId).value);
-
-    const changed =
-        document.getElementById(changedId);
-
-    const other =
-        document.getElementById(otherId);
-
-    const value =
-        parseInt(changed.value);
-
-    const otherValue =
-        qty - value;
-
-
-    other.value = otherValue;
+    syncMixedSelectors(
+        maizId,
+        harinaId,
+        qty
+    );
 
 }
 
 
-/* =========================
-   ALITAS Y BONELESS
-========================= */
+function syncMixedSelectors(
+    maizId,
+    harinaId,
+    qty
+) {
+
+    const maiz =
+        document.getElementById(maizId);
+
+    const harina =
+        document.getElementById(harinaId);
+
+
+    maiz.onchange = function() {
+
+        const valorMaiz =
+            parseInt(this.value);
+
+        harina.value =
+            qty - valorMaiz;
+
+    };
+
+
+    harina.onchange = function() {
+
+        const valorHarina =
+            parseInt(this.value);
+
+        maiz.value =
+            qty - valorHarina;
+
+    };
+
+}
+
+
+/* ========================= */
+/* ALITAS */
+/* ========================= */
 
 function openAlitas() {
 
     currentType = "alitas";
 
-    openModal("Alitas y Boneless");
+    openModal("🍗 Alitas y Boneless");
 
     document.getElementById("alitasOptions")
         .classList.remove("hidden");
 
-    // Restaurar valores iniciales
-
-    document.getElementById("alitasQty").value = "300";
-
-    document.getElementById("alitasTipo").value = "";
-
-    document.querySelector(".sauce1").value = "";
-
-    document.querySelector(".sauce2").value = "";
-
-    document.querySelector(".dressing1").value = "";
-
-    document.querySelector(".dressing2").value = "";
-
-    document.querySelector(".dressing3").value = "";
-
-    document.getElementById("sauceMode").value = "Bañados";
+    resetAlitas();
 
     updateAlitasOptions();
+
+}
+
+
+function resetAlitas() {
+
+    document.getElementById("alitasTipo")
+        .value = "";
+
+    document.querySelector(".sauce1")
+        .value = "";
+
+    document.querySelector(".sauce2")
+        .value = "";
+
+    document.querySelector(".dressing1")
+        .value = "";
+
+    document.querySelector(".dressing2")
+        .value = "";
+
+    document.querySelector(".dressing3")
+        .value = "";
+
+    document.getElementById("sauceMode")
+        .value = "Bañados";
 
 }
 
@@ -1425,32 +2148,33 @@ function openAlitas() {
 function updateAlitasOptions() {
 
     const qty =
-        document.getElementById("alitasQty").value;
+        document.getElementById("alitasQty")
+            .value;
+
 
     const tipo =
         document.getElementById("alitasTipo");
 
-    const mixedOption =
-        document.getElementById("mixedAlitasOption");
 
     const sauce2 =
         document.querySelector(".sauce2");
 
+
     const dressing2 =
         document.querySelector(".dressing2");
+
 
     const dressing3 =
         document.querySelector(".dressing3");
 
 
-    // Siempre reiniciar el tipo cuando cambia el tamaño.
-
-    tipo.value = "";
+    const mixedOption =
+        document.getElementById(
+            "mixedAlitasOption"
+        );
 
 
     if (qty === "300") {
-
-        // 300 g NO permite mixtos.
 
         mixedOption.style.display = "none";
 
@@ -1460,11 +2184,17 @@ function updateAlitasOptions() {
 
         dressing3.style.display = "none";
 
+
+        if (tipo.value === "Mixtos") {
+
+            tipo.value = "";
+
+        }
+
     }
 
-    else if (qty === "500") {
 
-        // ½ kg permite mixtos.
+    else if (qty === "500") {
 
         mixedOption.style.display = "block";
 
@@ -1476,9 +2206,8 @@ function updateAlitasOptions() {
 
     }
 
-    else {
 
-        // 1 kg permite mixtos.
+    else {
 
         mixedOption.style.display = "block";
 
@@ -1493,11 +2222,15 @@ function updateAlitasOptions() {
 }
 
 
-/* =========================
-   PRODUCTOS SIMPLES
-========================= */
+/* ========================= */
+/* SIMPLES */
+/* ========================= */
 
-function openSimple(name, price, description) {
+function openSimple(
+    name,
+    price,
+    description
+) {
 
     currentType = "simple";
 
@@ -1517,9 +2250,9 @@ function openSimple(name, price, description) {
 }
 
 
-/* =========================
-   PAPAS LOCAS
-========================= */
+/* ========================= */
+/* PAPAS LOCAS */
+/* ========================= */
 
 function openPapasLocas() {
 
@@ -1530,7 +2263,7 @@ function openPapasLocas() {
         price: 80
     };
 
-    openModal("Papas Locas");
+    openModal("🍟 Papas Locas");
 
     document.getElementById("papasLocasOptions")
         .classList.remove("hidden");
@@ -1538,9 +2271,9 @@ function openPapasLocas() {
 }
 
 
-/* =========================
-   DEDOS
-========================= */
+/* ========================= */
+/* DEDOS */
+/* ========================= */
 
 function openDedos() {
 
@@ -1551,7 +2284,7 @@ function openDedos() {
         price: 90
     };
 
-    openModal("Dedos de Queso");
+    openModal("🧀 Dedos de Queso");
 
     document.getElementById("dedosOptions")
         .classList.remove("hidden");
@@ -1559,9 +2292,9 @@ function openDedos() {
 }
 
 
-/* =========================
-   AROS
-========================= */
+/* ========================= */
+/* AROS */
+/* ========================= */
 
 function openAros() {
 
@@ -1572,7 +2305,7 @@ function openAros() {
         price: 80
     };
 
-    openModal("Aros de Cebolla");
+    openModal("🧅 Aros de Cebolla");
 
     document.getElementById("arosOptions")
         .classList.remove("hidden");
@@ -1580,9 +2313,9 @@ function openAros() {
 }
 
 
-/* =========================
-   EXTRAS
-========================= */
+/* ========================= */
+/* EXTRAS */
+/* ========================= */
 
 function openExtras() {
 
@@ -1593,7 +2326,7 @@ function openExtras() {
         price: 15
     };
 
-    openModal("Extra");
+    openModal("➕ Extra");
 
     document.getElementById("extrasOptions")
         .classList.remove("hidden");
@@ -1601,9 +2334,9 @@ function openExtras() {
 }
 
 
-/* =========================
-   CONFIRMAR PRODUCTO
-========================= */
+/* ========================= */
+/* CONFIRMAR PRODUCTO */
+/* ========================= */
 
 function confirmProduct() {
 
@@ -1611,8 +2344,7 @@ function confirmProduct() {
 
     const comment =
         document.getElementById("comment")
-        .value
-        .trim();
+            .value.trim();
 
 
     /* TACOS */
@@ -1623,7 +2355,9 @@ function confirmProduct() {
             document.getElementById("tacosQty");
 
         const option =
-            select.options[select.selectedIndex];
+            select.options[
+                select.selectedIndex
+            ];
 
         const qty =
             parseInt(select.value);
@@ -1632,7 +2366,10 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById("tacosTortilla").value;
+            document.getElementById(
+                "tacosTortilla"
+            ).value;
+
 
         let details =
             `Cantidad: ${qty}`;
@@ -1642,23 +2379,26 @@ function confirmProduct() {
 
             const maiz =
                 parseInt(
-                    document.getElementById("tacosMaiz").value
+                    document.getElementById(
+                        "tacosMaiz"
+                    ).value
                 );
 
             const harina =
                 parseInt(
-                    document.getElementById("tacosHarina").value
+                    document.getElementById(
+                        "tacosHarina"
+                    ).value
                 );
 
 
             if (maiz + harina !== qty) {
 
                 alert(
-                    "La cantidad de maíz y harina debe ser exactamente igual a la cantidad de tacos."
+                    "La cantidad de tortillas no coincide con la cantidad de tacos."
                 );
 
                 return;
-
             }
 
 
@@ -1676,10 +2416,16 @@ function confirmProduct() {
 
 
         item = {
-            name: `${qty} Tacos de Bistec`,
+
+            name:
+                `${qty} Tacos de Bistec`,
+
             price: price,
+
             details: details,
+
             comment: comment
+
         };
 
     }
@@ -1693,7 +2439,9 @@ function confirmProduct() {
             document.getElementById("capQty");
 
         const option =
-            select.options[select.selectedIndex];
+            select.options[
+                select.selectedIndex
+            ];
 
         const qty =
             parseInt(select.value);
@@ -1702,7 +2450,10 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById("capTortilla").value;
+            document.getElementById(
+                "capTortilla"
+            ).value;
+
 
         let details =
             `Cantidad: ${qty}`;
@@ -1712,23 +2463,26 @@ function confirmProduct() {
 
             const maiz =
                 parseInt(
-                    document.getElementById("capMaiz").value
+                    document.getElementById(
+                        "capMaiz"
+                    ).value
                 );
 
             const harina =
                 parseInt(
-                    document.getElementById("capHarina").value
+                    document.getElementById(
+                        "capHarina"
+                    ).value
                 );
 
 
             if (maiz + harina !== qty) {
 
                 alert(
-                    "La cantidad de maíz y harina debe ser exactamente igual a la cantidad de caprichos."
+                    "La cantidad de tortillas no coincide con la cantidad de caprichos."
                 );
 
                 return;
-
             }
 
 
@@ -1746,10 +2500,16 @@ function confirmProduct() {
 
 
         item = {
-            name: `${qty} Caprichos`,
+
+            name:
+                `${qty} Caprichos`,
+
             price: price,
+
             details: details,
+
             comment: comment
+
         };
 
     }
@@ -1763,7 +2523,9 @@ function confirmProduct() {
             document.getElementById("quesQty");
 
         const option =
-            select.options[select.selectedIndex];
+            select.options[
+                select.selectedIndex
+            ];
 
         const qty =
             parseInt(select.value);
@@ -1772,7 +2534,10 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById("quesTortilla").value;
+            document.getElementById(
+                "quesTortilla"
+            ).value;
+
 
         let details =
             `Cantidad: ${qty}`;
@@ -1782,23 +2547,26 @@ function confirmProduct() {
 
             const maiz =
                 parseInt(
-                    document.getElementById("quesMaiz").value
+                    document.getElementById(
+                        "quesMaiz"
+                    ).value
                 );
 
             const harina =
                 parseInt(
-                    document.getElementById("quesHarina").value
+                    document.getElementById(
+                        "quesHarina"
+                    ).value
                 );
 
 
             if (maiz + harina !== qty) {
 
                 alert(
-                    "La cantidad de maíz y harina debe ser exactamente igual a la cantidad de quesadillas."
+                    "La cantidad de tortillas no coincide con las quesadillas."
                 );
 
                 return;
-
             }
 
 
@@ -1816,11 +2584,16 @@ function confirmProduct() {
 
 
         item = {
+
             name:
                 `${qty} Quesadilla${qty > 1 ? "s" : ""}`,
+
             price: price,
+
             details: details,
+
             comment: comment
+
         };
 
     }
@@ -1831,10 +2604,14 @@ function confirmProduct() {
     else if (currentType === "alitas") {
 
         const qtySelect =
-            document.getElementById("alitasQty");
+            document.getElementById(
+                "alitasQty"
+            );
 
         const option =
-            qtySelect.options[qtySelect.selectedIndex];
+            qtySelect.options[
+                qtySelect.selectedIndex
+            ];
 
         const qty =
             qtySelect.value;
@@ -1844,7 +2621,9 @@ function confirmProduct() {
 
 
         const tipo =
-            document.getElementById("alitasTipo").value;
+            document.getElementById(
+                "alitasTipo"
+            ).value;
 
 
         if (!tipo) {
@@ -1854,88 +2633,117 @@ function confirmProduct() {
             );
 
             return;
-
         }
 
 
         const sauce1 =
-            document.querySelector(".sauce1").value;
+            document.querySelector(
+                ".sauce1"
+            ).value;
+
+
+        const sauce2Element =
+            document.querySelector(
+                ".sauce2"
+            );
+
 
         const sauce2 =
-            document.querySelector(".sauce2").value;
+            sauce2Element.style.display !== "none"
+                ? sauce2Element.value
+                : "";
 
 
         const dressing1 =
-            document.querySelector(".dressing1").value;
+            document.querySelector(
+                ".dressing1"
+            ).value;
+
+
+        const dressing2Element =
+            document.querySelector(
+                ".dressing2"
+            );
+
+
+        const dressing3Element =
+            document.querySelector(
+                ".dressing3"
+            );
+
 
         const dressing2 =
-            document.querySelector(".dressing2").value;
+            dressing2Element.style.display !== "none"
+                ? dressing2Element.value
+                : "";
+
 
         const dressing3 =
-            document.querySelector(".dressing3").value;
+            dressing3Element.style.display !== "none"
+                ? dressing3Element.value
+                : "";
 
-
-        // Primera salsa obligatoria.
 
         if (!sauce1) {
 
-            alert("Selecciona al menos una salsa.");
+            alert(
+                "Selecciona al menos una salsa."
+            );
 
             return;
-
         }
 
 
-        // Primer aderezo obligatorio.
-
         if (!dressing1) {
 
-            alert("Selecciona al menos un aderezo.");
+            alert(
+                "Selecciona al menos un aderezo."
+            );
 
             return;
-
         }
 
 
         let sauces = [sauce1];
 
         if (sauce2) {
+
             sauces.push(sauce2);
+
         }
 
 
         let dressings = [dressing1];
 
         if (dressing2) {
+
             dressings.push(dressing2);
+
         }
 
         if (dressing3) {
+
             dressings.push(dressing3);
+
         }
 
 
         const mode =
-            document.getElementById("sauceMode").value;
-
-
-        let sizeName;
-
-        if (qty === "300") {
-            sizeName = "300 g";
-        }
-        else if (qty === "500") {
-            sizeName = "½ kilo";
-        }
-        else {
-            sizeName = "1 kilo";
-        }
+            document.getElementById(
+                "sauceMode"
+            ).value;
 
 
         item = {
 
             name:
-                `Alitas y Boneless ${sizeName}`,
+                `Alitas y Boneless ${
+                    qty === "300"
+                    ? "300 g"
+                    : qty === "500"
+                    ? "½ kilo"
+                    : "1 kilo"
+                }`,
 
             price: price,
 
@@ -1952,7 +2760,7 @@ function confirmProduct() {
     }
 
 
-    /* SIMPLES */
+    /* SIMPLE */
 
     else if (currentType === "simple") {
 
@@ -1963,8 +2771,9 @@ function confirmProduct() {
             price: currentProduct.price,
 
             details:
-                document.getElementById("simpleDescription")
-                .textContent,
+                document.getElementById(
+                    "simpleDescription"
+                ).textContent,
 
             comment: comment
 
@@ -1984,8 +2793,10 @@ function confirmProduct() {
             price: 80,
 
             details:
-                `Incluyen papas, salchicha y pollo | Salsa: ${
-                    document.getElementById("papasLocasSalsa").value
+                `Salsa: ${
+                    document.getElementById(
+                        "papasLocasSalsa"
+                    ).value
                 }`,
 
             comment: comment
@@ -2007,7 +2818,9 @@ function confirmProduct() {
 
             details:
                 `Incluyen papas | Aderezo: ${
-                    document.getElementById("dedosAderezo").value
+                    document.getElementById(
+                        "dedosAderezo"
+                    ).value
                 }`,
 
             comment: comment
@@ -2028,8 +2841,10 @@ function confirmProduct() {
             price: 80,
 
             details:
-                `Incluyen papas y un aderezo | Aderezo: ${
-                    document.getElementById("arosAderezo").value
+                `Incluyen papas | Aderezo: ${
+                    document.getElementById(
+                        "arosAderezo"
+                    ).value
                 }`,
 
             comment: comment
@@ -2039,16 +2854,18 @@ function confirmProduct() {
     }
 
 
-    /* EXTRAS */
+    /* EXTRA */
 
     else if (currentType === "extra") {
 
-        const extra =
-            document.getElementById("extraType").value;
-
         item = {
 
-            name: `Extra ${extra}`,
+            name:
+                `Extra ${
+                    document.getElementById(
+                        "extraType"
+                    ).value
+                }`,
 
             price: 15,
 
@@ -2070,17 +2887,22 @@ function confirmProduct() {
 }
 
 
-/* =========================
-   CARRITO
-========================= */
+/* ========================= */
+/* CARRITO */
+/* ========================= */
 
 function renderCart() {
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
 
     const totalElement =
-        document.getElementById("total");
+        document.getElementById(
+            "total"
+        );
+
 
     container.innerHTML = "";
 
@@ -2095,13 +2917,12 @@ function renderCart() {
         totalElement.textContent = "0";
 
         return;
-
     }
 
 
     cart.forEach((item, index) => {
 
-        total += item.price;
+        total += Number(item.price);
 
 
         const div =
@@ -2117,18 +2938,18 @@ function renderCart() {
             <div>
 
                 <strong>
-                    ${escapeHtml(item.name)}
+                    ${item.name}
                 </strong>
 
                 <div class="cart-details">
-                    ${escapeHtml(item.details)}
+                    ${item.details}
                 </div>
 
                 ${
                     item.comment
                     ?
                     `<div class="cart-details">
-                        💬 ${escapeHtml(item.comment)}
+                        💬 ${item.comment}
                     </div>`
                     :
                     ""
@@ -2145,12 +2966,8 @@ function renderCart() {
 
         <div class="quantity-controls">
 
-            <button
-            type="button"
-            onclick="removeItem(${index})">
-
+            <button onclick="removeItem(${index})">
                 ✕
-
             </button>
 
         </div>
@@ -2163,26 +2980,15 @@ function renderCart() {
     });
 
 
-    totalElement.textContent = total;
+    totalElement.textContent =
+        total;
 
 }
 
 
-function escapeHtml(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   ELIMINAR
-========================= */
+/* ========================= */
+/* ELIMINAR */
+/* ========================= */
 
 function removeItem(index) {
 
@@ -2193,31 +2999,43 @@ function removeItem(index) {
 }
 
 
-/* =========================
-   PAGO
-========================= */
+/* ========================= */
+/* PAGO */
+/* ========================= */
 
 function checkPayment() {
 
     const payment =
-        document.getElementById("payment").value;
+        document.getElementById(
+            "payment"
+        ).value;
+
 
     const box =
-        document.getElementById("cashPaymentBox");
+        document.getElementById(
+            "cashPaymentBox"
+        );
+
 
     const amount =
-        document.getElementById("cashAmount");
+        document.getElementById(
+            "cashAmount"
+        );
 
 
     if (payment === "Efectivo") {
 
-        box.classList.remove("hidden");
+        box.classList.remove(
+            "hidden"
+        );
 
     }
 
     else {
 
-        box.classList.add("hidden");
+        box.classList.add(
+            "hidden"
+        );
 
         amount.value = "";
 
@@ -2226,9 +3044,9 @@ function checkPayment() {
 }
 
 
-/* =========================
-   WHATSAPP
-========================= */
+/* ========================= */
+/* WHATSAPP */
+/* ========================= */
 
 function sendWhatsApp() {
 
@@ -2239,121 +3057,67 @@ function sendWhatsApp() {
         );
 
         return;
-
     }
 
 
     const name =
-        document.getElementById("name")
-        .value
-        .trim();
+        document.getElementById(
+            "name"
+        ).value.trim();
+
 
     const address =
-        document.getElementById("address")
-        .value
-        .trim();
+        document.getElementById(
+            "address"
+        ).value.trim();
+
 
     const references =
-        document.getElementById("references")
-        .value
-        .trim();
+        document.getElementById(
+            "references"
+        ).value.trim();
+
 
     const payment =
-        document.getElementById("payment")
-        .value;
+        document.getElementById(
+            "payment"
+        ).value;
 
-    const cashAmount =
-        document.getElementById("cashAmount")
-        .value;
+
+    const cashAmountInput =
+        document.getElementById(
+            "cashAmount"
+        ).value;
 
 
     if (!name) {
 
-        alert("Escribe tu nombre.");
+        alert(
+            "Escribe tu nombre."
+        );
 
         return;
-
     }
 
 
     if (!address) {
 
-        alert("Escribe tu dirección.");
+        alert(
+            "Escribe tu dirección."
+        );
 
         return;
-
     }
 
 
     if (!payment) {
 
-        alert("Selecciona el método de pago.");
-
-        return;
-
-    }
-
-
-    if (payment === "Efectivo" && !cashAmount) {
-
         alert(
-            "Indica con cuánto vas a pagar."
+            "Selecciona un método de pago."
         );
 
         return;
-
     }
-
-
-    let message =
-        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*\n";
-
-    message +=
-        "━━━━━━━━━━━━━━\n\n";
-
-
-    message +=
-        "*Cliente:* " +
-        name +
-        "\n";
-
-
-    message +=
-        "*Dirección:* " +
-        address +
-        "\n";
-
-
-    if (references) {
-
-        message +=
-            "*Referencia:* " +
-            references +
-            "\n";
-
-    }
-
-
-    message +=
-        "*Pago:* " +
-        payment +
-        "\n";
-
-
-    if (payment === "Efectivo") {
-
-        message +=
-            "*Paga con:* $" +
-            cashAmount +
-            "\n";
-
-    }
-
-
-    message += "\n";
-
-    message +=
-        "*PEDIDO:*\n\n";
 
 
     let total = 0;
@@ -2361,23 +3125,158 @@ function sendWhatsApp() {
 
     cart.forEach(item => {
 
-        total += item.price;
+        total += Number(
+            item.price
+        );
+
+    });
+
+
+    let cashAmount = 0;
+
+    let change = 0;
+
+
+    /* EFECTIVO */
+
+    if (payment === "Efectivo") {
+
+        if (!cashAmountInput) {
+
+            alert(
+                "Indica con cuánto vas a pagar en efectivo."
+            );
+
+            document.getElementById(
+                "cashAmount"
+            ).focus();
+
+            return;
+        }
+
+
+        cashAmount =
+            Number(
+                cashAmountInput
+            );
+
+
+        if (
+            isNaN(cashAmount) ||
+            cashAmount <= 0
+        ) {
+
+            alert(
+                "Ingresa una cantidad válida de efectivo."
+            );
+
+            return;
+        }
+
+
+        if (cashAmount < total) {
+
+            alert(
+                "La cantidad con la que vas a pagar es menor al total del pedido."
+            );
+
+            document.getElementById(
+                "cashAmount"
+            ).focus();
+
+            return;
+        }
+
+
+        change =
+            cashAmount - total;
+
+    }
+
+
+    /* ========================= */
+    /* MENSAJE */
+    /* ========================= */
+
+    let message =
+        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
+
+
+    message +=
+        "━━━━━━━━━━━━━━%0A%0A";
+
+
+    message +=
+        "*Cliente:* " +
+        encodeURIComponent(name) +
+        "%0A";
+
+
+    message +=
+        "*Dirección:* " +
+        encodeURIComponent(address) +
+        "%0A";
+
+
+    if (references) {
+
+        message +=
+            "*Referencia:* " +
+            encodeURIComponent(references) +
+            "%0A";
+
+    }
+
+
+    message +=
+        "*Pago:* " +
+        encodeURIComponent(payment) +
+        "%0A";
+
+
+    if (payment === "Efectivo") {
+
+        message +=
+            "*Paga con:* $" +
+            cashAmount.toFixed(2) +
+            "%0A";
 
 
         message +=
-            "• " +
-            item.name +
-            " — $" +
-            item.price +
-            "\n";
+            "*Cambio:* $" +
+            change.toFixed(2) +
+            "%0A";
+
+    }
+
+
+    message += "%0A";
+
+
+    message +=
+        "*PEDIDO:*%0A%0A";
+
+
+    cart.forEach(item => {
+
+        message +=
+            encodeURIComponent(
+                "• " +
+                item.name +
+                " — $" +
+                item.price
+            ) +
+            "%0A";
 
 
         if (item.details) {
 
             message +=
-                "  " +
-                item.details +
-                "\n";
+                encodeURIComponent(
+                    "  " +
+                    item.details
+                ) +
+                "%0A";
 
         }
 
@@ -2385,24 +3284,28 @@ function sendWhatsApp() {
         if (item.comment) {
 
             message +=
-                "  💬 Comentario: " +
-                item.comment +
-                "\n";
+                encodeURIComponent(
+                    "  💬 Comentario: " +
+                    item.comment
+                ) +
+                "%0A";
 
         }
 
 
-        message += "\n";
+        message +=
+            "%0A";
 
     });
 
 
     message +=
-        "━━━━━━━━━━━━━━\n";
+        "━━━━━━━━━━━━━━%0A";
+
 
     message +=
         "*TOTAL: $" +
-        total +
+        total.toFixed(2) +
         "*";
 
 
@@ -2410,7 +3313,7 @@ function sendWhatsApp() {
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
-        encodeURIComponent(message);
+        message;
 
 
     window.open(
