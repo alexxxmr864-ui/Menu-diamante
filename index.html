@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Menú Diamante</title>
+<title>Diamante Foods</title>
 
 <style>
 * {
@@ -22,7 +22,7 @@ header {
     background: #111;
     color: white;
     text-align: center;
-    padding: 22px 15px;
+    padding: 24px 15px;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -31,7 +31,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 header p {
@@ -97,6 +97,74 @@ header p {
     transform: scale(.97);
 }
 
+/* VENTANA DE CONFIGURACIÓN */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 100;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-box {
+    background: white;
+    max-width: 500px;
+    margin: 30px auto;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.modal-box h2 {
+    margin-top: 0;
+}
+
+.modal-box label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+.modal-box select,
+.modal-box textarea,
+.modal-box input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #ddd;
+}
+
+.confirm-btn {
+    background: #111;
+    color: white;
+}
+
+
+/* CARRITO */
+
 .cart {
     background: white;
     border-radius: 14px;
@@ -110,21 +178,31 @@ header p {
 }
 
 .cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.cart-item-top {
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
 }
 
 .cart-item-info {
     flex: 1;
 }
 
+.cart-comment {
+    color: #666;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
 .quantity-controls {
     display: flex;
     align-items: center;
     gap: 7px;
+    margin-top: 8px;
 }
 
 .quantity-controls button {
@@ -144,18 +222,29 @@ header p {
     margin-top: 15px;
 }
 
+.empty {
+    color: #777;
+    text-align: center;
+    padding: 15px;
+}
+
+
+/* FORMULARIO */
+
 form {
     margin-top: 20px;
 }
 
-label {
+form label {
     display: block;
     font-weight: bold;
     margin-top: 14px;
     margin-bottom: 6px;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -182,25 +271,6 @@ textarea {
     cursor: pointer;
 }
 
-.whatsapp-btn:active {
-    transform: scale(.98);
-}
-
-.empty {
-    color: #777;
-    text-align: center;
-    padding: 15px;
-}
-
-.sauce-options {
-    margin-top: 10px;
-    display: none;
-}
-
-.sauce-options select {
-    font-size: 14px;
-}
-
 .notice {
     background: #fff8d8;
     padding: 12px;
@@ -222,171 +292,327 @@ footer {
 <body>
 
 <header>
-    <h1>🍽️ DIAMANTE FOODS </h1>
-    <p>Haz tu pedido fácil y rápido</p>
+    <h1>💎 DIAMANTE FOODS</h1>
+    <p>Tu pedido fácil y rápido</p>
 </header>
 
 <div class="container">
 
-    <h2 class="category-title">🌮 Tacos y Especialidades</h2>
+    <!-- TACOS -->
+
+    <h2 class="category-title">🌮 Tacos de Bistec</h2>
+
+    <div class="product">
+        <div class="product-name">Taco de Bistec</div>
+        <div class="product-description">
+            Tortilla de maíz o harina.
+        </div>
+
+        <div class="product-bottom">
+            <span class="price">$15</span>
+
+            <button class="add-btn"
+                onclick="openTacoModal('Taco de Bistec', 15)">
+                Agregar
+            </button>
+        </div>
+    </div>
+
 
     <div class="product">
         <div class="product-name">5 Tacos de Bistec</div>
-        <div class="product-description">Deliciosos tacos de bistec.</div>
+        <div class="product-description">
+            Tortilla de maíz, harina o mixtos.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$70</span>
-            <button class="add-btn" onclick="addProduct('5 Tacos de Bistec', 70)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openTacoModal('5 Tacos de Bistec', 70)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Quesadilla</div>
-        <div class="product-description">Quesadilla preparada al momento.</div>
+
+        <div class="product-description">
+            Tortilla de maíz o harina.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$45</span>
-            <button class="add-btn" onclick="addProduct('Quesadilla', 45)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('Quesadilla', 45)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">2 Quesadillas</div>
-        <div class="product-description">Promoción de 2 quesadillas.</div>
+
+        <div class="product-description">
+            Tortilla de maíz o harina.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$80</span>
-            <button class="add-btn" onclick="addProduct('2 Quesadillas', 80)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('2 Quesadillas', 80)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">5 Caprichos</div>
-        <div class="product-description">Especialidad de la casa.</div>
+
         <div class="product-bottom">
             <span class="price">$80</span>
-            <button class="add-btn" onclick="addProduct('5 Caprichos', 80)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('5 Caprichos', 80)">
+                Agregar
+            </button>
         </div>
     </div>
 
+
+    <!-- ALITAS Y BONELESS -->
 
     <h2 class="category-title">🍗 Alitas y Boneless</h2>
 
     <div class="product">
         <div class="product-name">Alitas / Boneless 300 g</div>
-        <div class="product-description">Elige tu salsa.</div>
+
+        <div class="product-description">
+            Elige tu salsa.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$100</span>
-            <button class="add-btn" onclick="addProductWithSauce('Alitas / Boneless 300 g', 100)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openSauceModal('Alitas / Boneless 300 g', 100)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Alitas / Boneless 1/2 kilo</div>
-        <div class="product-description">Elige tu salsa.</div>
+
+        <div class="product-description">
+            Elige tu salsa.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$150</span>
-            <button class="add-btn" onclick="addProductWithSauce('Alitas / Boneless 1/2 kilo', 150)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openSauceModal('Alitas / Boneless 1/2 kilo', 150)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Alitas / Boneless 1 kilo</div>
-        <div class="product-description">Elige tu salsa.</div>
+
+        <div class="product-description">
+            Elige tu salsa.
+        </div>
+
         <div class="product-bottom">
             <span class="price">$250</span>
-            <button class="add-btn" onclick="addProductWithSauce('Alitas / Boneless 1 kilo', 250)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openSauceModal('Alitas / Boneless 1 kilo', 250)">
+                Agregar
+            </button>
         </div>
     </div>
 
+
+    <!-- PAPAS -->
 
     <h2 class="category-title">🍟 Papas</h2>
 
     <div class="product">
         <div class="product-name">Papas Sencillas</div>
+
         <div class="product-bottom">
             <span class="price">$40</span>
-            <button class="add-btn" onclick="addProduct('Papas Sencillas', 40)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('Papas Sencillas', 40)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Papas Preparadas</div>
+
         <div class="product-bottom">
             <span class="price">$50</span>
-            <button class="add-btn" onclick="addProduct('Papas Preparadas', 50)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('Papas Preparadas', 50)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Salchipapas</div>
+
         <div class="product-bottom">
             <span class="price">$60</span>
-            <button class="add-btn" onclick="addProduct('Salchipapas', 60)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('Salchipapas', 60)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">Papas Locas</div>
+
         <div class="product-bottom">
             <span class="price">$80</span>
-            <button class="add-btn" onclick="addProduct('Papas Locas', 80)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('Papas Locas', 80)">
+                Agregar
+            </button>
         </div>
     </div>
 
+
+    <!-- COMPLEMENTOS -->
 
     <h2 class="category-title">🧀 Complementos</h2>
 
     <div class="product">
         <div class="product-name">5 Onion Rings</div>
+
         <div class="product-bottom">
             <span class="price">$30</span>
-            <button class="add-btn" onclick="addProduct('5 Onion Rings', 30)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('5 Onion Rings', 30)">
+                Agregar
+            </button>
         </div>
     </div>
+
 
     <div class="product">
         <div class="product-name">5 Cheese Sticks</div>
+
         <div class="product-bottom">
             <span class="price">$40</span>
-            <button class="add-btn" onclick="addProduct('5 Cheese Sticks', 40)">Agregar</button>
+
+            <button class="add-btn"
+                onclick="openCommentModal('5 Cheese Sticks', 40)">
+                Agregar
+            </button>
         </div>
     </div>
 
+
+    <!-- CARRITO -->
 
     <div class="cart">
 
         <h2>🛒 Tu pedido</h2>
 
         <div id="cartItems">
-            <div class="empty">Todavía no has agregado productos.</div>
+            <div class="empty">
+                Todavía no has agregado productos.
+            </div>
         </div>
 
         <div class="total">
             Total: $<span id="total">0</span>
         </div>
 
+
         <div class="notice">
             Revisa tu pedido y completa tus datos antes de enviarlo por WhatsApp.
         </div>
 
-        <form id="orderForm">
 
-            <label for="name">Nombre</label>
-            <input type="text" id="name" placeholder="Tu nombre">
+        <form>
 
-            <label for="address">Dirección</label>
-            <input type="text" id="address" placeholder="Calle, número y colonia">
+            <label for="name">
+                Nombre
+            </label>
 
-            <label for="references">Referencias</label>
-            <textarea id="references" placeholder="Ejemplo: casa color azul, frente a..."></textarea>
+            <input
+                type="text"
+                id="name"
+                placeholder="Tu nombre">
 
-            <label for="payment">Método de pago</label>
+
+            <label for="address">
+                Dirección
+            </label>
+
+            <input
+                type="text"
+                id="address"
+                placeholder="Calle, número y colonia">
+
+
+            <label for="references">
+                Referencias
+            </label>
+
+            <textarea
+                id="references"
+                placeholder="Ejemplo: casa azul, frente a la tienda..."></textarea>
+
+
+            <label for="payment">
+                Método de pago
+            </label>
 
             <select id="payment">
-                <option value="Efectivo">Efectivo</option>
-                <option value="Transferencia">Transferencia</option>
+
+                <option value="Efectivo">
+                    Efectivo
+                </option>
+
+                <option value="Transferencia">
+                    Transferencia
+                </option>
+
             </select>
 
-            <button type="button" class="whatsapp-btn" onclick="sendWhatsApp()">
+
+            <button
+                type="button"
+                class="whatsapp-btn"
+                onclick="sendWhatsApp()">
+
                 📲 Enviar pedido por WhatsApp
+
             </button>
 
         </form>
@@ -395,98 +621,316 @@ footer {
 
 </div>
 
+
 <footer>
-    Menú Diamante · Gracias por tu preferencia ❤️
+    Diamante Foods · Gracias por tu preferencia ❤️
 </footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-box">
+
+        <h2 id="modalTitle">
+            Configurar producto
+        </h2>
+
+
+        <div id="tacoOptions">
+
+            <label>
+                Tipo de tortilla
+            </label>
+
+            <select id="tortilla">
+
+                <option value="Maíz">
+                    Maíz
+                </option>
+
+                <option value="Harina">
+                    Harina
+                </option>
+
+                <option value="Mixtos">
+                    Mixtos
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div id="sauceOptions">
+
+            <label>
+                Salsa
+            </label>
+
+            <select id="sauce">
+
+                <option value="BBQ">
+                    BBQ
+                </option>
+
+                <option value="BBQ Hot">
+                    BBQ Hot
+                </option>
+
+                <option value="Buffalo">
+                    Buffalo
+                </option>
+
+                <option value="Mango Habanero">
+                    Mango Habanero
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <label>
+            Comentarios
+        </label>
+
+        <textarea
+            id="productComment"
+            placeholder="Ejemplo: sin cebolla, sin cilantro, salsa aparte..."></textarea>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel-btn"
+                onclick="closeModal()">
+
+                Cancelar
+
+            </button>
+
+
+            <button
+                class="confirm-btn"
+                onclick="confirmProduct()">
+
+                Agregar al pedido
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <script>
 
 let cart = [];
 
-/*
-    IMPORTANTE:
-    Más adelante cambiaremos este número por
-    el número de WhatsApp de tu negocio.
-*/
+let currentProduct = null;
+
+let currentType = "";
+
+
+/* NÚMERO DE WHATSAPP */
+
 const whatsappNumber = "528134332517";
 
 
-function addProduct(name, price) {
+/* ABRIR MODAL PARA TACOS */
 
-    const existing = cart.find(item =>
-        item.name === name && !item.sauce
-    );
+function openTacoModal(name, price) {
 
-    if (existing) {
+    currentProduct = {
+        name: name,
+        price: price
+    };
 
-        existing.quantity++;
+    currentType = "taco";
 
-    } else {
+    document.getElementById("modalTitle").textContent =
+        "Configurar " + name;
 
-        cart.push({
-            name: name,
-            price: price,
-            quantity: 1
-        });
+    document.getElementById("tacoOptions").style.display =
+        "block";
 
-    }
+    document.getElementById("sauceOptions").style.display =
+        "none";
 
-    renderCart();
+    document.getElementById("productComment").value = "";
+
+    document.getElementById("productModal").style.display =
+        "block";
 }
 
 
-function addProductWithSauce(name, price) {
+/* ABRIR MODAL PARA SALSAS */
 
-    const sauce = prompt(
-        "Escribe la salsa que deseas:\n\n" +
-        "BBQ\n" +
-        "BBQ Hot\n" +
-        "Buffalo\n" +
-        "Mango Habanero"
-    );
+function openSauceModal(name, price) {
 
-    if (!sauce) {
+    currentProduct = {
+        name: name,
+        price: price
+    };
+
+    currentType = "sauce";
+
+    document.getElementById("modalTitle").textContent =
+        "Configurar " + name;
+
+    document.getElementById("tacoOptions").style.display =
+        "none";
+
+    document.getElementById("sauceOptions").style.display =
+        "block";
+
+    document.getElementById("productComment").value = "";
+
+    document.getElementById("productModal").style.display =
+        "block";
+}
+
+
+/* PRODUCTOS CON SOLO COMENTARIO */
+
+function openCommentModal(name, price) {
+
+    currentProduct = {
+        name: name,
+        price: price
+    };
+
+    currentType = "comment";
+
+    document.getElementById("modalTitle").textContent =
+        "Agregar " + name;
+
+    document.getElementById("tacoOptions").style.display =
+        "none";
+
+    document.getElementById("sauceOptions").style.display =
+        "none";
+
+    document.getElementById("productComment").value = "";
+
+    document.getElementById("productModal").style.display =
+        "block";
+}
+
+
+/* CERRAR */
+
+function closeModal() {
+
+    document.getElementById("productModal").style.display =
+        "none";
+
+}
+
+
+/* CONFIRMAR PRODUCTO */
+
+function confirmProduct() {
+
+    if (!currentProduct) {
         return;
     }
 
+    let tortilla = "";
+
+    let sauce = "";
+
+    let comment =
+        document.getElementById("productComment")
+        .value
+        .trim();
+
+
+    if (currentType === "taco") {
+
+        tortilla =
+            document.getElementById("tortilla").value;
+
+    }
+
+
+    if (currentType === "sauce") {
+
+        sauce =
+            document.getElementById("sauce").value;
+
+    }
+
+
     cart.push({
-        name: name,
-        price: price,
+
+        name: currentProduct.name,
+
+        price: currentProduct.price,
+
         quantity: 1,
-        sauce: sauce
+
+        tortilla: tortilla,
+
+        sauce: sauce,
+
+        comment: comment
+
     });
 
+
+    closeModal();
+
     renderCart();
+
 }
 
+
+/* AUMENTAR */
 
 function increase(index) {
 
     cart[index].quantity++;
 
     renderCart();
+
 }
 
+
+/* DISMINUIR */
 
 function decrease(index) {
 
     cart[index].quantity--;
 
     if (cart[index].quantity <= 0) {
+
         cart.splice(index, 1);
+
     }
 
     renderCart();
+
 }
 
 
+/* MOSTRAR CARRITO */
+
 function renderCart() {
 
-    const cartContainer = document.getElementById("cartItems");
-    const totalElement = document.getElementById("total");
+    const cartContainer =
+        document.getElementById("cartItems");
+
+    const totalElement =
+        document.getElementById("total");
+
 
     cartContainer.innerHTML = "";
+
 
     if (cart.length === 0) {
 
@@ -496,114 +940,217 @@ function renderCart() {
         totalElement.textContent = "0";
 
         return;
+
     }
+
 
     let total = 0;
 
+
     cart.forEach((item, index) => {
 
-        const subtotal = item.price * item.quantity;
+        const subtotal =
+            item.price * item.quantity;
 
         total += subtotal;
 
-        const div = document.createElement("div");
 
-        div.className = "cart-item";
+        let details = "";
+
+
+        if (item.tortilla) {
+
+            details +=
+                "Tortilla: " +
+                item.tortilla +
+                "<br>";
+
+        }
+
+
+        if (item.sauce) {
+
+            details +=
+                "Salsa: " +
+                item.sauce +
+                "<br>";
+
+        }
+
+
+        if (item.comment) {
+
+            details +=
+                '<div class="cart-comment">' +
+                "💬 " +
+                item.comment +
+                "</div>";
+
+        }
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "cart-item";
+
 
         div.innerHTML = `
-            <div class="cart-item-info">
-                <strong>${item.name}</strong>
 
-                ${
-                    item.sauce
-                    ? `<div style="font-size:13px;color:#666;">
-                        Salsa: ${item.sauce}
-                       </div>`
-                    : ""
-                }
+            <div class="cart-item-top">
 
-                <div style="font-size:14px;">
-                    $${item.price} c/u
+                <div class="cart-item-info">
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <div style="font-size:13px;color:#666;">
+                        ${details}
+                    </div>
+
+                    <div>
+                        $${item.price} c/u
+                    </div>
+
                 </div>
+
+                <strong>
+                    $${subtotal}
+                </strong>
+
             </div>
+
 
             <div class="quantity-controls">
 
-                <button onclick="decrease(${index})">−</button>
+                <button onclick="decrease(${index})">
+                    −
+                </button>
 
-                <strong>${item.quantity}</strong>
+                <strong>
+                    ${item.quantity}
+                </strong>
 
-                <button onclick="increase(${index})">+</button>
+                <button onclick="increase(${index})">
+                    +
+                </button>
 
             </div>
+
         `;
+
 
         cartContainer.appendChild(div);
 
     });
 
-    totalElement.textContent = total;
+
+    totalElement.textContent =
+        total;
+
 }
 
+
+/* ENVIAR A WHATSAPP */
 
 function sendWhatsApp() {
 
     if (cart.length === 0) {
 
-        alert("Primero agrega algún producto al pedido.");
+        alert(
+            "Primero agrega algún producto al pedido."
+        );
 
         return;
+
     }
 
+
     const name =
-        document.getElementById("name").value.trim();
+        document.getElementById("name")
+        .value
+        .trim();
+
 
     const address =
-        document.getElementById("address").value.trim();
+        document.getElementById("address")
+        .value
+        .trim();
+
 
     const references =
-        document.getElementById("references").value.trim();
+        document.getElementById("references")
+        .value
+        .trim();
+
 
     const payment =
-        document.getElementById("payment").value;
+        document.getElementById("payment")
+        .value;
 
 
     if (!name) {
 
-        alert("Escribe tu nombre.");
+        alert(
+            "Escribe tu nombre."
+        );
 
         return;
+
     }
 
 
     if (!address) {
 
-        alert("Escribe tu dirección.");
+        alert(
+            "Escribe tu dirección."
+        );
 
         return;
+
     }
 
 
-    let message = "";
+    let message =
+        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
 
-    message += "🍽️ *NUEVO PEDIDO*%0A";
-    message += "━━━━━━━━━━━━━━%0A%0A";
+    message +=
+        "━━━━━━━━━━━━━━%0A%0A";
 
-    message += "*Cliente:* " + encodeURIComponent(name) + "%0A";
 
-    message += "*Dirección:* " +
-        encodeURIComponent(address) + "%0A";
+    message +=
+        "*Cliente:* " +
+        encodeURIComponent(name) +
+        "%0A";
+
+
+    message +=
+        "*Dirección:* " +
+        encodeURIComponent(address) +
+        "%0A";
+
 
     if (references) {
 
-        message += "*Referencias:* " +
-            encodeURIComponent(references) + "%0A";
+        message +=
+            "*Referencias:* " +
+            encodeURIComponent(references) +
+            "%0A";
+
     }
 
-    message += "*Pago:* " +
-        encodeURIComponent(payment) + "%0A%0A";
 
-    message += "*PEDIDO:*%0A";
+    message +=
+        "*Pago:* " +
+        encodeURIComponent(payment) +
+        "%0A%0A";
+
+
+    message +=
+        "*PEDIDO:*%0A";
 
 
     let total = 0;
@@ -612,35 +1159,82 @@ function sendWhatsApp() {
     cart.forEach(item => {
 
         const subtotal =
-            item.price * item.quantity;
+            item.price *
+            item.quantity;
 
-        total += subtotal;
+
+        total +=
+            subtotal;
+
 
         message +=
             encodeURIComponent(
-                item.quantity + " x " + item.name
+                item.quantity +
+                " x " +
+                item.name
             );
+
+
+        message +=
+            encodeURIComponent(
+                " — $" +
+                subtotal
+            );
+
+
+        message +=
+            "%0A";
+
+
+        if (item.tortilla) {
+
+            message +=
+                encodeURIComponent(
+                    "   Tortilla: " +
+                    item.tortilla
+                ) +
+                "%0A";
+
+        }
+
 
         if (item.sauce) {
 
             message +=
                 encodeURIComponent(
-                    " — Salsa: " + item.sauce
-                );
+                    "   Salsa: " +
+                    item.sauce
+                ) +
+                "%0A";
+
         }
 
-        message +=
-            encodeURIComponent(
-                " — $" + subtotal
-            ) + "%0A";
+
+        if (item.comment) {
+
+            message +=
+                encodeURIComponent(
+                    "   Comentario: " +
+                    item.comment
+                ) +
+                "%0A";
+
+        }
+
+
+        message += "%0A";
 
     });
 
 
-    message += "%0A━━━━━━━━━━━━━━%0A";
+    message +=
+        "━━━━━━━━━━━━━━%0A";
+
 
     message +=
-        "*TOTAL: $" + total + "*%0A";
+        "*TOTAL: $" +
+        total +
+        "*%0A";
 
 
     const url =
@@ -650,7 +1244,10 @@ function sendWhatsApp() {
         message;
 
 
-    window.open(url, "_blank");
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
