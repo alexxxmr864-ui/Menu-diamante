@@ -18,257 +18,150 @@ html {
 
 body {
     margin: 0;
+    padding-bottom: 90px;
     font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at top, #292929 0%, #111 35%, #080808 100%);
+        radial-gradient(circle at top, #ffffff 0%, #f2f2f2 45%, #e8e8e8 100%);
     color: #222;
-    min-height: 100vh;
 }
 
-
-/* ========================= */
-/* ENCABEZADO */
-/* ========================= */
+/* =========================
+   ENCABEZADO
+========================= */
 
 header {
-    background: linear-gradient(145deg, #080808, #202020);
+    background:
+        linear-gradient(135deg, #050505, #222, #050505);
     color: white;
     text-align: center;
-    padding: 28px 15px 35px;
+    padding: 25px 15px;
     position: sticky;
     top: 0;
     z-index: 50;
-    box-shadow: 0 3px 18px rgba(0,0,0,.5);
-    border-bottom: 1px solid #333;
+    box-shadow: 0 3px 15px rgba(0,0,0,.35);
 }
 
 .logo-diamond {
-    width: 78px;
-    height: 78px;
-    margin: 0 auto 14px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 10px;
     transform: rotate(45deg);
-    border: 3px solid #d4af37;
-    background: linear-gradient(
-        135deg,
-        #fff7b2,
-        #d4af37 45%,
-        #8c6b13
-    );
-    box-shadow:
-        0 0 15px rgba(212,175,55,.35),
-        inset 0 0 10px rgba(255,255,255,.4);
+    border: 3px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    background:
+        linear-gradient(135deg, #333, #111);
+    box-shadow:
+        0 0 0 4px rgba(255,255,255,.08),
+        0 0 20px rgba(255,255,255,.15);
 }
 
 .logo-diamond span {
     transform: rotate(-45deg);
-    font-size: 39px;
-    color: #111;
+    font-size: 30px;
 }
 
 header h1 {
-    margin: 8px 0 0;
+    margin: 12px 0 0;
     font-size: 30px;
     letter-spacing: 2px;
-    color: #fff;
 }
 
 header p {
     margin: 7px 0 0;
-    color: #d4af37;
-    font-size: 14px;
-    font-weight: bold;
+    opacity: .8;
 }
 
-
-/* ========================= */
-/* CONTENEDOR */
-/* ========================= */
+/* =========================
+   CONTENEDOR
+========================= */
 
 .container {
-    max-width: 760px;
+    max-width: 720px;
     margin: auto;
-    padding: 22px 15px 40px;
+    padding: 15px;
 }
 
-
-/* ========================= */
-/* TITULO MENU */
-/* ========================= */
-
-.menu-intro {
-    text-align: center;
-    color: white;
-    margin: 5px 0 25px;
-}
-
-.menu-intro h2 {
-    margin: 0;
-    font-size: 23px;
-}
-
-.menu-intro p {
-    margin: 7px 0 0;
-    color: #bbb;
-    font-size: 14px;
-}
-
-
-/* ========================= */
-/* DIAMANTES */
-/* ========================= */
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px 20px;
-    padding: 10px 12px 30px;
-}
-
-.category {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 145px;
-    cursor: pointer;
-}
-
-.diamond {
-    width: 132px;
-    height: 132px;
-    transform: rotate(45deg);
-    background:
-        linear-gradient(
-            135deg,
-            #fff8c9 0%,
-            #d4af37 35%,
-            #a27c18 70%,
-            #f0d76a 100%
-        );
-    border: 3px solid #f4dc72;
-    box-shadow:
-        0 7px 20px rgba(0,0,0,.55),
-        0 0 15px rgba(212,175,55,.25),
-        inset 0 0 14px rgba(255,255,255,.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .22s ease;
-}
-
-.diamond:hover {
-    transform: rotate(45deg) scale(1.06);
-}
-
-.diamond:active {
-    transform: rotate(45deg) scale(.96);
-}
-
-.diamond-content {
-    transform: rotate(-45deg);
-    text-align: center;
-    width: 105px;
-}
-
-.diamond-icon {
-    display: block;
-    font-size: 28px;
-    margin-bottom: 5px;
-}
-
-.diamond-title {
-    font-size: 13px;
-    line-height: 1.15;
-    font-weight: 900;
-    color: #111;
-    text-transform: uppercase;
-}
-
-
-/* ========================= */
-/* SECCIONES */
-/* ========================= */
-
-.category-section {
-    display: none;
-    margin-bottom: 28px;
-    animation: sectionOpen .25s ease;
-}
-
-.category-section.active {
-    display: block;
-}
-
-@keyframes sectionOpen {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* =========================
+   CATEGORÍAS DIAMANTE
+========================= */
 
 .category-title {
-    background: linear-gradient(135deg, #171717, #292929);
-    color: white;
-    border-left: 4px solid #d4af37;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 5px 0 14px;
-    font-size: 21px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.35);
+    text-align: center;
+    margin: 35px 0 20px;
+    font-size: 23px;
+    font-weight: bold;
+    position: relative;
 }
 
+.category-title::before,
+.category-title::after {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg,#111,#555,#111);
+    margin: 0 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
 
-/* ========================= */
-/* PRODUCTOS */
-/* ========================= */
+.category-title::after {
+    transform: rotate(45deg);
+}
+
+/* =========================
+   PRODUCTOS
+========================= */
 
 .product {
-    background: white;
-    border-radius: 14px;
-    padding: 17px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    background: rgba(255,255,255,.95);
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.10);
+    border: 1px solid #eee;
+    transition: .2s;
+}
+
+.product:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(0,0,0,.14);
 }
 
 .product-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .product-description {
     color: #666;
     font-size: 13px;
-    margin-top: 5px;
-    line-height: 1.4;
+    margin-top: 6px;
+    line-height: 1.45;
 }
 
 .product-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 14px;
     gap: 10px;
-    margin-top: 13px;
 }
 
 .price {
     font-size: 18px;
     font-weight: bold;
-    color: #111;
 }
 
 .add-btn {
-    background: linear-gradient(135deg, #111, #333);
-    color: #d4af37;
-    border: 1px solid #d4af37;
+    background: #111;
+    color: white;
+    border: none;
     border-radius: 9px;
-    padding: 10px 17px;
+    padding: 11px 18px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -277,51 +170,220 @@ header p {
     transform: scale(.96);
 }
 
+/* =========================
+   TOTAL FLOTANTE
+========================= */
 
-/* ========================= */
-/* VOLVER */
-/* ========================= */
+.floating-total {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 200;
+    max-width: 700px;
+    margin: auto;
 
-.back-menu {
+    background:
+        linear-gradient(135deg,#050505,#242424,#050505);
+
+    color: white;
+    border-radius: 16px;
+    padding: 13px 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.35);
+
+    cursor: pointer;
+    border: 1px solid #444;
+}
+
+.floating-total-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floating-cart {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: white;
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.floating-label {
+    font-size: 13px;
+    opacity: .75;
+}
+
+.floating-price {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.floating-arrow {
+    font-size: 22px;
+}
+
+/* =========================
+   CARRITO
+========================= */
+
+.cart {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 35px;
+    box-shadow: 0 3px 14px rgba(0,0,0,.12);
+}
+
+.cart h2 {
+    margin-top: 0;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 14px 0;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cart-details {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.quantity-controls {
+    margin-top: 9px;
+}
+
+.quantity-controls button {
+    width: 34px;
+    height: 32px;
+    border: none;
+    border-radius: 7px;
+    background: #ddd;
+    font-size: 17px;
+}
+
+.total {
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 15px;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+form input,
+form textarea,
+form select,
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
     width: 100%;
-    margin: 5px 0 15px;
     padding: 12px;
-    background: #222;
-    color: #d4af37;
-    border: 1px solid #d4af37;
+    border: 1px solid #ccc;
     border-radius: 9px;
+    font-size: 16px;
+    background: white;
+}
+
+form textarea,
+.modal-box textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #25D366;
+    color: white;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
 }
 
+.notice {
+    background: #fff8d8;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #555;
+}
 
-/* ========================= */
-/* MODAL */
-/* ========================= */
+.cash-change {
+    background: #e9f8ee;
+    color: #176b35;
+    padding: 12px;
+    border-radius: 9px;
+    margin-top: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.72);
-    z-index: 100;
+    background: rgba(0,0,0,.68);
+    z-index: 300;
     padding: 15px;
     overflow-y: auto;
 }
 
 .modal-box {
     background: white;
-    max-width: 520px;
+    max-width: 540px;
     margin: 20px auto;
     border-radius: 17px;
     padding: 20px;
-    box-shadow: 0 10px 35px rgba(0,0,0,.5);
 }
 
 .modal-box h2 {
     margin-top: 0;
-    border-bottom: 2px solid #d4af37;
-    padding-bottom: 10px;
 }
 
 .modal-box label {
@@ -331,24 +393,8 @@ header p {
     margin-bottom: 6px;
 }
 
-.modal-box select,
-.modal-box input,
-.modal-box textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    background: white;
-}
-
-.modal-box textarea {
-    min-height: 80px;
-    resize: vertical;
-}
-
 .option-box {
-    background: #f7f7f7;
+    background: #f5f5f5;
     padding: 12px;
     border-radius: 9px;
     margin-top: 10px;
@@ -375,186 +421,52 @@ header p {
 
 .confirm-btn {
     background: #111;
-    color: #d4af37;
-    border: 1px solid #d4af37 !important;
-}
-
-
-/* ========================= */
-/* CARRITO */
-/* ========================= */
-
-.cart {
-    background: white;
-    border-radius: 16px;
-    padding: 19px;
-    margin-top: 15px;
-    box-shadow: 0 4px 14px rgba(0,0,0,.3);
-}
-
-.cart h2 {
-    margin-top: 0;
-    border-bottom: 2px solid #d4af37;
-    padding-bottom: 10px;
-}
-
-.cart-item {
-    border-bottom: 1px solid #eee;
-    padding: 13px 0;
-}
-
-.cart-item-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.cart-details {
-    color: #666;
-    font-size: 13px;
-    line-height: 1.5;
-    margin-top: 5px;
-}
-
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 9px;
-}
-
-.quantity-controls button {
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 6px;
-    background: #ddd;
-    font-size: 18px;
-}
-
-.total {
-    text-align: right;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-.empty {
-    text-align: center;
-    color: #777;
-    padding: 15px;
-}
-
-
-/* ========================= */
-/* FORMULARIO */
-/* ========================= */
-
-form {
-    margin-top: 20px;
-}
-
-form label {
-    display: block;
-    font-weight: bold;
-    margin-top: 14px;
-    margin-bottom: 6px;
-}
-
-form input,
-form textarea,
-form select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-form textarea {
-    min-height: 75px;
-}
-
-.whatsapp-btn {
-    width: 100%;
-    margin-top: 20px;
-    padding: 16px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
     color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-.notice {
-    background: #fff8d8;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-size: 13px;
-    color: #555;
+.hidden {
+    display: none !important;
 }
-
-
-/* ========================= */
-/* FOOTER */
-/* ========================= */
 
 footer {
     text-align: center;
     padding: 30px 15px;
-    color: #aaa;
+    color: #777;
     font-size: 13px;
 }
 
-.hidden {
-    display: none;
-}
+/* =========================
+   CELULAR
+========================= */
 
+@media(max-width:500px) {
 
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
-@media (max-width: 430px) {
-
-    .category-grid {
-        gap: 24px 10px;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .diamond {
-        width: 118px;
-        height: 118px;
-    }
-
-    .diamond-content {
-        width: 95px;
-    }
-
-    .diamond-title {
-        font-size: 11px;
-    }
-
-    .diamond-icon {
+    header h1 {
         font-size: 25px;
     }
 
+    .category-title {
+        font-size: 20px;
+    }
+
+    .category-title::before,
+    .category-title::after {
+        width: 20px;
+        height: 20px;
+        margin: 0 8px;
+    }
+
+    .floating-total {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+    }
 }
 
 </style>
 </head>
 
-
 <body>
-
-
-<!-- ========================= -->
-<!-- HEADER -->
-<!-- ========================= -->
 
 <header>
 
@@ -572,156 +484,11 @@ footer {
 <div class="container">
 
 
-<!-- ========================= -->
-<!-- INTRO -->
-<!-- ========================= -->
-
-<div class="menu-intro">
-
-<h2>🍽️ Nuestro menú</h2>
-
-<p>Selecciona una categoría para comenzar tu pedido.</p>
-
-</div>
-
-
-<!-- ========================= -->
-<!-- DIAMANTES -->
-<!-- ========================= -->
-
-<div id="categoryMenu" class="category-grid">
-
-
-<div class="category" onclick="showCategory('tacosSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">🌮</span>
-
-<div class="diamond-title">
-Tacos de<br>Bistec
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="category" onclick="showCategory('caprichosSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">🌮</span>
-
-<div class="diamond-title">
-Caprichos
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="category" onclick="showCategory('quesSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">🧀</span>
-
-<div class="diamond-title">
-Quesadillas
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="category" onclick="showCategory('alitasSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">🍗</span>
-
-<div class="diamond-title">
-Alitas y<br>Boneless
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="category" onclick="showCategory('complementosSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">🍟</span>
-
-<div class="diamond-title">
-Complementos
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="category" onclick="showCategory('extrasSection')">
-
-<div class="diamond">
-
-<div class="diamond-content">
-
-<span class="diamond-icon">➕</span>
-
-<div class="diamond-title">
-Extras
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- ========================= -->
-<!-- TACOS -->
-<!-- ========================= -->
-
-<div id="tacosSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-🌮 Tacos de Bistec
-</h2>
+<!-- =========================
+     TACOS
+========================= -->
+
+<h2 class="category-title">🌮 Tacos de Bistec</h2>
 
 <div class="product">
 
@@ -735,9 +502,7 @@ Elige la cantidad y después el tipo de tortilla.
 
 <div class="product-bottom">
 
-<span class="price">
-Desde $15
-</span>
+<span class="price">Desde $15</span>
 
 <button class="add-btn" onclick="openTacos()">
 Agregar
@@ -747,22 +512,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     CAPRICHOS
+========================= -->
 
-<!-- ========================= -->
-<!-- CAPRICHOS -->
-<!-- ========================= -->
-
-<div id="caprichosSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-🌮 Caprichos
-</h2>
+<h2 class="category-title">🌮 Caprichos</h2>
 
 <div class="product">
 
@@ -771,14 +526,12 @@ Caprichos
 </div>
 
 <div class="product-description">
-Elige la cantidad y después el tipo de tortilla.
+Elige la cantidad y el tipo de tortilla.
 </div>
 
 <div class="product-bottom">
 
-<span class="price">
-Desde $18
-</span>
+<span class="price">Desde $18</span>
 
 <button class="add-btn" onclick="openCaprichos()">
 Agregar
@@ -788,22 +541,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     QUESADILLAS
+========================= -->
 
-<!-- ========================= -->
-<!-- QUESADILLAS -->
-<!-- ========================= -->
-
-<div id="quesSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-🧀 Quesadillas
-</h2>
+<h2 class="category-title">🧀 Quesadillas</h2>
 
 <div class="product">
 
@@ -817,9 +560,7 @@ Quesadillas
 
 <div class="product-bottom">
 
-<span class="price">
-Desde $45
-</span>
+<span class="price">Desde $45</span>
 
 <button class="add-btn" onclick="openQuesadillas()">
 Agregar
@@ -829,22 +570,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     ALITAS
+========================= -->
 
-<!-- ========================= -->
-<!-- ALITAS -->
-<!-- ========================= -->
-
-<div id="alitasSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-🍗 Alitas y Boneless
-</h2>
+<h2 class="category-title">🍗 Alitas y Boneless</h2>
 
 <div class="product">
 
@@ -853,14 +584,12 @@ Alitas y Boneless
 </div>
 
 <div class="product-description">
-300 g $120 · ½ kg $180 · 1 kg $300
+300 g $120 · ½ kilo $180 · 1 kilo $300
 </div>
 
 <div class="product-bottom">
 
-<span class="price">
-Desde $120
-</span>
+<span class="price">Desde $120</span>
 
 <button class="add-btn" onclick="openAlitas()">
 Agregar
@@ -870,22 +599,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     COMPLEMENTOS
+========================= -->
 
-<!-- ========================= -->
-<!-- COMPLEMENTOS -->
-<!-- ========================= -->
-
-<div id="complementosSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-🍟 Complementos
-</h2>
+<h2 class="category-title">🍟 Complementos</h2>
 
 
 <div class="product">
@@ -903,7 +622,7 @@ Incluyen catsup.
 <span class="price">$40</span>
 
 <button class="add-btn"
-onclick="openSimple('Papas Sencillas',40,'Incluyen catsup')">
+onclick="openSimple('Papas Sencillas',40,'Incluyen catsup.')">
 Agregar
 </button>
 
@@ -927,7 +646,7 @@ Incluyen queso amarillo y catsup.
 <span class="price">$50</span>
 
 <button class="add-btn"
-onclick="openSimple('Papas Preparadas',50,'Incluyen queso amarillo y catsup')">
+onclick="openSimple('Papas Preparadas',50,'Incluyen queso amarillo y catsup.')">
 Agregar
 </button>
 
@@ -951,7 +670,7 @@ Incluyen queso amarillo y catsup.
 <span class="price">$60</span>
 
 <button class="add-btn"
-onclick="openSimple('Salchipapas',60,'Incluyen queso amarillo y catsup')">
+onclick="openSimple('Salchipapas',60,'Incluyen queso amarillo y catsup.')">
 Agregar
 </button>
 
@@ -974,8 +693,7 @@ Incluyen papas, salchicha y pollo.
 
 <span class="price">$80</span>
 
-<button class="add-btn"
-onclick="openPapasLocas()">
+<button class="add-btn" onclick="openPapasLocas()">
 Agregar
 </button>
 
@@ -998,8 +716,7 @@ Incluyen papas y un aderezo.
 
 <span class="price">$90</span>
 
-<button class="add-btn"
-onclick="openDedos()">
+<button class="add-btn" onclick="openDedos()">
 Agregar
 </button>
 
@@ -1022,8 +739,7 @@ Incluyen papas y un aderezo.
 
 <span class="price">$80</span>
 
-<button class="add-btn"
-onclick="openAros()">
+<button class="add-btn" onclick="openAros()">
 Agregar
 </button>
 
@@ -1031,22 +747,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     EXTRAS
+========================= -->
 
-<!-- ========================= -->
-<!-- EXTRAS -->
-<!-- ========================= -->
-
-<div id="extrasSection" class="category-section">
-
-<button class="back-menu" onclick="backToMenu()">
-← Volver al menú
-</button>
-
-<h2 class="category-title">
-➕ Extras
-</h2>
+<h2 class="category-title">➕ Extras</h2>
 
 <div class="product">
 
@@ -1055,17 +761,14 @@ Salsas y Aderezos
 </div>
 
 <div class="product-description">
-Cada salsa o aderezo adicional cuesta $15.
+BBQ, BBQ Hot, Buffalo, Mango Habanero, Ranch, Buffalo Ranch, queso amarillo o catsup. $15 c/u.
 </div>
 
 <div class="product-bottom">
 
-<span class="price">
-$15 c/u
-</span>
+<span class="price">$15 c/u</span>
 
-<button class="add-btn"
-onclick="openExtras()">
+<button class="add-btn" onclick="openExtras()">
 Agregar
 </button>
 
@@ -1073,14 +776,12 @@ Agregar
 
 </div>
 
-</div>
 
+<!-- =========================
+     CARRITO
+========================= -->
 
-<!-- ========================= -->
-<!-- CARRITO -->
-<!-- ========================= -->
-
-<div class="cart">
+<div class="cart" id="cartSection">
 
 <h2>🛒 Tu pedido</h2>
 
@@ -1093,24 +794,18 @@ Todavía no has agregado productos.
 </div>
 
 <div class="total">
-
 Total: $<span id="total">0</span>
-
 </div>
 
 
 <div class="notice">
-
-💡 Todos los productos pueden llevar comentarios o indicaciones especiales.
-
+Todos los productos pueden llevar comentarios o indicaciones especiales.
 </div>
 
 
 <form>
 
-<label>
-Nombre
-</label>
+<label>Nombre</label>
 
 <input
 type="text"
@@ -1118,9 +813,7 @@ id="name"
 placeholder="Tu nombre">
 
 
-<label>
-Dirección
-</label>
+<label>Dirección</label>
 
 <input
 type="text"
@@ -1128,18 +821,14 @@ id="address"
 placeholder="Calle, número y colonia">
 
 
-<label>
-Referencias
-</label>
+<label>Referencias</label>
 
 <textarea
 id="references"
 placeholder="Casa azul, frente a la tienda, etc."></textarea>
 
 
-<label>
-Método de pago
-</label>
+<label>Método de pago</label>
 
 <select id="payment" onchange="checkPayment()">
 
@@ -1169,7 +858,10 @@ type="number"
 id="cashAmount"
 placeholder="Ejemplo: 500"
 min="0"
-step="1">
+step="1"
+oninput="updateCashChange()">
+
+<div id="cashChange" class="cash-change"></div>
 
 </div>
 
@@ -1191,15 +883,48 @@ onclick="sendWhatsApp()">
 
 
 <footer>
-
 💎 Diamante Foods · Gracias por tu preferencia ❤️
-
 </footer>
 
 
-<!-- ========================= -->
-<!-- MODAL -->
-<!-- ========================= -->
+<!-- =========================
+     TOTAL FLOTANTE
+========================= -->
+
+<div
+class="floating-total"
+onclick="goToCart()">
+
+<div class="floating-total-left">
+
+<div class="floating-cart">
+🛒
+</div>
+
+<div>
+
+<div class="floating-label">
+Tu pedido
+</div>
+
+<div class="floating-price">
+$<span id="floatingTotal">0</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="floating-arrow">
+›
+</div>
+
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
 
 <div class="modal" id="modal">
 
@@ -1218,7 +943,7 @@ Configurar producto
 Cantidad de tacos
 </label>
 
-<select id="tacosQty" onchange="checkMixedTacos()">
+<select id="tacosQty">
 
 <option value="1" data-price="15">1 taco — $15</option>
 <option value="2" data-price="30">2 tacos — $30</option>
@@ -1237,7 +962,7 @@ Cantidad de tacos
 Tipo de tortilla
 </label>
 
-<select id="tacosTortilla" onchange="checkMixedTacos()">
+<select id="tacosTortilla">
 
 <option value="Maíz">
 Todos de maíz
@@ -1281,7 +1006,7 @@ Mixtos
 Cantidad de caprichos
 </label>
 
-<select id="capQty" onchange="checkMixedCap()">
+<select id="capQty">
 
 <option value="1" data-price="18">1 capricho — $18</option>
 <option value="2" data-price="36">2 caprichos — $36</option>
@@ -1300,7 +1025,7 @@ Cantidad de caprichos
 Tipo de tortilla
 </label>
 
-<select id="capTortilla" onchange="checkMixedCap()">
+<select id="capTortilla">
 
 <option value="Maíz">
 Todos de maíz
@@ -1344,7 +1069,7 @@ Mixtos
 Cantidad
 </label>
 
-<select id="quesQty" onchange="checkMixedQues()">
+<select id="quesQty">
 
 <option value="1" data-price="45">
 1 quesadilla — $45
@@ -1361,7 +1086,7 @@ Cantidad
 Tipo de tortilla
 </label>
 
-<select id="quesTortilla" onchange="checkMixedQues()">
+<select id="quesTortilla">
 
 <option value="Maíz">
 Maíz
@@ -1405,7 +1130,7 @@ Mixtas
 Cantidad
 </label>
 
-<select id="alitasQty" onchange="updateAlitasOptions()">
+<select id="alitasQty">
 
 <option value="300" data-price="120">
 300 g — $120
@@ -1428,7 +1153,7 @@ Tipo
 
 <select id="alitasTipo">
 
-<option value="" selected>
+<option value="" selected disabled>
 Selecciona una opción
 </option>
 
@@ -1451,11 +1176,9 @@ Mixtos
 Salsas
 </label>
 
-<div id="sauceSelectors">
+<select id="sauce1">
 
-<select class="sauce sauce1">
-
-<option value="" selected>
+<option value="" selected disabled>
 Selecciona una salsa *
 </option>
 
@@ -1467,10 +1190,10 @@ Selecciona una salsa *
 </select>
 
 
-<select class="sauce sauce2" style="display:none;">
+<select id="sauce2" class="hidden">
 
-<option value="" selected>
-Agregar otra salsa (opcional)
+<option value="">
+Agregar segunda salsa (opcional)
 </option>
 
 <option>BBQ</option>
@@ -1480,18 +1203,14 @@ Agregar otra salsa (opcional)
 
 </select>
 
-</div>
-
 
 <label>
 Aderezos
 </label>
 
-<div id="dressingSelectors">
+<select id="dressing1">
 
-<select class="dressing dressing1">
-
-<option value="" selected>
+<option value="" selected disabled>
 Selecciona un aderezo *
 </option>
 
@@ -1503,10 +1222,10 @@ Selecciona un aderezo *
 </select>
 
 
-<select class="dressing dressing2" style="display:none;">
+<select id="dressing2" class="hidden">
 
-<option value="" selected>
-Agregar otro aderezo (opcional)
+<option value="">
+Agregar segundo aderezo (opcional)
 </option>
 
 <option>Aderezo Ranch</option>
@@ -1517,10 +1236,10 @@ Agregar otro aderezo (opcional)
 </select>
 
 
-<select class="dressing dressing3" style="display:none;">
+<select id="dressing3" class="hidden">
 
-<option value="" selected>
-Agregar otro aderezo (opcional)
+<option value="">
+Agregar tercer aderezo (opcional)
 </option>
 
 <option>Aderezo Ranch</option>
@@ -1529,8 +1248,6 @@ Agregar otro aderezo (opcional)
 <option>Catsup</option>
 
 </select>
-
-</div>
 
 
 <label>
@@ -1539,7 +1256,7 @@ Agregar otro aderezo (opcional)
 
 <select id="sauceMode">
 
-<option value="Bañados" selected>
+<option value="Bañados">
 Bañados
 </option>
 
@@ -1556,8 +1273,7 @@ Salsa aparte
 
 <div id="simpleOptions" class="hidden">
 
-<div id="simpleDescription" class="option-box">
-</div>
+<div id="simpleDescription" class="option-box"></div>
 
 </div>
 
@@ -1662,6 +1378,7 @@ placeholder="Ejemplo: sin cebolla, poca salsa, etc."></textarea>
 
 <button
 class="cancel-btn"
+type="button"
 onclick="closeModal()">
 
 Cancelar
@@ -1670,94 +1387,43 @@ Cancelar
 
 <button
 class="confirm-btn"
+type="button"
 onclick="confirmProduct()">
 
-💎 Agregar al pedido
+Agregar al pedido
 
 </button>
 
 </div>
 
 </div>
-
 </div>
 
 
 <script>
 
-
-/* ========================= */
-/* VARIABLES */
-/* ========================= */
+/* =========================
+   VARIABLES
+========================= */
 
 let cart = [];
-
 let currentType = "";
-
 let currentProduct = {};
 
 const whatsappNumber = "528134332517";
 
 
-/* ========================= */
-/* NAVEGACIÓN DEL MENÚ */
-/* ========================= */
-
-function showCategory(id) {
-
-    document.getElementById("categoryMenu").style.display = "none";
-
-    document.querySelectorAll(".category-section")
-        .forEach(section => {
-
-            section.classList.remove("active");
-
-        });
-
-    document.getElementById(id)
-        .classList.add("active");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-function backToMenu() {
-
-    document.querySelectorAll(".category-section")
-        .forEach(section => {
-
-            section.classList.remove("active");
-
-        });
-
-    document.getElementById("categoryMenu")
-        .style.display = "grid";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* ========================= */
-/* MODAL */
-/* ========================= */
+/* =========================
+   UTILIDADES
+========================= */
 
 function hideAllOptions() {
 
     document.querySelectorAll(
         "#tacosOptions,#caprichosOptions,#quesOptions,#alitasOptions,#simpleOptions,#papasLocasOptions,#dedosOptions,#arosOptions,#extrasOptions"
     ).forEach(el => {
-
         el.classList.add("hidden");
-
     });
-
 }
 
 
@@ -1765,29 +1431,64 @@ function openModal(title) {
 
     hideAllOptions();
 
-    document.getElementById("modalTitle")
-        .textContent = title;
+    document.getElementById("modalTitle").textContent = title;
 
-    document.getElementById("comment")
-        .value = "";
+    document.getElementById("comment").value = "";
 
-    document.getElementById("modal")
-        .style.display = "block";
-
+    document.getElementById("modal").style.display = "block";
 }
 
 
 function closeModal() {
 
-    document.getElementById("modal")
-        .style.display = "none";
-
+    document.getElementById("modal").style.display = "none";
 }
 
 
-/* ========================= */
-/* TACOS */
-/* ========================= */
+/* =========================
+   MEZCLAS
+========================= */
+
+function populateMix(qtyId, maizId, harinaId) {
+
+    const qty = parseInt(document.getElementById(qtyId).value);
+
+    const maiz = document.getElementById(maizId);
+    const harina = document.getElementById(harinaId);
+
+    maiz.innerHTML = "";
+    harina.innerHTML = "";
+
+    for(let i = 0; i <= qty; i++) {
+
+        maiz.innerHTML += `<option value="${i}">${i}</option>`;
+        harina.innerHTML += `<option value="${i}">${i}</option>`;
+
+    }
+
+    const inicialMaiz = Math.ceil(qty / 2);
+    const inicialHarina = qty - inicialMaiz;
+
+    maiz.value = inicialMaiz;
+    harina.value = inicialHarina;
+
+    maiz.onchange = function() {
+
+        harina.value = qty - parseInt(this.value);
+
+    };
+
+    harina.onchange = function() {
+
+        maiz.value = qty - parseInt(this.value);
+
+    };
+}
+
+
+/* =========================
+   TACOS
+========================= */
 
 function openTacos() {
 
@@ -1799,47 +1500,37 @@ function openTacos() {
         .classList.remove("hidden");
 
     checkMixedTacos();
-
 }
 
 
 function checkMixedTacos() {
 
     const qty =
-        parseInt(
-            document.getElementById("tacosQty").value
-        );
+        parseInt(document.getElementById("tacosQty").value);
 
     const select =
         document.getElementById("tacosTortilla");
 
     const mixedOption =
-        select.querySelector(
-            'option[value="Mixtos"]'
-        );
+        select.querySelector('option[value="Mixtos"]');
 
-    if (qty === 1) {
+    if(qty === 1) {
 
         mixedOption.style.display = "none";
 
-        if (select.value === "Mixtos") {
-
+        if(select.value === "Mixtos") {
             select.value = "Maíz";
-
         }
 
     } else {
 
         mixedOption.style.display = "block";
-
     }
-
 
     const box =
         document.getElementById("mixedTacos");
 
-
-    if (select.value === "Mixtos") {
+    if(select.value === "Mixtos") {
 
         box.classList.remove("hidden");
 
@@ -1854,13 +1545,12 @@ function checkMixedTacos() {
         box.classList.add("hidden");
 
     }
-
 }
 
 
-/* ========================= */
-/* CAPRICHOS */
-/* ========================= */
+/* =========================
+   CAPRICHOS
+========================= */
 
 function openCaprichos() {
 
@@ -1872,47 +1562,37 @@ function openCaprichos() {
         .classList.remove("hidden");
 
     checkMixedCap();
-
 }
 
 
 function checkMixedCap() {
 
     const qty =
-        parseInt(
-            document.getElementById("capQty").value
-        );
+        parseInt(document.getElementById("capQty").value);
 
     const select =
         document.getElementById("capTortilla");
 
     const mixedOption =
-        select.querySelector(
-            'option[value="Mixtos"]'
-        );
+        select.querySelector('option[value="Mixtos"]');
 
-    if (qty === 1) {
+    if(qty === 1) {
 
         mixedOption.style.display = "none";
 
-        if (select.value === "Mixtos") {
-
+        if(select.value === "Mixtos") {
             select.value = "Maíz";
-
         }
 
     } else {
 
         mixedOption.style.display = "block";
-
     }
-
 
     const box =
         document.getElementById("mixedCap");
 
-
-    if (select.value === "Mixtos") {
+    if(select.value === "Mixtos") {
 
         box.classList.remove("hidden");
 
@@ -1927,13 +1607,12 @@ function checkMixedCap() {
         box.classList.add("hidden");
 
     }
-
 }
 
 
-/* ========================= */
-/* QUESADILLAS */
-/* ========================= */
+/* =========================
+   QUESADILLAS
+========================= */
 
 function openQuesadillas() {
 
@@ -1945,47 +1624,37 @@ function openQuesadillas() {
         .classList.remove("hidden");
 
     checkMixedQues();
-
 }
 
 
 function checkMixedQues() {
 
     const qty =
-        parseInt(
-            document.getElementById("quesQty").value
-        );
+        parseInt(document.getElementById("quesQty").value);
 
     const select =
         document.getElementById("quesTortilla");
 
     const mixedOption =
-        select.querySelector(
-            'option[value="Mixtas"]'
-        );
+        select.querySelector('option[value="Mixtas"]');
 
-    if (qty === 1) {
+    if(qty === 1) {
 
         mixedOption.style.display = "none";
 
-        if (select.value === "Mixtas") {
-
+        if(select.value === "Mixtas") {
             select.value = "Maíz";
-
         }
 
     } else {
 
         mixedOption.style.display = "block";
-
     }
-
 
     const box =
         document.getElementById("mixedQues");
 
-
-    if (select.value === "Mixtas") {
+    if(select.value === "Mixtas") {
 
         box.classList.remove("hidden");
 
@@ -2000,108 +1669,12 @@ function checkMixedQues() {
         box.classList.add("hidden");
 
     }
-
 }
 
 
-/* ========================= */
-/* MEZCLAS */
-/* ========================= */
-
-function populateMix(
-    qtyId,
-    maizId,
-    harinaId
-) {
-
-    const qty =
-        parseInt(
-            document.getElementById(qtyId).value
-        );
-
-    const maiz =
-        document.getElementById(maizId);
-
-    const harina =
-        document.getElementById(harinaId);
-
-
-    maiz.innerHTML = "";
-    harina.innerHTML = "";
-
-
-    for (let i = 0; i <= qty; i++) {
-
-        maiz.innerHTML +=
-            `<option value="${i}">${i}</option>`;
-
-        harina.innerHTML +=
-            `<option value="${i}">${i}</option>`;
-
-    }
-
-
-    const maizInicial =
-        Math.ceil(qty / 2);
-
-    const harinaInicial =
-        qty - maizInicial;
-
-
-    maiz.value = maizInicial;
-
-    harina.value = harinaInicial;
-
-
-    syncMixedSelectors(
-        maizId,
-        harinaId,
-        qty
-    );
-
-}
-
-
-function syncMixedSelectors(
-    maizId,
-    harinaId,
-    qty
-) {
-
-    const maiz =
-        document.getElementById(maizId);
-
-    const harina =
-        document.getElementById(harinaId);
-
-
-    maiz.onchange = function() {
-
-        const valorMaiz =
-            parseInt(this.value);
-
-        harina.value =
-            qty - valorMaiz;
-
-    };
-
-
-    harina.onchange = function() {
-
-        const valorHarina =
-            parseInt(this.value);
-
-        maiz.value =
-            qty - valorHarina;
-
-    };
-
-}
-
-
-/* ========================= */
-/* ALITAS */
-/* ========================= */
+/* =========================
+   ALITAS
+========================= */
 
 function openAlitas() {
 
@@ -2115,122 +1688,91 @@ function openAlitas() {
     resetAlitas();
 
     updateAlitasOptions();
-
 }
 
 
 function resetAlitas() {
 
-    document.getElementById("alitasTipo")
-        .value = "";
+    document.getElementById("alitasTipo").value = "";
 
-    document.querySelector(".sauce1")
-        .value = "";
+    document.getElementById("sauce1").value = "";
 
-    document.querySelector(".sauce2")
-        .value = "";
+    document.getElementById("sauce2").value = "";
 
-    document.querySelector(".dressing1")
-        .value = "";
+    document.getElementById("dressing1").value = "";
 
-    document.querySelector(".dressing2")
-        .value = "";
+    document.getElementById("dressing2").value = "";
 
-    document.querySelector(".dressing3")
-        .value = "";
+    document.getElementById("dressing3").value = "";
 
-    document.getElementById("sauceMode")
-        .value = "Bañados";
-
+    document.getElementById("sauceMode").value = "Bañados";
 }
 
 
 function updateAlitasOptions() {
 
     const qty =
-        document.getElementById("alitasQty")
-            .value;
-
-
-    const tipo =
-        document.getElementById("alitasTipo");
-
-
-    const sauce2 =
-        document.querySelector(".sauce2");
-
-
-    const dressing2 =
-        document.querySelector(".dressing2");
-
-
-    const dressing3 =
-        document.querySelector(".dressing3");
-
+        document.getElementById("alitasQty").value;
 
     const mixedOption =
-        document.getElementById(
-            "mixedAlitasOption"
-        );
+        document.getElementById("mixedAlitasOption");
 
+    const sauce2 =
+        document.getElementById("sauce2");
 
-    if (qty === "300") {
+    const dressing2 =
+        document.getElementById("dressing2");
+
+    const dressing3 =
+        document.getElementById("dressing3");
+
+    if(qty === "300") {
 
         mixedOption.style.display = "none";
 
-        sauce2.style.display = "none";
-
-        dressing2.style.display = "none";
-
-        dressing3.style.display = "none";
-
-
-        if (tipo.value === "Mixtos") {
-
-            tipo.value = "";
-
+        if(document.getElementById("alitasTipo").value === "Mixtos") {
+            document.getElementById("alitasTipo").value = "";
         }
+
+        sauce2.classList.add("hidden");
+
+        dressing2.classList.add("hidden");
+
+        dressing3.classList.add("hidden");
 
     }
 
-
-    else if (qty === "500") {
+    else if(qty === "500") {
 
         mixedOption.style.display = "block";
 
-        sauce2.style.display = "block";
+        sauce2.classList.remove("hidden");
 
-        dressing2.style.display = "block";
+        dressing2.classList.remove("hidden");
 
-        dressing3.style.display = "none";
+        dressing3.classList.add("hidden");
 
     }
-
 
     else {
 
         mixedOption.style.display = "block";
 
-        sauce2.style.display = "block";
+        sauce2.classList.remove("hidden");
 
-        dressing2.style.display = "block";
+        dressing2.classList.remove("hidden");
 
-        dressing3.style.display = "block";
+        dressing3.classList.remove("hidden");
 
     }
-
 }
 
 
-/* ========================= */
-/* SIMPLES */
-/* ========================= */
+/* =========================
+   SIMPLES
+========================= */
 
-function openSimple(
-    name,
-    price,
-    description
-) {
+function openSimple(name, price, description) {
 
     currentType = "simple";
 
@@ -2246,13 +1788,12 @@ function openSimple(
 
     document.getElementById("simpleDescription")
         .textContent = description;
-
 }
 
 
-/* ========================= */
-/* PAPAS LOCAS */
-/* ========================= */
+/* =========================
+   PAPAS LOCAS
+========================= */
 
 function openPapasLocas() {
 
@@ -2267,13 +1808,12 @@ function openPapasLocas() {
 
     document.getElementById("papasLocasOptions")
         .classList.remove("hidden");
-
 }
 
 
-/* ========================= */
-/* DEDOS */
-/* ========================= */
+/* =========================
+   DEDOS
+========================= */
 
 function openDedos() {
 
@@ -2288,13 +1828,12 @@ function openDedos() {
 
     document.getElementById("dedosOptions")
         .classList.remove("hidden");
-
 }
 
 
-/* ========================= */
-/* AROS */
-/* ========================= */
+/* =========================
+   AROS
+========================= */
 
 function openAros() {
 
@@ -2309,13 +1848,12 @@ function openAros() {
 
     document.getElementById("arosOptions")
         .classList.remove("hidden");
-
 }
 
 
-/* ========================= */
-/* EXTRAS */
-/* ========================= */
+/* =========================
+   EXTRAS
+========================= */
 
 function openExtras() {
 
@@ -2330,13 +1868,12 @@ function openExtras() {
 
     document.getElementById("extrasOptions")
         .classList.remove("hidden");
-
 }
 
 
-/* ========================= */
-/* CONFIRMAR PRODUCTO */
-/* ========================= */
+/* =========================
+   CONFIRMAR PRODUCTO
+========================= */
 
 function confirmProduct() {
 
@@ -2344,20 +1881,18 @@ function confirmProduct() {
 
     const comment =
         document.getElementById("comment")
-            .value.trim();
+        .value.trim();
 
 
     /* TACOS */
 
-    if (currentType === "tacos") {
+    if(currentType === "tacos") {
 
         const select =
             document.getElementById("tacosQty");
 
         const option =
-            select.options[
-                select.selectedIndex
-            ];
+            select.options[select.selectedIndex];
 
         const qty =
             parseInt(select.value);
@@ -2366,82 +1901,52 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById(
-                "tacosTortilla"
-            ).value;
+            document.getElementById("tacosTortilla").value;
 
+        let details = `Cantidad: ${qty}`;
 
-        let details =
-            `Cantidad: ${qty}`;
-
-
-        if (tortilla === "Mixtos") {
+        if(tortilla === "Mixtos") {
 
             const maiz =
-                parseInt(
-                    document.getElementById(
-                        "tacosMaiz"
-                    ).value
-                );
+                parseInt(document.getElementById("tacosMaiz").value);
 
             const harina =
-                parseInt(
-                    document.getElementById(
-                        "tacosHarina"
-                    ).value
-                );
+                parseInt(document.getElementById("tacosHarina").value);
 
+            if(maiz + harina !== qty) {
 
-            if (maiz + harina !== qty) {
-
-                alert(
-                    "La cantidad de tortillas no coincide con la cantidad de tacos."
-                );
+                alert("La cantidad de tortillas no coincide con los tacos.");
 
                 return;
             }
 
-
             details +=
-                ` | Mixtos: ${maiz} maíz + ${harina} harina`;
+                ` | Mixtos: ${maiz} de maíz + ${harina} de harina`;
 
-        }
-
-        else {
+        } else {
 
             details +=
                 ` | Todos de ${tortilla.toLowerCase()}`;
-
         }
 
-
         item = {
-
-            name:
-                `${qty} Tacos de Bistec`,
-
+            name: `${qty} Tacos de Bistec`,
             price: price,
-
             details: details,
-
             comment: comment
-
         };
-
     }
 
 
     /* CAPRICHOS */
 
-    else if (currentType === "caprichos") {
+    else if(currentType === "caprichos") {
 
         const select =
             document.getElementById("capQty");
 
         const option =
-            select.options[
-                select.selectedIndex
-            ];
+            select.options[select.selectedIndex];
 
         const qty =
             parseInt(select.value);
@@ -2450,82 +1955,52 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById(
-                "capTortilla"
-            ).value;
+            document.getElementById("capTortilla").value;
 
+        let details = `Cantidad: ${qty}`;
 
-        let details =
-            `Cantidad: ${qty}`;
-
-
-        if (tortilla === "Mixtos") {
+        if(tortilla === "Mixtos") {
 
             const maiz =
-                parseInt(
-                    document.getElementById(
-                        "capMaiz"
-                    ).value
-                );
+                parseInt(document.getElementById("capMaiz").value);
 
             const harina =
-                parseInt(
-                    document.getElementById(
-                        "capHarina"
-                    ).value
-                );
+                parseInt(document.getElementById("capHarina").value);
 
+            if(maiz + harina !== qty) {
 
-            if (maiz + harina !== qty) {
-
-                alert(
-                    "La cantidad de tortillas no coincide con la cantidad de caprichos."
-                );
+                alert("La cantidad de tortillas no coincide con los caprichos.");
 
                 return;
             }
 
-
             details +=
-                ` | Mixtos: ${maiz} maíz + ${harina} harina`;
+                ` | Mixtos: ${maiz} de maíz + ${harina} de harina`;
 
-        }
-
-        else {
+        } else {
 
             details +=
                 ` | Todos de ${tortilla.toLowerCase()}`;
-
         }
 
-
         item = {
-
-            name:
-                `${qty} Caprichos`,
-
+            name: `${qty} Caprichos`,
             price: price,
-
             details: details,
-
             comment: comment
-
         };
-
     }
 
 
     /* QUESADILLAS */
 
-    else if (currentType === "quesadillas") {
+    else if(currentType === "quesadillas") {
 
         const select =
             document.getElementById("quesQty");
 
         const option =
-            select.options[
-                select.selectedIndex
-            ];
+            select.options[select.selectedIndex];
 
         const qty =
             parseInt(select.value);
@@ -2534,84 +2009,51 @@ function confirmProduct() {
             parseInt(option.dataset.price);
 
         const tortilla =
-            document.getElementById(
-                "quesTortilla"
-            ).value;
+            document.getElementById("quesTortilla").value;
 
+        let details = `Cantidad: ${qty}`;
 
-        let details =
-            `Cantidad: ${qty}`;
-
-
-        if (tortilla === "Mixtas") {
+        if(tortilla === "Mixtas") {
 
             const maiz =
-                parseInt(
-                    document.getElementById(
-                        "quesMaiz"
-                    ).value
-                );
+                parseInt(document.getElementById("quesMaiz").value);
 
             const harina =
-                parseInt(
-                    document.getElementById(
-                        "quesHarina"
-                    ).value
-                );
+                parseInt(document.getElementById("quesHarina").value);
 
+            if(maiz + harina !== qty) {
 
-            if (maiz + harina !== qty) {
-
-                alert(
-                    "La cantidad de tortillas no coincide con las quesadillas."
-                );
+                alert("La cantidad de tortillas no coincide con las quesadillas.");
 
                 return;
             }
 
-
             details +=
-                ` | Mixtas: ${maiz} maíz + ${harina} harina`;
+                ` | Mixtas: ${maiz} de maíz + ${harina} de harina`;
 
+        } else {
+
+            details += ` | ${tortilla}`;
         }
-
-        else {
-
-            details +=
-                ` | ${tortilla}`;
-
-        }
-
 
         item = {
-
-            name:
-                `${qty} Quesadilla${qty > 1 ? "s" : ""}`,
-
+            name: `${qty} Quesadilla${qty > 1 ? "s" : ""}`,
             price: price,
-
             details: details,
-
             comment: comment
-
         };
-
     }
 
 
     /* ALITAS */
 
-    else if (currentType === "alitas") {
+    else if(currentType === "alitas") {
 
         const qtySelect =
-            document.getElementById(
-                "alitasQty"
-            );
+            document.getElementById("alitasQty");
 
         const option =
-            qtySelect.options[
-                qtySelect.selectedIndex
-            ];
+            qtySelect.options[qtySelect.selectedIndex];
 
         const qty =
             qtySelect.value;
@@ -2619,120 +2061,63 @@ function confirmProduct() {
         const price =
             parseInt(option.dataset.price);
 
-
         const tipo =
-            document.getElementById(
-                "alitasTipo"
-            ).value;
+            document.getElementById("alitasTipo").value;
 
+        if(!tipo) {
 
-        if (!tipo) {
-
-            alert(
-                "Selecciona si quieres Boneless, Alitas o Mixtos."
-            );
+            alert("Selecciona si quieres Boneless, Alitas o Mixtos.");
 
             return;
         }
-
 
         const sauce1 =
-            document.querySelector(
-                ".sauce1"
-            ).value;
+            document.getElementById("sauce1").value;
 
+        if(!sauce1) {
 
-        const sauce2Element =
-            document.querySelector(
-                ".sauce2"
-            );
+            alert("Selecciona al menos una salsa.");
 
-
-        const sauce2 =
-            sauce2Element.style.display !== "none"
-                ? sauce2Element.value
-                : "";
-
+            return;
+        }
 
         const dressing1 =
-            document.querySelector(
-                ".dressing1"
-            ).value;
+            document.getElementById("dressing1").value;
 
+        if(!dressing1) {
 
-        const dressing2Element =
-            document.querySelector(
-                ".dressing2"
-            );
-
-
-        const dressing3Element =
-            document.querySelector(
-                ".dressing3"
-            );
-
-
-        const dressing2 =
-            dressing2Element.style.display !== "none"
-                ? dressing2Element.value
-                : "";
-
-
-        const dressing3 =
-            dressing3Element.style.display !== "none"
-                ? dressing3Element.value
-                : "";
-
-
-        if (!sauce1) {
-
-            alert(
-                "Selecciona al menos una salsa."
-            );
+            alert("Selecciona al menos un aderezo.");
 
             return;
         }
-
-
-        if (!dressing1) {
-
-            alert(
-                "Selecciona al menos un aderezo."
-            );
-
-            return;
-        }
-
 
         let sauces = [sauce1];
 
-        if (sauce2) {
+        const sauce2 =
+            document.getElementById("sauce2").value;
 
+        if(!document.getElementById("sauce2").classList.contains("hidden") && sauce2) {
             sauces.push(sauce2);
-
         }
-
 
         let dressings = [dressing1];
 
-        if (dressing2) {
+        const dressing2 =
+            document.getElementById("dressing2").value;
 
+        const dressing3 =
+            document.getElementById("dressing3").value;
+
+        if(!document.getElementById("dressing2").classList.contains("hidden") && dressing2) {
             dressings.push(dressing2);
-
         }
 
-        if (dressing3) {
-
+        if(!document.getElementById("dressing3").classList.contains("hidden") && dressing3) {
             dressings.push(dressing3);
-
         }
-
 
         const mode =
-            document.getElementById(
-                "sauceMode"
-            ).value;
-
+            document.getElementById("sauceMode").value;
 
         item = {
 
@@ -2754,15 +2139,13 @@ function confirmProduct() {
                 `${mode}`,
 
             comment: comment
-
         };
-
     }
 
 
-    /* SIMPLE */
+    /* SIMPLES */
 
-    else if (currentType === "simple") {
+    else if(currentType === "simple") {
 
         item = {
 
@@ -2771,20 +2154,16 @@ function confirmProduct() {
             price: currentProduct.price,
 
             details:
-                document.getElementById(
-                    "simpleDescription"
-                ).textContent,
+                document.getElementById("simpleDescription").textContent,
 
             comment: comment
-
         };
-
     }
 
 
     /* PAPAS LOCAS */
 
-    else if (currentType === "papasLocas") {
+    else if(currentType === "papasLocas") {
 
         item = {
 
@@ -2793,22 +2172,18 @@ function confirmProduct() {
             price: 80,
 
             details:
-                `Salsa: ${
-                    document.getElementById(
-                        "papasLocasSalsa"
-                    ).value
+                `Incluyen papas, salchicha y pollo | Salsa: ${
+                    document.getElementById("papasLocasSalsa").value
                 }`,
 
             comment: comment
-
         };
-
     }
 
 
     /* DEDOS */
 
-    else if (currentType === "dedos") {
+    else if(currentType === "dedos") {
 
         item = {
 
@@ -2818,21 +2193,17 @@ function confirmProduct() {
 
             details:
                 `Incluyen papas | Aderezo: ${
-                    document.getElementById(
-                        "dedosAderezo"
-                    ).value
+                    document.getElementById("dedosAderezo").value
                 }`,
 
             comment: comment
-
         };
-
     }
 
 
     /* AROS */
 
-    else if (currentType === "aros") {
+    else if(currentType === "aros") {
 
         item = {
 
@@ -2841,40 +2212,30 @@ function confirmProduct() {
             price: 80,
 
             details:
-                `Incluyen papas | Aderezo: ${
-                    document.getElementById(
-                        "arosAderezo"
-                    ).value
+                `Incluyen papas y un aderezo | Aderezo: ${
+                    document.getElementById("arosAderezo").value
                 }`,
 
             comment: comment
-
         };
-
     }
 
 
     /* EXTRA */
 
-    else if (currentType === "extra") {
+    else if(currentType === "extra") {
 
         item = {
 
             name:
-                `Extra ${
-                    document.getElementById(
-                        "extraType"
-                    ).value
-                }`,
+                `Extra ${document.getElementById("extraType").value}`,
 
             price: 15,
 
             details: "$15",
 
             comment: comment
-
         };
-
     }
 
 
@@ -2883,306 +2244,291 @@ function confirmProduct() {
     closeModal();
 
     renderCart();
-
 }
 
 
-/* ========================= */
-/* CARRITO */
-/* ========================= */
+/* =========================
+   CARRITO
+========================= */
+
+function getCartTotal() {
+
+    return cart.reduce(
+        (sum, item) => sum + item.price,
+        0
+    );
+}
+
 
 function renderCart() {
 
     const container =
-        document.getElementById(
-            "cartItems"
-        );
+        document.getElementById("cartItems");
 
     const totalElement =
-        document.getElementById(
-            "total"
-        );
+        document.getElementById("total");
 
+    const floatingTotal =
+        document.getElementById("floatingTotal");
 
     container.innerHTML = "";
 
-    let total = 0;
+    let total = getCartTotal();
 
-
-    if (cart.length === 0) {
+    if(cart.length === 0) {
 
         container.innerHTML =
             '<div class="empty">Todavía no has agregado productos.</div>';
 
-        totalElement.textContent = "0";
+    } else {
 
-        return;
-    }
+        cart.forEach((item,index) => {
 
+            const div =
+                document.createElement("div");
 
-    cart.forEach((item, index) => {
+            div.className = "cart-item";
 
-        total += Number(item.price);
+            div.innerHTML = `
 
+                <div class="cart-item-top">
 
-        const div =
-            document.createElement("div");
+                    <div>
 
-        div.className = "cart-item";
+                        <strong>
+                            ${item.name}
+                        </strong>
 
+                        <div class="cart-details">
+                            ${item.details}
+                        </div>
 
-        div.innerHTML = `
+                        ${
+                            item.comment
+                            ?
+                            `<div class="cart-details">
+                                💬 ${item.comment}
+                            </div>`
+                            :
+                            ""
+                        }
 
-        <div class="cart-item-top">
+                    </div>
 
-            <div>
+                    <strong>
+                        $${item.price}
+                    </strong>
 
-                <strong>
-                    ${item.name}
-                </strong>
-
-                <div class="cart-details">
-                    ${item.details}
                 </div>
 
-                ${
-                    item.comment
-                    ?
-                    `<div class="cart-details">
-                        💬 ${item.comment}
-                    </div>`
-                    :
-                    ""
-                }
+                <div class="quantity-controls">
 
-            </div>
+                    <button
+                        type="button"
+                        onclick="removeItem(${index})">
+                        ✕
+                    </button>
 
-            <strong>
-                $${item.price}
-            </strong>
+                </div>
+            `;
 
-        </div>
+            container.appendChild(div);
+        });
+    }
 
+    totalElement.textContent = total;
 
-        <div class="quantity-controls">
+    floatingTotal.textContent = total;
 
-            <button onclick="removeItem(${index})">
-                ✕
-            </button>
-
-        </div>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
-
-
-    totalElement.textContent =
-        total;
-
+    updateCashChange();
 }
 
 
-/* ========================= */
-/* ELIMINAR */
-/* ========================= */
+/* =========================
+   ELIMINAR
+========================= */
 
 function removeItem(index) {
 
-    cart.splice(index, 1);
+    cart.splice(index,1);
 
     renderCart();
-
 }
 
 
-/* ========================= */
-/* PAGO */
-/* ========================= */
+/* =========================
+   IR AL CARRITO
+========================= */
+
+function goToCart() {
+
+    document.getElementById("cartSection")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+}
+
+
+/* =========================
+   PAGO
+========================= */
 
 function checkPayment() {
 
     const payment =
-        document.getElementById(
-            "payment"
-        ).value;
-
+        document.getElementById("payment").value;
 
     const box =
-        document.getElementById(
-            "cashPaymentBox"
-        );
-
+        document.getElementById("cashPaymentBox");
 
     const amount =
-        document.getElementById(
-            "cashAmount"
-        );
+        document.getElementById("cashAmount");
 
+    const change =
+        document.getElementById("cashChange");
 
-    if (payment === "Efectivo") {
+    if(payment === "Efectivo") {
 
-        box.classList.remove(
-            "hidden"
-        );
+        box.classList.remove("hidden");
 
-    }
+    } else {
 
-    else {
-
-        box.classList.add(
-            "hidden"
-        );
+        box.classList.add("hidden");
 
         amount.value = "";
 
+        change.style.display = "none";
+        change.textContent = "";
     }
-
 }
 
 
-/* ========================= */
-/* WHATSAPP */
-/* ========================= */
+function updateCashChange() {
+
+    const payment =
+        document.getElementById("payment").value;
+
+    const amount =
+        parseFloat(document.getElementById("cashAmount").value);
+
+    const changeBox =
+        document.getElementById("cashChange");
+
+    const total =
+        getCartTotal();
+
+    if(payment !== "Efectivo" || !amount || total <= 0) {
+
+        changeBox.style.display = "none";
+        changeBox.textContent = "";
+
+        return;
+    }
+
+    if(amount >= total) {
+
+        const change =
+            amount - total;
+
+        changeBox.style.display = "block";
+
+        changeBox.textContent =
+            `💵 Cambio: $${change.toFixed(2)}`;
+
+    } else {
+
+        changeBox.style.display = "block";
+
+        changeBox.style.background = "#ffe8e8";
+        changeBox.style.color = "#a40000";
+
+        changeBox.textContent =
+            `⚠️ Faltan $${(total - amount).toFixed(2)} para cubrir el pedido.`;
+
+    }
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
 
 function sendWhatsApp() {
 
-    if (cart.length === 0) {
+    if(cart.length === 0) {
 
-        alert(
-            "Primero agrega algún producto."
-        );
+        alert("Primero agrega algún producto.");
 
         return;
     }
 
 
     const name =
-        document.getElementById(
-            "name"
-        ).value.trim();
-
+        document.getElementById("name")
+        .value.trim();
 
     const address =
-        document.getElementById(
-            "address"
-        ).value.trim();
-
+        document.getElementById("address")
+        .value.trim();
 
     const references =
-        document.getElementById(
-            "references"
-        ).value.trim();
-
+        document.getElementById("references")
+        .value.trim();
 
     const payment =
-        document.getElementById(
-            "payment"
-        ).value;
+        document.getElementById("payment")
+        .value;
+
+    const cashAmount =
+        parseFloat(document.getElementById("cashAmount").value);
+
+    const total =
+        getCartTotal();
 
 
-    const cashAmountInput =
-        document.getElementById(
-            "cashAmount"
-        ).value;
+    if(!name) {
 
-
-    if (!name) {
-
-        alert(
-            "Escribe tu nombre."
-        );
+        alert("Escribe tu nombre.");
 
         return;
     }
 
 
-    if (!address) {
+    if(!address) {
 
-        alert(
-            "Escribe tu dirección."
-        );
+        alert("Escribe tu dirección.");
 
         return;
     }
 
 
-    if (!payment) {
+    if(!payment) {
 
-        alert(
-            "Selecciona un método de pago."
-        );
+        alert("Selecciona un método de pago.");
 
         return;
     }
 
-
-    let total = 0;
-
-
-    cart.forEach(item => {
-
-        total += Number(
-            item.price
-        );
-
-    });
-
-
-    let cashAmount = 0;
 
     let change = 0;
 
 
-    /* EFECTIVO */
+    if(payment === "Efectivo") {
 
-    if (payment === "Efectivo") {
+        if(!cashAmount || cashAmount <= 0) {
 
-        if (!cashAmountInput) {
-
-            alert(
-                "Indica con cuánto vas a pagar en efectivo."
-            );
-
-            document.getElementById(
-                "cashAmount"
-            ).focus();
+            alert("Escribe con cuánto vas a pagar.");
 
             return;
         }
 
 
-        cashAmount =
-            Number(
-                cashAmountInput
-            );
-
-
-        if (
-            isNaN(cashAmount) ||
-            cashAmount <= 0
-        ) {
+        if(cashAmount < total) {
 
             alert(
-                "Ingresa una cantidad válida de efectivo."
+                `El efectivo debe ser igual o mayor al total de $${total}.`
             );
-
-            return;
-        }
-
-
-        if (cashAmount < total) {
-
-            alert(
-                "La cantidad con la que vas a pagar es menor al total del pedido."
-            );
-
-            document.getElementById(
-                "cashAmount"
-            ).focus();
 
             return;
         }
@@ -3190,138 +2536,123 @@ function sendWhatsApp() {
 
         change =
             cashAmount - total;
-
     }
 
-
-    /* ========================= */
-    /* MENSAJE */
-    /* ========================= */
 
     let message =
-        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
+        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*\n";
+
+    message +=
+        "━━━━━━━━━━━━━━\n\n";
 
 
     message +=
-        "━━━━━━━━━━━━━━%0A%0A";
-
-
-    message +=
-        "*Cliente:* " +
-        encodeURIComponent(name) +
-        "%0A";
-
+        `*Cliente:* ${name}\n`;
 
     message +=
-        "*Dirección:* " +
-        encodeURIComponent(address) +
-        "%0A";
+        `*Dirección:* ${address}\n`;
 
 
-    if (references) {
+    if(references) {
 
         message +=
-            "*Referencia:* " +
-            encodeURIComponent(references) +
-            "%0A";
-
+            `*Referencia:* ${references}\n`;
     }
 
 
     message +=
-        "*Pago:* " +
-        encodeURIComponent(payment) +
-        "%0A";
+        `*Pago:* ${payment}\n`;
 
 
-    if (payment === "Efectivo") {
+    if(payment === "Efectivo") {
 
         message +=
-            "*Paga con:* $" +
-            cashAmount.toFixed(2) +
-            "%0A";
-
+            `*Paga con:* $${cashAmount.toFixed(2)}\n`;
 
         message +=
-            "*Cambio:* $" +
-            change.toFixed(2) +
-            "%0A";
-
+            `*Cambio:* $${change.toFixed(2)}\n`;
     }
 
 
-    message += "%0A";
-
+    message += "\n";
 
     message +=
-        "*PEDIDO:*%0A%0A";
+        "*PEDIDO:*\n\n";
 
 
     cart.forEach(item => {
 
         message +=
-            encodeURIComponent(
-                "• " +
-                item.name +
-                " — $" +
-                item.price
-            ) +
-            "%0A";
+            `• ${item.name} — $${item.price}\n`;
 
-
-        if (item.details) {
+        if(item.details) {
 
             message +=
-                encodeURIComponent(
-                    "  " +
-                    item.details
-                ) +
-                "%0A";
-
+                `  ${item.details}\n`;
         }
 
 
-        if (item.comment) {
+        if(item.comment) {
 
             message +=
-                encodeURIComponent(
-                    "  💬 Comentario: " +
-                    item.comment
-                ) +
-                "%0A";
-
+                `  💬 Comentario: ${item.comment}\n`;
         }
 
 
-        message +=
-            "%0A";
-
+        message += "\n";
     });
 
 
     message +=
-        "━━━━━━━━━━━━━━%0A";
-
+        "━━━━━━━━━━━━━━\n";
 
     message +=
-        "*TOTAL: $" +
-        total.toFixed(2) +
-        "*";
+        `*TOTAL: $${total}*`;
 
 
     const url =
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
-        message;
+        encodeURIComponent(message);
 
 
-    window.open(
-        url,
-        "_blank"
-    );
-
+    window.open(url, "_blank");
 }
+
+
+/* =========================
+   EVENTOS
+========================= */
+
+document.getElementById("tacosQty")
+.addEventListener("change", checkMixedTacos);
+
+document.getElementById("tacosTortilla")
+.addEventListener("change", checkMixedTacos);
+
+
+document.getElementById("capQty")
+.addEventListener("change", checkMixedCap);
+
+document.getElementById("capTortilla")
+.addEventListener("change", checkMixedCap);
+
+
+document.getElementById("quesQty")
+.addEventListener("change", checkMixedQues);
+
+document.getElementById("quesTortilla")
+.addEventListener("change", checkMixedQues);
+
+
+document.getElementById("alitasQty")
+.addEventListener("change", updateAlitasOptions);
+
+
+/* Inicializar */
+
+renderCart();
 
 </script>
 
