@@ -606,7 +606,7 @@ Aros de Cebolla
 </div>
 
 <div class="product-description">
-Incluyen un aderezo.
+Incluyen papas y un aderezo.
 </div>
 
 <div class="product-bottom">
@@ -724,13 +724,37 @@ placeholder="Casa azul, frente a la tienda, etc."></textarea>
 Método de pago
 </label>
 
-<select id="payment">
+<select id="payment" onchange="checkPayment()">
 
-<option>Efectivo</option>
+<option value="" selected disabled>
+Selecciona método de pago
+</option>
 
-<option>Transferencia</option>
+<option value="Efectivo">
+Efectivo
+</option>
+
+<option value="Transferencia">
+Transferencia
+</option>
 
 </select>
+
+
+<div id="cashPaymentBox" class="hidden">
+
+<label>
+¿Con cuánto vas a pagar?
+</label>
+
+<input
+type="number"
+id="cashAmount"
+placeholder="Ejemplo: 500"
+min="0"
+step="1">
+
+</div>
 
 
 <button
@@ -1000,15 +1024,19 @@ Tipo
 
 <select id="alitasTipo">
 
-<option>
+<option value="" selected disabled>
+Selecciona una opción
+</option>
+
+<option value="Boneless">
 Boneless
 </option>
 
-<option>
+<option value="Alitas">
 Alitas
 </option>
 
-<option id="mixedAlitasOption">
+<option id="mixedAlitasOption" value="Mixtos">
 Mixtos
 </option>
 
@@ -1021,18 +1049,20 @@ Salsas
 
 <div id="sauceSelectors">
 
-<select class="sauce">
-<option>BBQ</option>
-<option>BBQ Hot</option>
-<option>Buffalo</option>
-<option>Mango Habanero</option>
+<select class="sauce sauce1">
+    <option value="" selected disabled>Selecciona una salsa *</option>
+    <option>BBQ</option>
+    <option>BBQ Hot</option>
+    <option>Buffalo</option>
+    <option>Mango Habanero</option>
 </select>
 
-<select class="sauce sauce2">
-<option>BBQ</option>
-<option>BBQ Hot</option>
-<option>Buffalo</option>
-<option>Mango Habanero</option>
+<select class="sauce sauce2" style="display:none;">
+    <option value="" selected disabled>Agregar otra salsa (opcional)</option>
+    <option>BBQ</option>
+    <option>BBQ Hot</option>
+    <option>Buffalo</option>
+    <option>Mango Habanero</option>
 </select>
 
 </div>
@@ -1044,27 +1074,29 @@ Aderezos
 
 <div id="dressingSelectors">
 
-<select class="dressing">
-<option>Aderezo Ranch</option>
-<option>Aderezo Buffalo Ranch</option>
-<option>Queso amarillo</option>
-<option>Catsup</option>
+<select class="dressing dressing1">
+    <option value="" selected disabled>Selecciona un aderezo *</option>
+    <option>Aderezo Ranch</option>
+    <option>Aderezo Buffalo Ranch</option>
+    <option>Queso amarillo</option>
+    <option>Catsup</option>
 </select>
 
-<select class="dressing dressing2">
-<option>Aderezo Ranch</option>
-<option>Aderezo Buffalo Ranch</option>
-<option>Queso amarillo</option>
-<option>Catsup</option>
+<select class="dressing dressing2" style="display:none;">
+    <option value="" selected disabled>Agregar otro aderezo (opcional)</option>
+    <option>Aderezo Ranch</option>
+    <option>Aderezo Buffalo Ranch</option>
+    <option>Queso amarillo</option>
+    <option>Catsup</option>
 </select>
 
-<select class="dressing dressing3">
-<option>Aderezo Ranch</option>
-<option>Aderezo Buffalo Ranch</option>
-<option>Queso amarillo</option>
-<option>Catsup</option>
+<select class="dressing dressing3" style="display:none;">
+    <option value="" selected disabled>Agregar otro aderezo (opcional)</option>
+    <option>Aderezo Ranch</option>
+    <option>Aderezo Buffalo Ranch</option>
+    <option>Queso amarillo</option>
+    <option>Catsup</option>
 </select>
-
 </div>
 
 
@@ -1074,11 +1106,11 @@ Salsa
 
 <select id="sauceMode">
 
-<option>
+<option value="Bañados" selected>
 Bañados
 </option>
 
-<option>
+<option value="Salsa aparte">
 Salsa aparte
 </option>
 
@@ -1732,6 +1764,150 @@ updateAlitasOptions();
 
 function updateAlitasOptions() {
 
+    const qty =
+        document.getElementById("alitasQty").value;
+
+    const tipo =
+        document.getElementById("alitasTipo");
+
+    const sauce2 =
+        document.querySelector(".sauce2");
+
+    const dressing2 =
+        document.querySelector(".dressing2");
+
+    const dressing3 =
+        document.querySelector(".dressing3");
+
+    const mixedOption =
+        document.getElementById("mixedAlitasOption");
+
+
+    // Restaurar selección de tipo
+
+    tipo.value = "";
+
+
+    // 300 GRAMOS
+
+    if (qty === "300") {
+
+        mixedOption.style.display = "none";
+
+        sauce2.style.display = "none";
+
+        dressing2.style.display = "none";
+
+        dressing3.style.display = "none";
+
+    }
+
+
+    // MEDIO KILO
+
+    else if (qty === "500") {
+
+        mixedOption.style.display = "block";
+
+        sauce2.style.display = "block";
+
+        dressing2.style.display = "block";
+
+        dressing3.style.display = "none";
+
+    }
+
+
+    // 1 KILO
+
+    else {
+
+        mixedOption.style.display = "block";
+
+        sauce2.style.display = "block";
+
+        dressing2.style.display = "block";
+
+        dressing3.style.display = "block";
+
+    }
+
+}
+    const qty =
+        document.getElementById("alitasQty").value;
+
+    const sauce2 =
+        document.querySelector(".sauce2");
+
+    const dressing2 =
+        document.querySelector(".dressing2");
+
+    const dressing3 =
+        document.querySelector(".dressing3");
+
+    const mixedOption =
+        document.getElementById("mixedAlitasOption");
+
+    const tipo =
+        document.getElementById("alitasTipo");
+
+
+    /*
+     * 300 GRAMOS
+     */
+
+    if (qty === "300") {
+
+        mixedOption.style.display = "none";
+
+        if (tipo.value === "Mixtos") {
+            tipo.value = "";
+        }
+
+        sauce2.style.display = "none";
+
+        dressing2.style.display = "none";
+
+        dressing3.style.display = "none";
+
+    }
+
+
+    /*
+     * MEDIO KILO
+     */
+
+    else if (qty === "500") {
+
+        mixedOption.style.display = "block";
+
+        sauce2.style.display = "block";
+
+        dressing2.style.display = "block";
+
+        dressing3.style.display = "none";
+
+    }
+
+
+    /*
+     * 1 KILO
+     */
+
+    else {
+
+        mixedOption.style.display = "block";
+
+        sauce2.style.display = "block";
+
+        dressing2.style.display = "block";
+
+        dressing3.style.display = "block";
+
+    }
+
+}
+
 const qty =
 document.getElementById("alitasQty").value;
 
@@ -2063,59 +2239,142 @@ comment:comment
 
 else if(currentType === "alitas") {
 
-const qtySelect =
-document.getElementById("alitasQty");
+    const qtySelect =
+        document.getElementById("alitasQty");
 
-const option =
-qtySelect.options[
-qtySelect.selectedIndex
-];
+    const option =
+        qtySelect.options[
+            qtySelect.selectedIndex
+        ];
 
-const qty =
-qtySelect.value;
+    const qty =
+        qtySelect.value;
 
-const price =
-parseInt(option.dataset.price);
+    const price =
+        parseInt(option.dataset.price);
 
-const tipo =
-document.getElementById("alitasTipo")
-.value;
 
-const mode =
-document.getElementById("sauceMode")
-.value;
+    const tipo =
+        document.getElementById("alitasTipo").value;
 
-const sauces =
-Array.from(
-document.querySelectorAll(".sauce")
-)
-.filter(x => x.style.display !== "none")
-.map(x => x.value);
 
-const dressings =
-Array.from(
-document.querySelectorAll(".dressing")
-)
-.filter(x => x.style.display !== "none")
-.map(x => x.value);
+    // TIPO OBLIGATORIO
 
-item = {
+    if (!tipo) {
 
-name:
-`Alitas y Boneless ${qty === "300" ? "300 g" : qty === "500" ? "½ kilo" : "1 kilo"}`,
+        alert("Selecciona si quieres Boneless, Alitas o Mixtos.");
 
-price:price,
+        return;
 
-details:
-`Tipo: ${tipo} | Salsas: ${sauces.join(", ")} | Aderezos: ${dressings.join(", ")} | ${mode}`,
+    }
 
-comment:comment
 
-};
+    // SALSAS
+
+    const sauce1 =
+        document.querySelector(".sauce1").value;
+
+    const sauce2Element =
+        document.querySelector(".sauce2");
+
+    const sauce2 =
+        sauce2Element.style.display !== "none"
+        ? sauce2Element.value
+        : "";
+
+
+    // ADEREZOS
+
+    const dressing1 =
+        document.querySelector(".dressing1").value;
+
+    const dressing2Element =
+        document.querySelector(".dressing2");
+
+    const dressing3Element =
+        document.querySelector(".dressing3");
+
+
+    const dressing2 =
+        dressing2Element.style.display !== "none"
+        ? dressing2Element.value
+        : "";
+
+
+    const dressing3 =
+        dressing3Element.style.display !== "none"
+        ? dressing3Element.value
+        : "";
+
+
+    // PRIMERA SALSA OBLIGATORIA
+
+    if (!sauce1) {
+
+        alert("Selecciona al menos una salsa.");
+
+        return;
+
+    }
+
+
+    // PRIMER ADEREZO OBLIGATORIO
+
+    if (!dressing1) {
+
+        alert("Selecciona al menos un aderezo.");
+
+        return;
+
+    }
+
+
+    let sauces = [sauce1];
+
+    if (sauce2) {
+        sauces.push(sauce2);
+    }
+
+
+    let dressings = [dressing1];
+
+    if (dressing2) {
+        dressings.push(dressing2);
+    }
+
+    if (dressing3) {
+        dressings.push(dressing3);
+    }
+
+
+    const mode =
+        document.getElementById("sauceMode").value;
+
+
+    item = {
+
+        name:
+        `Alitas y Boneless ${
+            qty === "300"
+            ? "300 g"
+            : qty === "500"
+            ? "½ kilo"
+            : "1 kilo"
+        }`,
+
+        price: price,
+
+        details:
+        `Tipo: ${tipo} | ` +
+        `Salsas: ${sauces.join(", ")} | ` +
+        `Aderezos: ${dressings.join(", ")} | ` +
+        `${mode}`,
+
+        comment: comment
+
+    };
 
 }
-
-
 /* SIMPLE */
 
 else if(currentType === "simple") {
@@ -2188,7 +2447,7 @@ name:"Aros de Cebolla",
 price:80,
 
 details:
-`Aderezo: ${document.getElementById("arosAderezo").value}`,
+`Incluyen papas | Aderezo: ${document.getElementById("arosAderezo").value}`,
 
 comment:comment
 
@@ -2333,6 +2592,31 @@ renderCart();
 
 }
 
+    function checkPayment() {
+
+    const payment =
+        document.getElementById("payment").value;
+
+    const box =
+        document.getElementById("cashPaymentBox");
+
+    const amount =
+        document.getElementById("cashAmount");
+
+
+    if (payment === "Efectivo") {
+
+        box.classList.remove("hidden");
+
+    } else {
+
+        box.classList.add("hidden");
+
+        amount.value = "";
+
+    }
+
+}
 
 /* ========================= */
 /* WHATSAPP */
@@ -2370,6 +2654,9 @@ const payment =
 document.getElementById("payment")
 .value;
 
+    const cashAmount =
+document.getElementById("cashAmount")
+.value;
 
 if(!name) {
 
@@ -2419,7 +2706,18 @@ encodeURIComponent(references) +
 message +=
 "*Pago:* " +
 encodeURIComponent(payment) +
-"%0A%0A";
+"%0A";
+
+if (payment === "Efectivo" && cashAmount) {
+
+    message +=
+    "*Paga con:* $" +
+    encodeURIComponent(cashAmount) +
+    "%0A";
+
+}
+
+message += "%0A";
 
 
 message +=
