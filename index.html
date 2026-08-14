@@ -12,65 +12,90 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
-    padding-bottom: 90px;
     font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at top, #ffffff 0%, #f2f2f2 45%, #e8e8e8 100%);
+        radial-gradient(circle at top, #333 0%, #111 35%, #050505 100%);
     color: #222;
+    padding-bottom: 100px;
 }
 
 /* =========================
-   ENCABEZADO
+   HEADER
 ========================= */
 
 header {
-    background:
-        linear-gradient(135deg, #050505, #222, #050505);
+    background: linear-gradient(145deg,#050505,#202020,#050505);
     color: white;
     text-align: center;
-    padding: 25px 15px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    box-shadow: 0 3px 15px rgba(0,0,0,.35);
-}
-
-.logo-diamond {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 10px;
-    transform: rotate(45deg);
-    border: 3px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        linear-gradient(135deg, #333, #111);
-    box-shadow:
-        0 0 0 4px rgba(255,255,255,.08),
-        0 0 20px rgba(255,255,255,.15);
-}
-
-.logo-diamond span {
-    transform: rotate(-45deg);
-    font-size: 30px;
+    padding: 25px 15px 20px;
+    border-bottom: 2px solid #777;
+    box-shadow: 0 3px 15px rgba(0,0,0,.5);
 }
 
 header h1 {
-    margin: 12px 0 0;
+    margin: 0;
     font-size: 30px;
     letter-spacing: 2px;
 }
 
 header p {
     margin: 7px 0 0;
-    opacity: .8;
+    opacity: .85;
+}
+
+/* =========================
+   ENTREGA
+========================= */
+
+.delivery-box {
+    max-width: 700px;
+    margin: 15px auto;
+    padding: 0 15px;
+}
+
+.delivery-title {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.delivery-options {
+    display: flex;
+    gap: 10px;
+}
+
+.delivery-option {
+    flex: 1;
+    padding: 15px 8px;
+    border-radius: 14px;
+    border: 2px solid #777;
+    background: white;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.delivery-option.selected {
+    background: #111;
+    color: white;
+    border-color: white;
+    box-shadow: 0 0 12px rgba(255,255,255,.35);
+}
+
+.delivery-option span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.delivery-price {
+    font-size: 12px;
+    opacity: .75;
+    margin-top: 4px;
 }
 
 /* =========================
@@ -78,69 +103,66 @@ header p {
 ========================= */
 
 .container {
-    max-width: 720px;
+    max-width: 700px;
     margin: auto;
     padding: 15px;
 }
 
 /* =========================
-   CATEGORÍAS DIAMANTE
+   TITULOS
 ========================= */
 
 .category-title {
+    color: white;
+    font-size: 21px;
+    margin: 28px 0 15px;
     text-align: center;
-    margin: 35px 0 20px;
-    font-size: 23px;
-    font-weight: bold;
-    position: relative;
-}
-
-.category-title::before,
-.category-title::after {
-    content: "";
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    vertical-align: middle;
-    transform: rotate(45deg);
-    background: linear-gradient(135deg,#111,#555,#111);
-    margin: 0 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.25);
-}
-
-.category-title::after {
-    transform: rotate(45deg);
 }
 
 /* =========================
-   PRODUCTOS
+   DIAMANTE
 ========================= */
 
 .product {
-    background: rgba(255,255,255,.95);
+    position: relative;
+    background: white;
     border-radius: 15px;
-    padding: 18px;
-    margin-bottom: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.10);
-    border: 1px solid #eee;
-    transition: .2s;
+    padding: 20px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.35);
 }
 
-.product:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 18px rgba(0,0,0,.14);
+.product::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    right: -20px;
+    top: -20px;
+    transform: rotate(45deg);
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.8),
+        rgba(210,210,210,.2)
+    );
+    border: 1px solid rgba(0,0,0,.1);
 }
 
 .product-name {
     font-weight: bold;
     font-size: 19px;
+    position: relative;
+    z-index: 1;
 }
 
 .product-description {
     color: #666;
     font-size: 13px;
     margin-top: 6px;
-    line-height: 1.45;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
 }
 
 .product-bottom {
@@ -148,7 +170,8 @@ header p {
     justify-content: space-between;
     align-items: center;
     margin-top: 14px;
-    gap: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .price {
@@ -167,197 +190,7 @@ header p {
 }
 
 .add-btn:active {
-    transform: scale(.96);
-}
-
-/* =========================
-   TOTAL FLOTANTE
-========================= */
-
-.floating-total {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 200;
-    max-width: 700px;
-    margin: auto;
-
-    background:
-        linear-gradient(135deg,#050505,#242424,#050505);
-
-    color: white;
-    border-radius: 16px;
-    padding: 13px 16px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    box-shadow:
-        0 5px 25px rgba(0,0,0,.35);
-
-    cursor: pointer;
-    border: 1px solid #444;
-}
-
-.floating-total-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.floating-cart {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: white;
-    color: #111;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.floating-label {
-    font-size: 13px;
-    opacity: .75;
-}
-
-.floating-price {
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.floating-arrow {
-    font-size: 22px;
-}
-
-/* =========================
-   CARRITO
-========================= */
-
-.cart {
-    background: white;
-    border-radius: 16px;
-    padding: 18px;
-    margin-top: 35px;
-    box-shadow: 0 3px 14px rgba(0,0,0,.12);
-}
-
-.cart h2 {
-    margin-top: 0;
-}
-
-.cart-item {
-    border-bottom: 1px solid #eee;
-    padding: 14px 0;
-}
-
-.cart-item-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.cart-details {
-    color: #666;
-    font-size: 13px;
-    line-height: 1.5;
-    margin-top: 5px;
-}
-
-.quantity-controls {
-    margin-top: 9px;
-}
-
-.quantity-controls button {
-    width: 34px;
-    height: 32px;
-    border: none;
-    border-radius: 7px;
-    background: #ddd;
-    font-size: 17px;
-}
-
-.total {
-    text-align: right;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 18px;
-}
-
-.empty {
-    text-align: center;
-    color: #777;
-    padding: 15px;
-}
-
-/* =========================
-   FORMULARIO
-========================= */
-
-form {
-    margin-top: 20px;
-}
-
-form label {
-    display: block;
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 6px;
-}
-
-form input,
-form textarea,
-form select,
-.modal-box input,
-.modal-box textarea,
-.modal-box select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    font-size: 16px;
-    background: white;
-}
-
-form textarea,
-.modal-box textarea {
-    min-height: 75px;
-    resize: vertical;
-}
-
-.whatsapp-btn {
-    width: 100%;
-    margin-top: 20px;
-    padding: 16px;
-    border: none;
-    border-radius: 10px;
-    background: #25D366;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.notice {
-    background: #fff8d8;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-size: 13px;
-    color: #555;
-}
-
-.cash-change {
-    background: #e9f8ee;
-    color: #176b35;
-    padding: 12px;
-    border-radius: 9px;
-    margin-top: 10px;
-    font-weight: bold;
-    display: none;
+    transform: scale(.97);
 }
 
 /* =========================
@@ -368,17 +201,17 @@ form textarea,
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.68);
-    z-index: 300;
+    background: rgba(0,0,0,.72);
+    z-index: 100;
     padding: 15px;
     overflow-y: auto;
 }
 
 .modal-box {
     background: white;
-    max-width: 540px;
+    max-width: 520px;
     margin: 20px auto;
-    border-radius: 17px;
+    border-radius: 16px;
     padding: 20px;
 }
 
@@ -391,6 +224,26 @@ form textarea,
     font-weight: bold;
     margin-top: 15px;
     margin-bottom: 6px;
+}
+
+.modal-box select,
+.modal-box input,
+.modal-box textarea,
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+.modal-box textarea,
+form textarea {
+    min-height: 80px;
+    resize: vertical;
 }
 
 .option-box {
@@ -424,43 +277,167 @@ form textarea,
     color: white;
 }
 
+/* =========================
+   CARRITO
+========================= */
+
+.cart {
+    background: white;
+    border-radius: 15px;
+    padding: 18px;
+    margin-top: 30px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.3);
+}
+
+.cart h2 {
+    margin-top: 0;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 13px 0;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cart-details {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.quantity-controls {
+    margin-top: 9px;
+}
+
+.quantity-controls button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: #ddd;
+    font-size: 18px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 15px;
+}
+
+/* =========================
+   RESUMEN TOTAL
+========================= */
+
+.total-summary {
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    padding-top: 12px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.whatsapp-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #25D366;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   TOTAL FLOTANTE
+========================= */
+
+.floating-total {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: rgba(10,10,10,.97);
+    color: white;
+    padding: 11px 15px;
+    box-shadow: 0 -3px 15px rgba(0,0,0,.4);
+}
+
+.floating-inner {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floating-label {
+    font-size: 13px;
+    opacity: .8;
+}
+
+.floating-total-price {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* =========================
+   OCULTAR
+========================= */
+
 .hidden {
     display: none !important;
+}
+
+.notice {
+    background: #fff8d8;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #555;
 }
 
 footer {
     text-align: center;
     padding: 30px 15px;
-    color: #777;
+    color: #bbb;
     font-size: 13px;
-}
-
-/* =========================
-   CELULAR
-========================= */
-
-@media(max-width:500px) {
-
-    header h1 {
-        font-size: 25px;
-    }
-
-    .category-title {
-        font-size: 20px;
-    }
-
-    .category-title::before,
-    .category-title::after {
-        width: 20px;
-        height: 20px;
-        margin: 0 8px;
-    }
-
-    .floating-total {
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-    }
 }
 
 </style>
@@ -469,26 +446,62 @@ footer {
 <body>
 
 <header>
-
-<div class="logo-diamond">
-    <span>💎</span>
-</div>
-
-<h1>DIAMANTE FOODS</h1>
-
-<p>Tu pedido fácil y rápido</p>
-
+    <h1>💎 DIAMANTE FOODS</h1>
+    <p>Tu pedido fácil y rápido</p>
 </header>
+
+<!-- =========================
+     ENTREGA
+========================= -->
+
+<div class="delivery-box">
+
+    <div class="delivery-title">
+        ¿Cómo quieres recibir tu pedido?
+    </div>
+
+    <div class="delivery-options">
+
+        <div
+            class="delivery-option"
+            id="pickupOption"
+            onclick="selectDelivery('pickup')">
+
+            <span>🏪</span>
+            PASAR A RECOGER
+
+            <div class="delivery-price">
+                Sin costo de envío
+            </div>
+
+        </div>
+
+        <div
+            class="delivery-option"
+            id="deliveryOption"
+            onclick="selectDelivery('delivery')">
+
+            <span>🛵</span>
+            ENVÍO A DOMICILIO
+
+            <div class="delivery-price">
+                Envío $30
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <div class="container">
-
 
 <!-- =========================
      TACOS
 ========================= -->
 
-<h2 class="category-title">🌮 Tacos de Bistec</h2>
+<h2 class="category-title">💎 🌮 Tacos de Bistec 🌮 💎</h2>
 
 <div class="product">
 
@@ -497,7 +510,7 @@ Tacos de Bistec
 </div>
 
 <div class="product-description">
-Elige la cantidad y después el tipo de tortilla.
+1x$15 · 2x$30 · 3x$45 · 4x$60 · 5x$70 · 6x$85 · 7x$100 · 8x$115 · 9x$130
 </div>
 
 <div class="product-bottom">
@@ -517,7 +530,7 @@ Agregar
      CAPRICHOS
 ========================= -->
 
-<h2 class="category-title">🌮 Caprichos</h2>
+<h2 class="category-title">💎 🌮 Caprichos 🌮 💎</h2>
 
 <div class="product">
 
@@ -526,7 +539,7 @@ Caprichos
 </div>
 
 <div class="product-description">
-Elige la cantidad y el tipo de tortilla.
+1x$18 · 2x$36 · 3x$54 · 4x$72 · 5x$80 · 6x$98 · 7x$116 · 8x$134 · 9x$152
 </div>
 
 <div class="product-bottom">
@@ -546,7 +559,7 @@ Agregar
      QUESADILLAS
 ========================= -->
 
-<h2 class="category-title">🧀 Quesadillas</h2>
+<h2 class="category-title">💎 🧀 Quesadillas 🧀 💎</h2>
 
 <div class="product">
 
@@ -555,12 +568,12 @@ Quesadillas
 </div>
 
 <div class="product-description">
-1 por $45 · 2 por $80
+1x$45 · 2x$80
 </div>
 
 <div class="product-bottom">
 
-<span class="price">Desde $45</span>
+<span class="price">$45</span>
 
 <button class="add-btn" onclick="openQuesadillas()">
 Agregar
@@ -575,7 +588,7 @@ Agregar
      ALITAS
 ========================= -->
 
-<h2 class="category-title">🍗 Alitas y Boneless</h2>
+<h2 class="category-title">💎 🍗 Alitas y Boneless 🍗 💎</h2>
 
 <div class="product">
 
@@ -584,7 +597,7 @@ Alitas y Boneless
 </div>
 
 <div class="product-description">
-300 g $120 · ½ kilo $180 · 1 kilo $300
+300 g $120 · ½ kg $180 · 1 kg $300
 </div>
 
 <div class="product-bottom">
@@ -604,147 +617,80 @@ Agregar
      COMPLEMENTOS
 ========================= -->
 
-<h2 class="category-title">🍟 Complementos</h2>
-
+<h2 class="category-title">💎 🍟 Complementos 🍟 💎</h2>
 
 <div class="product">
-
-<div class="product-name">
-Papas Sencillas
-</div>
-
-<div class="product-description">
-Incluyen catsup.
-</div>
-
+<div class="product-name">Papas Sencillas</div>
+<div class="product-description">Incluyen catsup.</div>
 <div class="product-bottom">
-
 <span class="price">$40</span>
-
 <button class="add-btn"
 onclick="openSimple('Papas Sencillas',40,'Incluyen catsup.')">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
 <div class="product">
-
-<div class="product-name">
-Papas Preparadas
-</div>
-
-<div class="product-description">
-Incluyen queso amarillo y catsup.
-</div>
-
+<div class="product-name">Papas Preparadas</div>
+<div class="product-description">Incluyen queso amarillo y catsup.</div>
 <div class="product-bottom">
-
 <span class="price">$50</span>
-
 <button class="add-btn"
 onclick="openSimple('Papas Preparadas',50,'Incluyen queso amarillo y catsup.')">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
 <div class="product">
-
-<div class="product-name">
-Salchipapas
-</div>
-
-<div class="product-description">
-Incluyen queso amarillo y catsup.
-</div>
-
+<div class="product-name">Salchipapas</div>
+<div class="product-description">Incluyen queso amarillo y catsup.</div>
 <div class="product-bottom">
-
 <span class="price">$60</span>
-
 <button class="add-btn"
 onclick="openSimple('Salchipapas',60,'Incluyen queso amarillo y catsup.')">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
 <div class="product">
-
-<div class="product-name">
-Papas Locas
-</div>
-
-<div class="product-description">
-Incluyen papas, salchicha y pollo.
-</div>
-
+<div class="product-name">Papas Locas</div>
+<div class="product-description">Incluyen papas, salchicha y pollo.</div>
 <div class="product-bottom">
-
 <span class="price">$80</span>
-
 <button class="add-btn" onclick="openPapasLocas()">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
 <div class="product">
-
-<div class="product-name">
-Dedos de Queso
-</div>
-
-<div class="product-description">
-Incluyen papas y un aderezo.
-</div>
-
+<div class="product-name">Dedos de Queso</div>
+<div class="product-description">Incluyen papas y un aderezo.</div>
 <div class="product-bottom">
-
 <span class="price">$90</span>
-
 <button class="add-btn" onclick="openDedos()">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
 <div class="product">
-
-<div class="product-name">
-Aros de Cebolla
-</div>
-
-<div class="product-description">
-Incluyen papas y un aderezo.
-</div>
-
+<div class="product-name">Aros de Cebolla</div>
+<div class="product-description">Incluyen papas y un aderezo.</div>
 <div class="product-bottom">
-
 <span class="price">$80</span>
-
 <button class="add-btn" onclick="openAros()">
 Agregar
 </button>
-
 </div>
-
 </div>
 
 
@@ -752,7 +698,7 @@ Agregar
      EXTRAS
 ========================= -->
 
-<h2 class="category-title">➕ Extras</h2>
+<h2 class="category-title">💎 ➕ Extras ➕ 💎</h2>
 
 <div class="product">
 
@@ -761,7 +707,7 @@ Salsas y Aderezos
 </div>
 
 <div class="product-description">
-BBQ, BBQ Hot, Buffalo, Mango Habanero, Ranch, Buffalo Ranch, queso amarillo o catsup. $15 c/u.
+Cada salsa o aderezo adicional cuesta $15.
 </div>
 
 <div class="product-bottom">
@@ -781,20 +727,34 @@ Agregar
      CARRITO
 ========================= -->
 
-<div class="cart" id="cartSection">
+<div class="cart">
 
 <h2>🛒 Tu pedido</h2>
 
 <div id="cartItems">
-
 <div class="empty">
 Todavía no has agregado productos.
 </div>
-
 </div>
 
-<div class="total">
-Total: $<span id="total">0</span>
+
+<div class="total-summary">
+
+<div class="summary-line">
+<span>Subtotal</span>
+<strong>$<span id="subtotal">0</span></strong>
+</div>
+
+<div class="summary-line">
+<span>Envío</span>
+<strong>$<span id="shippingCost">0</span></strong>
+</div>
+
+<div class="summary-total">
+<span>TOTAL</span>
+<span>$<span id="total">0</span></span>
+</div>
+
 </div>
 
 
@@ -813,6 +773,8 @@ id="name"
 placeholder="Tu nombre">
 
 
+<div id="addressBox" class="hidden">
+
 <label>Dirección</label>
 
 <input
@@ -826,6 +788,8 @@ placeholder="Calle, número y colonia">
 <textarea
 id="references"
 placeholder="Casa azul, frente a la tienda, etc."></textarea>
+
+</div>
 
 
 <label>Método de pago</label>
@@ -849,9 +813,7 @@ Transferencia
 
 <div id="cashPaymentBox" class="hidden">
 
-<label>
-¿Con cuánto vas a pagar?
-</label>
+<label>¿Con cuánto vas a pagar?</label>
 
 <input
 type="number"
@@ -859,9 +821,11 @@ id="cashAmount"
 placeholder="Ejemplo: 500"
 min="0"
 step="1"
-oninput="updateCashChange()">
+oninput="updateChange()">
 
-<div id="cashChange" class="cash-change"></div>
+<div id="changeMessage"
+style="margin-top:8px;font-weight:bold;">
+</div>
 
 </div>
 
@@ -883,7 +847,7 @@ onclick="sendWhatsApp()">
 
 
 <footer>
-💎 Diamante Foods · Gracias por tu preferencia ❤️
+Diamante Foods · Gracias por tu preferencia ❤️
 </footer>
 
 
@@ -891,32 +855,23 @@ onclick="sendWhatsApp()">
      TOTAL FLOTANTE
 ========================= -->
 
-<div
-class="floating-total"
-onclick="goToCart()">
+<div class="floating-total">
 
-<div class="floating-total-left">
-
-<div class="floating-cart">
-🛒
-</div>
+<div class="floating-inner">
 
 <div>
-
 <div class="floating-label">
-Tu pedido
+TOTAL DE TU PEDIDO
+</div>
+<div id="floatingDelivery">
+Selecciona cómo recibirlo
+</div>
 </div>
 
-<div class="floating-price">
+<div class="floating-total-price">
 $<span id="floatingTotal">0</span>
 </div>
 
-</div>
-
-</div>
-
-<div class="floating-arrow">
-›
 </div>
 
 </div>
@@ -939,9 +894,7 @@ Configurar producto
 
 <div id="tacosOptions" class="hidden">
 
-<label>
-Cantidad de tacos
-</label>
+<label>Cantidad de tacos</label>
 
 <select id="tacosQty">
 
@@ -958,39 +911,23 @@ Cantidad de tacos
 </select>
 
 
-<label>
-Tipo de tortilla
-</label>
+<label>Tipo de tortilla</label>
 
-<select id="tacosTortilla">
+<select id="tacosTortilla" onchange="checkMixedTacos()">
 
-<option value="Maíz">
-Todos de maíz
-</option>
-
-<option value="Harina">
-Todos de harina
-</option>
-
-<option value="Mixtos">
-Mixtos
-</option>
+<option value="Maíz">Todos de maíz</option>
+<option value="Harina">Todos de harina</option>
+<option value="Mixtos">Mixtos</option>
 
 </select>
 
 
 <div id="mixedTacos" class="option-box hidden">
 
-<label>
-¿Cuántos de maíz?
-</label>
-
+<label>¿Cuántos de maíz?</label>
 <select id="tacosMaiz"></select>
 
-<label>
-¿Cuántos de harina?
-</label>
-
+<label>¿Cuántos de harina?</label>
 <select id="tacosHarina"></select>
 
 </div>
@@ -1002,9 +939,7 @@ Mixtos
 
 <div id="caprichosOptions" class="hidden">
 
-<label>
-Cantidad de caprichos
-</label>
+<label>Cantidad de caprichos</label>
 
 <select id="capQty">
 
@@ -1021,39 +956,23 @@ Cantidad de caprichos
 </select>
 
 
-<label>
-Tipo de tortilla
-</label>
+<label>Tipo de tortilla</label>
 
-<select id="capTortilla">
+<select id="capTortilla" onchange="checkMixedCap()">
 
-<option value="Maíz">
-Todos de maíz
-</option>
-
-<option value="Harina">
-Todos de harina
-</option>
-
-<option value="Mixtos">
-Mixtos
-</option>
+<option value="Maíz">Todos de maíz</option>
+<option value="Harina">Todos de harina</option>
+<option value="Mixtos">Mixtos</option>
 
 </select>
 
 
 <div id="mixedCap" class="option-box hidden">
 
-<label>
-¿Cuántos de maíz?
-</label>
-
+<label>¿Cuántos de maíz?</label>
 <select id="capMaiz"></select>
 
-<label>
-¿Cuántos de harina?
-</label>
-
+<label>¿Cuántos de harina?</label>
 <select id="capHarina"></select>
 
 </div>
@@ -1065,56 +984,33 @@ Mixtos
 
 <div id="quesOptions" class="hidden">
 
-<label>
-Cantidad
-</label>
+<label>Cantidad</label>
 
-<select id="quesQty">
+<select id="quesQty" onchange="checkMixedQues()">
 
-<option value="1" data-price="45">
-1 quesadilla — $45
-</option>
-
-<option value="2" data-price="80">
-2 quesadillas — $80
-</option>
+<option value="1" data-price="45">1 quesadilla — $45</option>
+<option value="2" data-price="80">2 quesadillas — $80</option>
 
 </select>
 
 
-<label>
-Tipo de tortilla
-</label>
+<label>Tipo de tortilla</label>
 
-<select id="quesTortilla">
+<select id="quesTortilla" onchange="checkMixedQues()">
 
-<option value="Maíz">
-Maíz
-</option>
-
-<option value="Harina">
-Harina
-</option>
-
-<option value="Mixtas">
-Mixtas
-</option>
+<option value="Maíz">Maíz</option>
+<option value="Harina">Harina</option>
+<option value="Mixtas">Mixtas</option>
 
 </select>
 
 
 <div id="mixedQues" class="option-box hidden">
 
-<label>
-¿Cuántas de maíz?
-</label>
-
+<label>¿Cuántas de maíz?</label>
 <select id="quesMaiz"></select>
 
-<label>
-¿Cuántas de harina?
-</label>
-
+<label>¿Cuántas de harina?</label>
 <select id="quesHarina"></select>
 
 </div>
@@ -1126,62 +1022,34 @@ Mixtas
 
 <div id="alitasOptions" class="hidden">
 
-<label>
-Cantidad
-</label>
+<label>Cantidad</label>
 
-<select id="alitasQty">
+<select id="alitasQty" onchange="updateAlitasOptions()">
 
-<option value="300" data-price="120">
-300 g — $120
-</option>
-
-<option value="500" data-price="180">
-½ kilo — $180
-</option>
-
-<option value="1000" data-price="300">
-1 kilo — $300
-</option>
+<option value="300" data-price="120">300 g — $120</option>
+<option value="500" data-price="180">½ kilo — $180</option>
+<option value="1000" data-price="300">1 kilo — $300</option>
 
 </select>
 
 
-<label>
-Tipo
-</label>
+<label>Tipo</label>
 
 <select id="alitasTipo">
 
-<option value="" selected disabled>
-Selecciona una opción
-</option>
-
-<option value="Boneless">
-Boneless
-</option>
-
-<option value="Alitas">
-Alitas
-</option>
-
-<option id="mixedAlitasOption" value="Mixtos">
-Mixtos
-</option>
+<option value="" selected>Selecciona una opción</option>
+<option value="Boneless">Boneless</option>
+<option value="Alitas">Alitas</option>
+<option id="mixedAlitasOption" value="Mixtos">Mixtos</option>
 
 </select>
 
 
-<label>
-Salsas
-</label>
+<label>Salsas</label>
 
-<select id="sauce1">
+<select class="sauce sauce1">
 
-<option value="" selected disabled>
-Selecciona una salsa *
-</option>
-
+<option value="" selected>Selecciona una salsa *</option>
 <option>BBQ</option>
 <option>BBQ Hot</option>
 <option>Buffalo</option>
@@ -1190,12 +1058,9 @@ Selecciona una salsa *
 </select>
 
 
-<select id="sauce2" class="hidden">
+<select class="sauce sauce2 hidden">
 
-<option value="">
-Agregar segunda salsa (opcional)
-</option>
-
+<option value="" selected>Agregar otra salsa (opcional)</option>
 <option>BBQ</option>
 <option>BBQ Hot</option>
 <option>Buffalo</option>
@@ -1204,16 +1069,11 @@ Agregar segunda salsa (opcional)
 </select>
 
 
-<label>
-Aderezos
-</label>
+<label>Aderezos</label>
 
-<select id="dressing1">
+<select class="dressing dressing1">
 
-<option value="" selected disabled>
-Selecciona un aderezo *
-</option>
-
+<option value="" selected>Selecciona un aderezo *</option>
 <option>Aderezo Ranch</option>
 <option>Aderezo Buffalo Ranch</option>
 <option>Queso amarillo</option>
@@ -1222,12 +1082,9 @@ Selecciona un aderezo *
 </select>
 
 
-<select id="dressing2" class="hidden">
+<select class="dressing dressing2 hidden">
 
-<option value="">
-Agregar segundo aderezo (opcional)
-</option>
-
+<option value="" selected>Agregar otro aderezo (opcional)</option>
 <option>Aderezo Ranch</option>
 <option>Aderezo Buffalo Ranch</option>
 <option>Queso amarillo</option>
@@ -1236,12 +1093,9 @@ Agregar segundo aderezo (opcional)
 </select>
 
 
-<select id="dressing3" class="hidden">
+<select class="dressing dressing3 hidden">
 
-<option value="">
-Agregar tercer aderezo (opcional)
-</option>
-
+<option value="" selected>Agregar otro aderezo (opcional)</option>
 <option>Aderezo Ranch</option>
 <option>Aderezo Buffalo Ranch</option>
 <option>Queso amarillo</option>
@@ -1250,19 +1104,12 @@ Agregar tercer aderezo (opcional)
 </select>
 
 
-<label>
-¿Cómo quieres la salsa?
-</label>
+<label>¿Cómo quieres la salsa?</label>
 
 <select id="sauceMode">
 
-<option value="Bañados">
-Bañados
-</option>
-
-<option value="Salsa aparte">
-Salsa aparte
-</option>
+<option value="Bañados" selected>Bañados</option>
+<option value="Salsa aparte">Salsa aparte</option>
 
 </select>
 
@@ -1282,9 +1129,7 @@ Salsa aparte
 
 <div id="papasLocasOptions" class="hidden">
 
-<label>
-Salsa
-</label>
+<label>Salsa</label>
 
 <select id="papasLocasSalsa">
 
@@ -1303,9 +1148,7 @@ Salsa
 
 <div id="dedosOptions" class="hidden">
 
-<label>
-Aderezo
-</label>
+<label>Aderezo</label>
 
 <select id="dedosAderezo">
 
@@ -1323,9 +1166,7 @@ Aderezo
 
 <div id="arosOptions" class="hidden">
 
-<label>
-Aderezo
-</label>
+<label>Aderezo</label>
 
 <select id="arosAderezo">
 
@@ -1343,9 +1184,7 @@ Aderezo
 
 <div id="extrasOptions" class="hidden">
 
-<label>
-¿Qué quieres agregar?
-</label>
+<label>¿Qué quieres agregar?</label>
 
 <select id="extraType">
 
@@ -1376,72 +1215,113 @@ placeholder="Ejemplo: sin cebolla, poca salsa, etc."></textarea>
 
 <div class="modal-buttons">
 
-<button
-class="cancel-btn"
-type="button"
-onclick="closeModal()">
-
+<button class="cancel-btn" onclick="closeModal()">
 Cancelar
-
 </button>
 
-<button
-class="confirm-btn"
-type="button"
-onclick="confirmProduct()">
-
+<button class="confirm-btn" onclick="confirmProduct()">
 Agregar al pedido
-
 </button>
 
 </div>
 
 </div>
+
 </div>
 
 
 <script>
 
-/* =========================
-   VARIABLES
-========================= */
-
 let cart = [];
+
 let currentType = "";
+
 let currentProduct = {};
+
+let deliveryType = "";
+
+let shippingCost = 0;
 
 const whatsappNumber = "528134332517";
 
 
 /* =========================
-   UTILIDADES
+   ENTREGA
+========================= */
+
+function selectDelivery(type) {
+
+deliveryType = type;
+
+const pickup = document.getElementById("pickupOption");
+const delivery = document.getElementById("deliveryOption");
+
+const addressBox = document.getElementById("addressBox");
+
+if(type === "pickup") {
+
+shippingCost = 0;
+
+pickup.classList.add("selected");
+delivery.classList.remove("selected");
+
+addressBox.classList.add("hidden");
+
+document.getElementById("address").value = "";
+document.getElementById("references").value = "";
+
+document.getElementById("floatingDelivery").textContent =
+"🏪 Pasa a recoger";
+
+} else {
+
+shippingCost = 30;
+
+delivery.classList.add("selected");
+pickup.classList.remove("selected");
+
+addressBox.classList.remove("hidden");
+
+document.getElementById("floatingDelivery").textContent =
+"🛵 Envío a domicilio +$30";
+
+}
+
+renderCart();
+
+}
+
+
+/* =========================
+   MODAL
 ========================= */
 
 function hideAllOptions() {
 
-    document.querySelectorAll(
-        "#tacosOptions,#caprichosOptions,#quesOptions,#alitasOptions,#simpleOptions,#papasLocasOptions,#dedosOptions,#arosOptions,#extrasOptions"
-    ).forEach(el => {
-        el.classList.add("hidden");
-    });
+document.querySelectorAll(
+"#tacosOptions,#caprichosOptions,#quesOptions,#alitasOptions,#simpleOptions,#papasLocasOptions,#dedosOptions,#arosOptions,#extrasOptions"
+).forEach(el => el.classList.add("hidden"));
+
 }
 
 
 function openModal(title) {
 
-    hideAllOptions();
+hideAllOptions();
 
-    document.getElementById("modalTitle").textContent = title;
+document.getElementById("modalTitle").textContent = title;
 
-    document.getElementById("comment").value = "";
+document.getElementById("comment").value = "";
 
-    document.getElementById("modal").style.display = "block";
+document.getElementById("modal").style.display = "block";
+
 }
 
 
 function closeModal() {
 
-    document.getElementById("modal").style.display = "none";
+document.getElementById("modal").style.display = "none";
+
 }
 
 
@@ -1451,38 +1331,50 @@ function closeModal() {
 
 function populateMix(qtyId, maizId, harinaId) {
 
-    const qty = parseInt(document.getElementById(qtyId).value);
+const qty = parseInt(document.getElementById(qtyId).value);
 
-    const maiz = document.getElementById(maizId);
-    const harina = document.getElementById(harinaId);
+const maiz = document.getElementById(maizId);
+const harina = document.getElementById(harinaId);
 
-    maiz.innerHTML = "";
-    harina.innerHTML = "";
+maiz.innerHTML = "";
+harina.innerHTML = "";
 
-    for(let i = 0; i <= qty; i++) {
+for(let i=0;i<=qty;i++) {
 
-        maiz.innerHTML += `<option value="${i}">${i}</option>`;
-        harina.innerHTML += `<option value="${i}">${i}</option>`;
+maiz.innerHTML += `<option value="${i}">${i}</option>`;
+harina.innerHTML += `<option value="${i}">${i}</option>`;
 
-    }
+}
 
-    const inicialMaiz = Math.ceil(qty / 2);
-    const inicialHarina = qty - inicialMaiz;
+maiz.value = Math.ceil(qty / 2);
+harina.value = qty - parseInt(maiz.value);
 
-    maiz.value = inicialMaiz;
-    harina.value = inicialHarina;
+syncMixedSelectors(maizId, harinaId, qty);
 
-    maiz.onchange = function() {
+}
 
-        harina.value = qty - parseInt(this.value);
 
-    };
+function syncMixedSelectors(maizId, harinaId, qty) {
 
-    harina.onchange = function() {
+const maiz = document.getElementById(maizId);
+const harina = document.getElementById(harinaId);
 
-        maiz.value = qty - parseInt(this.value);
+maiz.onchange = function() {
 
-    };
+const valor = parseInt(this.value);
+
+harina.value = qty - valor;
+
+};
+
+harina.onchange = function() {
+
+const valor = parseInt(this.value);
+
+maiz.value = qty - valor;
+
+};
+
 }
 
 
@@ -1492,60 +1384,56 @@ function populateMix(qtyId, maizId, harinaId) {
 
 function openTacos() {
 
-    currentType = "tacos";
+currentType = "tacos";
 
-    openModal("🌮 Tacos de Bistec");
+openModal("Tacos de Bistec");
 
-    document.getElementById("tacosOptions")
-        .classList.remove("hidden");
+document.getElementById("tacosOptions").classList.remove("hidden");
 
-    checkMixedTacos();
+checkMixedTacos();
+
 }
 
 
 function checkMixedTacos() {
 
-    const qty =
-        parseInt(document.getElementById("tacosQty").value);
+const qty = parseInt(document.getElementById("tacosQty").value);
 
-    const select =
-        document.getElementById("tacosTortilla");
+const select = document.getElementById("tacosTortilla");
 
-    const mixedOption =
-        select.querySelector('option[value="Mixtos"]');
+const option = select.querySelector('option[value="Mixtos"]');
 
-    if(qty === 1) {
+if(qty === 1) {
 
-        mixedOption.style.display = "none";
+option.style.display = "none";
 
-        if(select.value === "Mixtos") {
-            select.value = "Maíz";
-        }
+if(select.value === "Mixtos")
+select.value = "Maíz";
 
-    } else {
+} else {
 
-        mixedOption.style.display = "block";
-    }
+option.style.display = "block";
 
-    const box =
-        document.getElementById("mixedTacos");
-
-    if(select.value === "Mixtos") {
-
-        box.classList.remove("hidden");
-
-        populateMix(
-            "tacosQty",
-            "tacosMaiz",
-            "tacosHarina"
-        );
-
-    } else {
-
-        box.classList.add("hidden");
-
-    }
 }
+
+const box = document.getElementById("mixedTacos");
+
+if(select.value === "Mixtos") {
+
+box.classList.remove("hidden");
+
+populateMix("tacosQty","tacosMaiz","tacosHarina");
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+document.getElementById("tacosQty").addEventListener("change",checkMixedTacos);
 
 
 /* =========================
@@ -1554,60 +1442,56 @@ function checkMixedTacos() {
 
 function openCaprichos() {
 
-    currentType = "caprichos";
+currentType = "caprichos";
 
-    openModal("🌮 Caprichos");
+openModal("Caprichos");
 
-    document.getElementById("caprichosOptions")
-        .classList.remove("hidden");
+document.getElementById("caprichosOptions").classList.remove("hidden");
 
-    checkMixedCap();
+checkMixedCap();
+
 }
 
 
 function checkMixedCap() {
 
-    const qty =
-        parseInt(document.getElementById("capQty").value);
+const qty = parseInt(document.getElementById("capQty").value);
 
-    const select =
-        document.getElementById("capTortilla");
+const select = document.getElementById("capTortilla");
 
-    const mixedOption =
-        select.querySelector('option[value="Mixtos"]');
+const option = select.querySelector('option[value="Mixtos"]');
 
-    if(qty === 1) {
+if(qty === 1) {
 
-        mixedOption.style.display = "none";
+option.style.display = "none";
 
-        if(select.value === "Mixtos") {
-            select.value = "Maíz";
-        }
+if(select.value === "Mixtos")
+select.value = "Maíz";
 
-    } else {
+} else {
 
-        mixedOption.style.display = "block";
-    }
+option.style.display = "block";
 
-    const box =
-        document.getElementById("mixedCap");
-
-    if(select.value === "Mixtos") {
-
-        box.classList.remove("hidden");
-
-        populateMix(
-            "capQty",
-            "capMaiz",
-            "capHarina"
-        );
-
-    } else {
-
-        box.classList.add("hidden");
-
-    }
 }
+
+const box = document.getElementById("mixedCap");
+
+if(select.value === "Mixtos") {
+
+box.classList.remove("hidden");
+
+populateMix("capQty","capMaiz","capHarina");
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+document.getElementById("capQty").addEventListener("change",checkMixedCap);
 
 
 /* =========================
@@ -1616,60 +1500,56 @@ function checkMixedCap() {
 
 function openQuesadillas() {
 
-    currentType = "quesadillas";
+currentType = "quesadillas";
 
-    openModal("🧀 Quesadillas");
+openModal("Quesadillas");
 
-    document.getElementById("quesOptions")
-        .classList.remove("hidden");
+document.getElementById("quesOptions").classList.remove("hidden");
 
-    checkMixedQues();
+checkMixedQues();
+
 }
 
 
 function checkMixedQues() {
 
-    const qty =
-        parseInt(document.getElementById("quesQty").value);
+const qty = parseInt(document.getElementById("quesQty").value);
 
-    const select =
-        document.getElementById("quesTortilla");
+const select = document.getElementById("quesTortilla");
 
-    const mixedOption =
-        select.querySelector('option[value="Mixtas"]');
+const option = select.querySelector('option[value="Mixtas"]');
 
-    if(qty === 1) {
+if(qty === 1) {
 
-        mixedOption.style.display = "none";
+option.style.display = "none";
 
-        if(select.value === "Mixtas") {
-            select.value = "Maíz";
-        }
+if(select.value === "Mixtas")
+select.value = "Maíz";
 
-    } else {
+} else {
 
-        mixedOption.style.display = "block";
-    }
+option.style.display = "block";
 
-    const box =
-        document.getElementById("mixedQues");
-
-    if(select.value === "Mixtas") {
-
-        box.classList.remove("hidden");
-
-        populateMix(
-            "quesQty",
-            "quesMaiz",
-            "quesHarina"
-        );
-
-    } else {
-
-        box.classList.add("hidden");
-
-    }
 }
+
+const box = document.getElementById("mixedQues");
+
+if(select.value === "Mixtas") {
+
+box.classList.remove("hidden");
+
+populateMix("quesQty","quesMaiz","quesHarina");
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+document.getElementById("quesQty").addEventListener("change",checkMixedQues);
 
 
 /* =========================
@@ -1678,93 +1558,74 @@ function checkMixedQues() {
 
 function openAlitas() {
 
-    currentType = "alitas";
+currentType = "alitas";
 
-    openModal("🍗 Alitas y Boneless");
+openModal("Alitas y Boneless");
 
-    document.getElementById("alitasOptions")
-        .classList.remove("hidden");
+document.getElementById("alitasOptions").classList.remove("hidden");
 
-    resetAlitas();
+resetAlitas();
 
-    updateAlitasOptions();
+updateAlitasOptions();
+
 }
 
 
 function resetAlitas() {
 
-    document.getElementById("alitasTipo").value = "";
+document.getElementById("alitasTipo").value = "";
 
-    document.getElementById("sauce1").value = "";
+document.querySelector(".sauce1").value = "";
 
-    document.getElementById("sauce2").value = "";
+document.querySelector(".sauce2").value = "";
 
-    document.getElementById("dressing1").value = "";
+document.querySelector(".dressing1").value = "";
 
-    document.getElementById("dressing2").value = "";
+document.querySelector(".dressing2").value = "";
 
-    document.getElementById("dressing3").value = "";
+document.querySelector(".dressing3").value = "";
 
-    document.getElementById("sauceMode").value = "Bañados";
+document.getElementById("sauceMode").value = "Bañados";
+
 }
 
 
 function updateAlitasOptions() {
 
-    const qty =
-        document.getElementById("alitasQty").value;
+const qty = document.getElementById("alitasQty").value;
 
-    const mixedOption =
-        document.getElementById("mixedAlitasOption");
+const mixed = document.getElementById("mixedAlitasOption");
 
-    const sauce2 =
-        document.getElementById("sauce2");
+const sauce2 = document.querySelector(".sauce2");
 
-    const dressing2 =
-        document.getElementById("dressing2");
+const dressing2 = document.querySelector(".dressing2");
 
-    const dressing3 =
-        document.getElementById("dressing3");
+const dressing3 = document.querySelector(".dressing3");
 
-    if(qty === "300") {
+mixed.style.display = "none";
+sauce2.classList.add("hidden");
+dressing2.classList.add("hidden");
+dressing3.classList.add("hidden");
 
-        mixedOption.style.display = "none";
+if(qty === "300") {
 
-        if(document.getElementById("alitasTipo").value === "Mixtos") {
-            document.getElementById("alitasTipo").value = "";
-        }
+mixed.style.display = "none";
 
-        sauce2.classList.add("hidden");
+} else if(qty === "500") {
 
-        dressing2.classList.add("hidden");
+mixed.style.display = "block";
+sauce2.classList.remove("hidden");
+dressing2.classList.remove("hidden");
 
-        dressing3.classList.add("hidden");
+} else {
 
-    }
+mixed.style.display = "block";
+sauce2.classList.remove("hidden");
+dressing2.classList.remove("hidden");
+dressing3.classList.remove("hidden");
 
-    else if(qty === "500") {
+}
 
-        mixedOption.style.display = "block";
-
-        sauce2.classList.remove("hidden");
-
-        dressing2.classList.remove("hidden");
-
-        dressing3.classList.add("hidden");
-
-    }
-
-    else {
-
-        mixedOption.style.display = "block";
-
-        sauce2.classList.remove("hidden");
-
-        dressing2.classList.remove("hidden");
-
-        dressing3.classList.remove("hidden");
-
-    }
 }
 
 
@@ -1772,22 +1633,21 @@ function updateAlitasOptions() {
    SIMPLES
 ========================= */
 
-function openSimple(name, price, description) {
+function openSimple(name,price,description) {
 
-    currentType = "simple";
+currentType = "simple";
 
-    currentProduct = {
-        name: name,
-        price: price
-    };
+currentProduct = {
+name:name,
+price:price
+};
 
-    openModal(name);
+openModal(name);
 
-    document.getElementById("simpleOptions")
-        .classList.remove("hidden");
+document.getElementById("simpleOptions").classList.remove("hidden");
 
-    document.getElementById("simpleDescription")
-        .textContent = description;
+document.getElementById("simpleDescription").textContent = description;
+
 }
 
 
@@ -1797,17 +1657,17 @@ function openSimple(name, price, description) {
 
 function openPapasLocas() {
 
-    currentType = "papasLocas";
+currentType = "papasLocas";
 
-    currentProduct = {
-        name: "Papas Locas",
-        price: 80
-    };
+currentProduct = {
+name:"Papas Locas",
+price:80
+};
 
-    openModal("🍟 Papas Locas");
+openModal("Papas Locas");
 
-    document.getElementById("papasLocasOptions")
-        .classList.remove("hidden");
+document.getElementById("papasLocasOptions").classList.remove("hidden");
+
 }
 
 
@@ -1817,17 +1677,17 @@ function openPapasLocas() {
 
 function openDedos() {
 
-    currentType = "dedos";
+currentType = "dedos";
 
-    currentProduct = {
-        name: "Dedos de Queso",
-        price: 90
-    };
+currentProduct = {
+name:"Dedos de Queso",
+price:90
+};
 
-    openModal("🧀 Dedos de Queso");
+openModal("Dedos de Queso");
 
-    document.getElementById("dedosOptions")
-        .classList.remove("hidden");
+document.getElementById("dedosOptions").classList.remove("hidden");
+
 }
 
 
@@ -1837,17 +1697,17 @@ function openDedos() {
 
 function openAros() {
 
-    currentType = "aros";
+currentType = "aros";
 
-    currentProduct = {
-        name: "Aros de Cebolla",
-        price: 80
-    };
+currentProduct = {
+name:"Aros de Cebolla",
+price:80
+};
 
-    openModal("🧅 Aros de Cebolla");
+openModal("Aros de Cebolla");
 
-    document.getElementById("arosOptions")
-        .classList.remove("hidden");
+document.getElementById("arosOptions").classList.remove("hidden");
+
 }
 
 
@@ -1857,17 +1717,17 @@ function openAros() {
 
 function openExtras() {
 
-    currentType = "extra";
+currentType = "extra";
 
-    currentProduct = {
-        name: "Extra",
-        price: 15
-    };
+currentProduct = {
+name:"Extra",
+price:15
+};
 
-    openModal("➕ Extra");
+openModal("Extra");
 
-    document.getElementById("extrasOptions")
-        .classList.remove("hidden");
+document.getElementById("extrasOptions").classList.remove("hidden");
+
 }
 
 
@@ -1877,373 +1737,300 @@ function openExtras() {
 
 function confirmProduct() {
 
-    let item = {};
+let item = {};
 
-    const comment =
-        document.getElementById("comment")
-        .value.trim();
+const comment =
+document.getElementById("comment").value.trim();
 
 
-    /* TACOS */
+/* TACOS */
 
-    if(currentType === "tacos") {
+if(currentType === "tacos") {
 
-        const select =
-            document.getElementById("tacosQty");
+const select = document.getElementById("tacosQty");
+const option = select.options[select.selectedIndex];
 
-        const option =
-            select.options[select.selectedIndex];
+const qty = parseInt(select.value);
+const price = parseInt(option.dataset.price);
 
-        const qty =
-            parseInt(select.value);
+const tortilla = document.getElementById("tacosTortilla").value;
 
-        const price =
-            parseInt(option.dataset.price);
+let details = `Cantidad: ${qty}`;
 
-        const tortilla =
-            document.getElementById("tacosTortilla").value;
+if(tortilla === "Mixtos") {
 
-        let details = `Cantidad: ${qty}`;
+const maiz = parseInt(document.getElementById("tacosMaiz").value);
+const harina = parseInt(document.getElementById("tacosHarina").value);
 
-        if(tortilla === "Mixtos") {
+if(maiz + harina !== qty) {
+alert("La cantidad de maíz y harina debe coincidir con el total de tacos.");
+return;
+}
 
-            const maiz =
-                parseInt(document.getElementById("tacosMaiz").value);
+details += ` | Mixtos: ${maiz} maíz + ${harina} harina`;
 
-            const harina =
-                parseInt(document.getElementById("tacosHarina").value);
+} else {
 
-            if(maiz + harina !== qty) {
+details += ` | Todos de ${tortilla.toLowerCase()}`;
 
-                alert("La cantidad de tortillas no coincide con los tacos.");
+}
 
-                return;
-            }
+item = {
+name:`${qty} Tacos de Bistec`,
+price,
+details,
+comment
+};
 
-            details +=
-                ` | Mixtos: ${maiz} de maíz + ${harina} de harina`;
+}
 
-        } else {
 
-            details +=
-                ` | Todos de ${tortilla.toLowerCase()}`;
-        }
+/* CAPRICHOS */
 
-        item = {
-            name: `${qty} Tacos de Bistec`,
-            price: price,
-            details: details,
-            comment: comment
-        };
-    }
+else if(currentType === "caprichos") {
 
+const select = document.getElementById("capQty");
+const option = select.options[select.selectedIndex];
 
-    /* CAPRICHOS */
+const qty = parseInt(select.value);
+const price = parseInt(option.dataset.price);
 
-    else if(currentType === "caprichos") {
+const tortilla = document.getElementById("capTortilla").value;
 
-        const select =
-            document.getElementById("capQty");
+let details = `Cantidad: ${qty}`;
 
-        const option =
-            select.options[select.selectedIndex];
+if(tortilla === "Mixtos") {
 
-        const qty =
-            parseInt(select.value);
+const maiz = parseInt(document.getElementById("capMaiz").value);
+const harina = parseInt(document.getElementById("capHarina").value);
 
-        const price =
-            parseInt(option.dataset.price);
+if(maiz + harina !== qty) {
+alert("La cantidad de maíz y harina debe coincidir con el total.");
+return;
+}
 
-        const tortilla =
-            document.getElementById("capTortilla").value;
+details += ` | Mixtos: ${maiz} maíz + ${harina} harina`;
 
-        let details = `Cantidad: ${qty}`;
+} else {
 
-        if(tortilla === "Mixtos") {
+details += ` | Todos de ${tortilla.toLowerCase()}`;
 
-            const maiz =
-                parseInt(document.getElementById("capMaiz").value);
+}
 
-            const harina =
-                parseInt(document.getElementById("capHarina").value);
+item = {
+name:`${qty} Caprichos`,
+price,
+details,
+comment
+};
 
-            if(maiz + harina !== qty) {
+}
 
-                alert("La cantidad de tortillas no coincide con los caprichos.");
 
-                return;
-            }
+/* QUESADILLAS */
 
-            details +=
-                ` | Mixtos: ${maiz} de maíz + ${harina} de harina`;
+else if(currentType === "quesadillas") {
 
-        } else {
+const select = document.getElementById("quesQty");
+const option = select.options[select.selectedIndex];
 
-            details +=
-                ` | Todos de ${tortilla.toLowerCase()}`;
-        }
+const qty = parseInt(select.value);
+const price = parseInt(option.dataset.price);
 
-        item = {
-            name: `${qty} Caprichos`,
-            price: price,
-            details: details,
-            comment: comment
-        };
-    }
+const tortilla = document.getElementById("quesTortilla").value;
 
+let details = `Cantidad: ${qty}`;
 
-    /* QUESADILLAS */
+if(tortilla === "Mixtas") {
 
-    else if(currentType === "quesadillas") {
+const maiz = parseInt(document.getElementById("quesMaiz").value);
+const harina = parseInt(document.getElementById("quesHarina").value);
 
-        const select =
-            document.getElementById("quesQty");
+if(maiz + harina !== qty) {
+alert("La cantidad de maíz y harina debe coincidir con el total.");
+return;
+}
 
-        const option =
-            select.options[select.selectedIndex];
+details += ` | Mixtas: ${maiz} maíz + ${harina} harina`;
 
-        const qty =
-            parseInt(select.value);
+} else {
 
-        const price =
-            parseInt(option.dataset.price);
+details += ` | ${tortilla}`;
 
-        const tortilla =
-            document.getElementById("quesTortilla").value;
+}
 
-        let details = `Cantidad: ${qty}`;
+item = {
+name:`${qty} Quesadilla${qty > 1 ? "s" : ""}`,
+price,
+details,
+comment
+};
 
-        if(tortilla === "Mixtas") {
+}
 
-            const maiz =
-                parseInt(document.getElementById("quesMaiz").value);
 
-            const harina =
-                parseInt(document.getElementById("quesHarina").value);
+/* ALITAS */
 
-            if(maiz + harina !== qty) {
+else if(currentType === "alitas") {
 
-                alert("La cantidad de tortillas no coincide con las quesadillas.");
+const qtySelect = document.getElementById("alitasQty");
+const option = qtySelect.options[qtySelect.selectedIndex];
 
-                return;
-            }
+const qty = qtySelect.value;
+const price = parseInt(option.dataset.price);
 
-            details +=
-                ` | Mixtas: ${maiz} de maíz + ${harina} de harina`;
+const tipo = document.getElementById("alitasTipo").value;
 
-        } else {
+if(!tipo) {
 
-            details += ` | ${tortilla}`;
-        }
+alert("Selecciona si quieres Boneless, Alitas o Mixtos.");
+return;
 
-        item = {
-            name: `${qty} Quesadilla${qty > 1 ? "s" : ""}`,
-            price: price,
-            details: details,
-            comment: comment
-        };
-    }
+}
 
+const sauce1 = document.querySelector(".sauce1").value;
+const sauce2 = document.querySelector(".sauce2").value;
 
-    /* ALITAS */
+const dressing1 = document.querySelector(".dressing1").value;
+const dressing2 = document.querySelector(".dressing2").value;
+const dressing3 = document.querySelector(".dressing3").value;
 
-    else if(currentType === "alitas") {
+if(!sauce1) {
 
-        const qtySelect =
-            document.getElementById("alitasQty");
+alert("Selecciona al menos una salsa.");
+return;
 
-        const option =
-            qtySelect.options[qtySelect.selectedIndex];
+}
 
-        const qty =
-            qtySelect.value;
+if(!dressing1) {
 
-        const price =
-            parseInt(option.dataset.price);
+alert("Selecciona al menos un aderezo.");
+return;
 
-        const tipo =
-            document.getElementById("alitasTipo").value;
+}
 
-        if(!tipo) {
+let sauces = [sauce1];
 
-            alert("Selecciona si quieres Boneless, Alitas o Mixtos.");
+if(sauce2) sauces.push(sauce2);
 
-            return;
-        }
+let dressings = [dressing1];
 
-        const sauce1 =
-            document.getElementById("sauce1").value;
+if(dressing2) dressings.push(dressing2);
 
-        if(!sauce1) {
+if(dressing3) dressings.push(dressing3);
 
-            alert("Selecciona al menos una salsa.");
+const mode = document.getElementById("sauceMode").value;
 
-            return;
-        }
+item = {
 
-        const dressing1 =
-            document.getElementById("dressing1").value;
+name:
+`Alitas y Boneless ${
+qty === "300"
+? "300 g"
+: qty === "500"
+? "½ kilo"
+: "1 kilo"
+}`,
 
-        if(!dressing1) {
+price,
 
-            alert("Selecciona al menos un aderezo.");
+details:
+`Tipo: ${tipo} | Salsas: ${sauces.join(", ")} | Aderezos: ${dressings.join(", ")} | ${mode}`,
 
-            return;
-        }
+comment
 
-        let sauces = [sauce1];
+};
 
-        const sauce2 =
-            document.getElementById("sauce2").value;
+}
 
-        if(!document.getElementById("sauce2").classList.contains("hidden") && sauce2) {
-            sauces.push(sauce2);
-        }
 
-        let dressings = [dressing1];
+/* SIMPLE */
 
-        const dressing2 =
-            document.getElementById("dressing2").value;
+else if(currentType === "simple") {
 
-        const dressing3 =
-            document.getElementById("dressing3").value;
+item = {
 
-        if(!document.getElementById("dressing2").classList.contains("hidden") && dressing2) {
-            dressings.push(dressing2);
-        }
+name:currentProduct.name,
+price:currentProduct.price,
+details:document.getElementById("simpleDescription").textContent,
+comment
 
-        if(!document.getElementById("dressing3").classList.contains("hidden") && dressing3) {
-            dressings.push(dressing3);
-        }
+};
 
-        const mode =
-            document.getElementById("sauceMode").value;
+}
 
-        item = {
 
-            name:
-                `Alitas y Boneless ${
-                    qty === "300"
-                    ? "300 g"
-                    : qty === "500"
-                    ? "½ kilo"
-                    : "1 kilo"
-                }`,
+/* PAPAS LOCAS */
 
-            price: price,
+else if(currentType === "papasLocas") {
 
-            details:
-                `Tipo: ${tipo} | ` +
-                `Salsas: ${sauces.join(", ")} | ` +
-                `Aderezos: ${dressings.join(", ")} | ` +
-                `${mode}`,
+item = {
 
-            comment: comment
-        };
-    }
+name:"Papas Locas",
+price:80,
+details:`Incluyen papas, salchicha y pollo | Salsa: ${document.getElementById("papasLocasSalsa").value}`,
+comment
 
+};
 
-    /* SIMPLES */
+}
 
-    else if(currentType === "simple") {
 
-        item = {
+/* DEDOS */
 
-            name: currentProduct.name,
+else if(currentType === "dedos") {
 
-            price: currentProduct.price,
+item = {
 
-            details:
-                document.getElementById("simpleDescription").textContent,
+name:"Dedos de Queso",
+price:90,
+details:`Incluyen papas | Aderezo: ${document.getElementById("dedosAderezo").value}`,
+comment
 
-            comment: comment
-        };
-    }
+};
 
+}
 
-    /* PAPAS LOCAS */
 
-    else if(currentType === "papasLocas") {
+/* AROS */
 
-        item = {
+else if(currentType === "aros") {
 
-            name: "Papas Locas",
+item = {
 
-            price: 80,
+name:"Aros de Cebolla",
+price:80,
+details:`Incluyen papas | Aderezo: ${document.getElementById("arosAderezo").value}`,
+comment
 
-            details:
-                `Incluyen papas, salchicha y pollo | Salsa: ${
-                    document.getElementById("papasLocasSalsa").value
-                }`,
+};
 
-            comment: comment
-        };
-    }
+}
 
 
-    /* DEDOS */
+/* EXTRA */
 
-    else if(currentType === "dedos") {
+else if(currentType === "extra") {
 
-        item = {
+const extra = document.getElementById("extraType").value;
 
-            name: "Dedos de Queso",
+item = {
 
-            price: 90,
+name:`Extra ${extra}`,
+price:15,
+details:"Salsa o aderezo adicional",
+comment
 
-            details:
-                `Incluyen papas | Aderezo: ${
-                    document.getElementById("dedosAderezo").value
-                }`,
+};
 
-            comment: comment
-        };
-    }
+}
 
+cart.push(item);
 
-    /* AROS */
+closeModal();
 
-    else if(currentType === "aros") {
+renderCart();
 
-        item = {
-
-            name: "Aros de Cebolla",
-
-            price: 80,
-
-            details:
-                `Incluyen papas y un aderezo | Aderezo: ${
-                    document.getElementById("arosAderezo").value
-                }`,
-
-            comment: comment
-        };
-    }
-
-
-    /* EXTRA */
-
-    else if(currentType === "extra") {
-
-        item = {
-
-            name:
-                `Extra ${document.getElementById("extraType").value}`,
-
-            price: 15,
-
-            details: "$15",
-
-            comment: comment
-        };
-    }
-
-
-    cart.push(item);
-
-    closeModal();
-
-    renderCart();
 }
 
 
@@ -2251,96 +2038,80 @@ function confirmProduct() {
    CARRITO
 ========================= */
 
-function getCartTotal() {
-
-    return cart.reduce(
-        (sum, item) => sum + item.price,
-        0
-    );
-}
-
-
 function renderCart() {
 
-    const container =
-        document.getElementById("cartItems");
+const container = document.getElementById("cartItems");
 
-    const totalElement =
-        document.getElementById("total");
+container.innerHTML = "";
 
-    const floatingTotal =
-        document.getElementById("floatingTotal");
+let subtotal = 0;
 
-    container.innerHTML = "";
+if(cart.length === 0) {
 
-    let total = getCartTotal();
+container.innerHTML =
+'<div class="empty">Todavía no has agregado productos.</div>';
 
-    if(cart.length === 0) {
+} else {
 
-        container.innerHTML =
-            '<div class="empty">Todavía no has agregado productos.</div>';
+cart.forEach((item,index) => {
 
-    } else {
+subtotal += item.price;
 
-        cart.forEach((item,index) => {
+const div = document.createElement("div");
 
-            const div =
-                document.createElement("div");
+div.className = "cart-item";
 
-            div.className = "cart-item";
+div.innerHTML = `
 
-            div.innerHTML = `
+<div class="cart-item-top">
 
-                <div class="cart-item-top">
+<div>
 
-                    <div>
+<strong>${item.name}</strong>
 
-                        <strong>
-                            ${item.name}
-                        </strong>
+<div class="cart-details">
+${item.details}
+</div>
 
-                        <div class="cart-details">
-                            ${item.details}
-                        </div>
+${
+item.comment
+?
+`<div class="cart-details">💬 ${item.comment}</div>`
+:
+""
+}
 
-                        ${
-                            item.comment
-                            ?
-                            `<div class="cart-details">
-                                💬 ${item.comment}
-                            </div>`
-                            :
-                            ""
-                        }
+</div>
 
-                    </div>
+<strong>$${item.price}</strong>
 
-                    <strong>
-                        $${item.price}
-                    </strong>
+</div>
 
-                </div>
+<div class="quantity-controls">
 
-                <div class="quantity-controls">
+<button onclick="removeItem(${index})">
+✕
+</button>
 
-                    <button
-                        type="button"
-                        onclick="removeItem(${index})">
-                        ✕
-                    </button>
+</div>
 
-                </div>
-            `;
+`;
 
-            container.appendChild(div);
-        });
-    }
+container.appendChild(div);
 
-    totalElement.textContent = total;
+});
 
-    floatingTotal.textContent = total;
+}
 
-    updateCashChange();
+const total = subtotal + shippingCost;
+
+document.getElementById("subtotal").textContent = subtotal;
+document.getElementById("shippingCost").textContent = shippingCost;
+document.getElementById("total").textContent = total;
+document.getElementById("floatingTotal").textContent = total;
+
+updateChange();
+
 }
 
 
@@ -2350,23 +2121,10 @@ function renderCart() {
 
 function removeItem(index) {
 
-    cart.splice(index,1);
+cart.splice(index,1);
 
-    renderCart();
-}
+renderCart();
 
-
-/* =========================
-   IR AL CARRITO
-========================= */
-
-function goToCart() {
-
-    document.getElementById("cartSection")
-        .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
 }
 
 
@@ -2376,77 +2134,74 @@ function goToCart() {
 
 function checkPayment() {
 
-    const payment =
-        document.getElementById("payment").value;
+const payment = document.getElementById("payment").value;
 
-    const box =
-        document.getElementById("cashPaymentBox");
+const box = document.getElementById("cashPaymentBox");
 
-    const amount =
-        document.getElementById("cashAmount");
+const amount = document.getElementById("cashAmount");
 
-    const change =
-        document.getElementById("cashChange");
+if(payment === "Efectivo") {
 
-    if(payment === "Efectivo") {
+box.classList.remove("hidden");
 
-        box.classList.remove("hidden");
+} else {
 
-    } else {
+box.classList.add("hidden");
 
-        box.classList.add("hidden");
+amount.value = "";
 
-        amount.value = "";
+document.getElementById("changeMessage").textContent = "";
 
-        change.style.display = "none";
-        change.textContent = "";
-    }
+}
+
 }
 
 
-function updateCashChange() {
+function updateChange() {
 
-    const payment =
-        document.getElementById("payment").value;
+const payment = document.getElementById("payment").value;
 
-    const amount =
-        parseFloat(document.getElementById("cashAmount").value);
+const amount = parseFloat(document.getElementById("cashAmount").value) || 0;
 
-    const changeBox =
-        document.getElementById("cashChange");
+const subtotal =
+cart.reduce((sum,item) => sum + item.price,0);
 
-    const total =
-        getCartTotal();
+const total = subtotal + shippingCost;
 
-    if(payment !== "Efectivo" || !amount || total <= 0) {
+const message = document.getElementById("changeMessage");
 
-        changeBox.style.display = "none";
-        changeBox.textContent = "";
+if(payment !== "Efectivo") {
 
-        return;
-    }
+message.textContent = "";
+return;
 
-    if(amount >= total) {
+}
 
-        const change =
-            amount - total;
+if(amount === 0) {
 
-        changeBox.style.display = "block";
+message.textContent = "";
+return;
 
-        changeBox.textContent =
-            `💵 Cambio: $${change.toFixed(2)}`;
+}
 
-    } else {
+if(amount < total) {
 
-        changeBox.style.display = "block";
+message.style.color = "red";
 
-        changeBox.style.background = "#ffe8e8";
-        changeBox.style.color = "#a40000";
+message.textContent =
+`❌ Faltan $${total - amount} para cubrir el pedido.`;
 
-        changeBox.textContent =
-            `⚠️ Faltan $${(total - amount).toFixed(2)} para cubrir el pedido.`;
+} else {
 
-    }
+const cambio = amount - total;
+
+message.style.color = "green";
+
+message.textContent =
+`✅ Cambio: $${cambio}`;
+
+}
+
 }
 
 
@@ -2456,203 +2211,233 @@ function updateCashChange() {
 
 function sendWhatsApp() {
 
-    if(cart.length === 0) {
+if(!deliveryType) {
 
-        alert("Primero agrega algún producto.");
+alert("Primero selecciona si pasarás a recoger o quieres envío a domicilio.");
 
-        return;
-    }
+return;
 
+}
 
-    const name =
-        document.getElementById("name")
-        .value.trim();
+if(cart.length === 0) {
 
-    const address =
-        document.getElementById("address")
-        .value.trim();
+alert("Primero agrega algún producto.");
 
-    const references =
-        document.getElementById("references")
-        .value.trim();
+return;
 
-    const payment =
-        document.getElementById("payment")
-        .value;
+}
 
-    const cashAmount =
-        parseFloat(document.getElementById("cashAmount").value);
+const name =
+document.getElementById("name").value.trim();
 
-    const total =
-        getCartTotal();
+if(!name) {
 
+alert("Escribe tu nombre.");
 
-    if(!name) {
+return;
 
-        alert("Escribe tu nombre.");
+}
 
-        return;
-    }
+let address = "";
+let references = "";
 
+if(deliveryType === "delivery") {
 
-    if(!address) {
+address =
+document.getElementById("address").value.trim();
 
-        alert("Escribe tu dirección.");
+references =
+document.getElementById("references").value.trim();
 
-        return;
-    }
+if(!address) {
 
+alert("Escribe tu dirección.");
 
-    if(!payment) {
+return;
 
-        alert("Selecciona un método de pago.");
+}
 
-        return;
-    }
-
-
-    let change = 0;
-
-
-    if(payment === "Efectivo") {
-
-        if(!cashAmount || cashAmount <= 0) {
-
-            alert("Escribe con cuánto vas a pagar.");
-
-            return;
-        }
-
-
-        if(cashAmount < total) {
-
-            alert(
-                `El efectivo debe ser igual o mayor al total de $${total}.`
-            );
-
-            return;
-        }
-
-
-        change =
-            cashAmount - total;
-    }
-
-
-    let message =
-        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*\n";
-
-    message +=
-        "━━━━━━━━━━━━━━\n\n";
-
-
-    message +=
-        `*Cliente:* ${name}\n`;
-
-    message +=
-        `*Dirección:* ${address}\n`;
-
-
-    if(references) {
-
-        message +=
-            `*Referencia:* ${references}\n`;
-    }
-
-
-    message +=
-        `*Pago:* ${payment}\n`;
-
-
-    if(payment === "Efectivo") {
-
-        message +=
-            `*Paga con:* $${cashAmount.toFixed(2)}\n`;
-
-        message +=
-            `*Cambio:* $${change.toFixed(2)}\n`;
-    }
-
-
-    message += "\n";
-
-    message +=
-        "*PEDIDO:*\n\n";
-
-
-    cart.forEach(item => {
-
-        message +=
-            `• ${item.name} — $${item.price}\n`;
-
-        if(item.details) {
-
-            message +=
-                `  ${item.details}\n`;
-        }
-
-
-        if(item.comment) {
-
-            message +=
-                `  💬 Comentario: ${item.comment}\n`;
-        }
-
-
-        message += "\n";
-    });
-
-
-    message +=
-        "━━━━━━━━━━━━━━\n";
-
-    message +=
-        `*TOTAL: $${total}*`;
-
-
-    const url =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-    window.open(url, "_blank");
 }
 
 
-/* =========================
-   EVENTOS
-========================= */
+const payment =
+document.getElementById("payment").value;
 
-document.getElementById("tacosQty")
-.addEventListener("change", checkMixedTacos);
+if(!payment) {
 
-document.getElementById("tacosTortilla")
-.addEventListener("change", checkMixedTacos);
+alert("Selecciona el método de pago.");
 
+return;
 
-document.getElementById("capQty")
-.addEventListener("change", checkMixedCap);
-
-document.getElementById("capTortilla")
-.addEventListener("change", checkMixedCap);
+}
 
 
-document.getElementById("quesQty")
-.addEventListener("change", checkMixedQues);
-
-document.getElementById("quesTortilla")
-.addEventListener("change", checkMixedQues);
+const cashAmount =
+parseFloat(document.getElementById("cashAmount").value) || 0;
 
 
-document.getElementById("alitasQty")
-.addEventListener("change", updateAlitasOptions);
+let subtotal =
+cart.reduce((sum,item) => sum + item.price,0);
+
+let total =
+subtotal + shippingCost;
 
 
-/* Inicializar */
+if(payment === "Efectivo") {
 
-renderCart();
+if(!cashAmount) {
+
+alert("Indica con cuánto vas a pagar.");
+
+return;
+
+}
+
+if(cashAmount < total) {
+
+alert(
+`La cantidad indicada ($${cashAmount}) es menor al total ($${total}).`
+);
+
+return;
+
+}
+
+}
+
+
+let message = "";
+
+message += "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
+message += "━━━━━━━━━━━━━━%0A%0A";
+
+
+if(deliveryType === "pickup") {
+
+message += "🏪 *PASA A RECOGER*%0A%0A";
+
+} else {
+
+message += "🛵 *ENVÍO A DOMICILIO*%0A%0A";
+
+}
+
+
+message +=
+"*Cliente:* " +
+encodeURIComponent(name) +
+"%0A";
+
+
+if(deliveryType === "delivery") {
+
+message +=
+"*Dirección:* " +
+encodeURIComponent(address) +
+"%0A";
+
+if(references) {
+
+message +=
+"*Referencia:* " +
+encodeURIComponent(references) +
+"%0A";
+
+}
+
+}
+
+
+message +=
+"*Pago:* " +
+encodeURIComponent(payment) +
+"%0A";
+
+
+if(payment === "Efectivo") {
+
+const cambio = cashAmount - total;
+
+message +=
+"*Paga con:* $" +
+encodeURIComponent(cashAmount) +
+"%0A";
+
+message +=
+"*Cambio:* $" +
+encodeURIComponent(cambio) +
+"%0A";
+
+}
+
+
+message += "%0A";
+
+message += "*PEDIDO:*%0A%0A";
+
+
+cart.forEach(item => {
+
+message +=
+encodeURIComponent(
+"• " + item.name + " — $" + item.price
+) +
+"%0A";
+
+if(item.details) {
+
+message +=
+encodeURIComponent(
+"  " + item.details
+) +
+"%0A";
+
+}
+
+if(item.comment) {
+
+message +=
+encodeURIComponent(
+"  Comentario: " + item.comment
+) +
+"%0A";
+
+}
+
+message += "%0A";
+
+});
+
+
+message += "━━━━━━━━━━━━━━%0A";
+
+message +=
+"*SUBTOTAL: $" +
+subtotal +
+"*%0A";
+
+
+message +=
+"*ENVÍO: $" +
+shippingCost +
+"*%0A";
+
+
+message +=
+"*TOTAL: $" +
+total +
+"*";
+
+
+const url =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+window.open(url,"_blank");
+
+}
 
 </script>
 
