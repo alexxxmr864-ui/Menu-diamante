@@ -1295,6 +1295,54 @@ checkMixedTacos();
 
 function checkMixedTacos() {
 
+    const qty = parseInt(
+        document.getElementById("tacosQty").value
+    );
+
+    const select =
+        document.getElementById("tacosTortilla");
+
+    const mixedOption =
+        select.querySelector('option[value="Mixtos"]');
+
+    const mixed =
+        select.value === "Mixtos";
+
+    if (qty === 1) {
+
+        mixedOption.style.display = "none";
+
+        if (select.value === "Mixtos") {
+            select.value = "Maíz";
+        }
+
+    } else {
+
+        mixedOption.style.display = "block";
+
+    }
+
+    const box =
+        document.getElementById("mixedTacos");
+
+    if (select.value === "Mixtos") {
+
+        box.classList.remove("hidden");
+
+        populateMix(
+            "tacosQty",
+            "tacosMaiz",
+            "tacosHarina"
+        );
+
+    } else {
+
+        box.classList.add("hidden");
+
+    }
+
+}
+
 const mixed =
 document.getElementById("tacosTortilla").value === "Mixtos";
 
@@ -1339,6 +1387,51 @@ checkMixedCap();
 
 
 function checkMixedCap() {
+
+    const qty = parseInt(
+        document.getElementById("capQty").value
+    );
+
+    const select =
+        document.getElementById("capTortilla");
+
+    const mixedOption =
+        select.querySelector('option[value="Mixtos"]');
+
+    if (qty === 1) {
+
+        mixedOption.style.display = "none";
+
+        if (select.value === "Mixtos") {
+            select.value = "Maíz";
+        }
+
+    } else {
+
+        mixedOption.style.display = "block";
+
+    }
+
+    const box =
+        document.getElementById("mixedCap");
+
+    if (select.value === "Mixtos") {
+
+        box.classList.remove("hidden");
+
+        populateMix(
+            "capQty",
+            "capMaiz",
+            "capHarina"
+        );
+
+    } else {
+
+        box.classList.add("hidden");
+
+    }
+
+}
 
 const mixed =
 document.getElementById("capTortilla").value === "Mixtos";
@@ -1385,6 +1478,50 @@ checkMixedQues();
 
 function checkMixedQues() {
 
+    const qty = parseInt(
+        document.getElementById("quesQty").value
+    );
+
+    const select =
+        document.getElementById("quesTortilla");
+
+    const mixedOption =
+        select.querySelector('option[value="Mixtas"]');
+
+    if (qty === 1) {
+
+        mixedOption.style.display = "none";
+
+        if (select.value === "Mixtas") {
+            select.value = "Maíz";
+        }
+
+    } else {
+
+        mixedOption.style.display = "block";
+
+    }
+
+    const box =
+        document.getElementById("mixedQues");
+
+    if (select.value === "Mixtas") {
+
+        box.classList.remove("hidden");
+
+        populateMix(
+            "quesQty",
+            "quesMaiz",
+            "quesHarina"
+        );
+
+    } else {
+
+        box.classList.add("hidden");
+
+    }
+
+}
 const mixed =
 document.getElementById("quesTortilla").value === "Mixtas";
 
@@ -1414,11 +1551,66 @@ box.classList.add("hidden");
 /* MEZCLAS */
 /* ========================= */
 
-function populateMix(
-qtyId,
-maizId,
-harinaId
-) {
+function populateMix(qtyId, maizId, harinaId) {
+
+    const qty = parseInt(
+        document.getElementById(qtyId).value
+    );
+
+    const maiz = document.getElementById(maizId);
+    const harina = document.getElementById(harinaId);
+
+    maiz.innerHTML = "";
+    harina.innerHTML = "";
+
+    for (let i = 0; i <= qty; i++) {
+
+        maiz.innerHTML +=
+            `<option value="${i}">${i}</option>`;
+
+        harina.innerHTML +=
+            `<option value="${i}">${i}</option>`;
+
+    }
+
+    // Inicialmente repartimos la cantidad
+    // lo más equilibrado posible.
+
+    const maizInicial = Math.ceil(qty / 2);
+
+    const harinaInicial = qty - maizInicial;
+
+    maiz.value = maizInicial;
+    harina.value = harinaInicial;
+
+    syncMixedSelectors(maizId, harinaId, qty);
+}
+    function syncMixedSelectors(maizId, harinaId, qty) {
+
+    const maiz = document.getElementById(maizId);
+    const harina = document.getElementById(harinaId);
+
+    maiz.addEventListener("change", function () {
+
+        const valorMaiz = parseInt(this.value);
+
+        const nuevoHarina = qty - valorMaiz;
+
+        harina.value = nuevoHarina;
+
+    });
+
+    harina.addEventListener("change", function () {
+
+        const valorHarina = parseInt(this.value);
+
+        const nuevoMaiz = qty - valorHarina;
+
+        maiz.value = nuevoMaiz;
+
+    });
+
+}
 
 const qty =
 parseInt(
