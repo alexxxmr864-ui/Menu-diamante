@@ -7,6 +7,7 @@
 <title>Diamante Foods</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -22,7 +23,7 @@ header {
     background: #111;
     color: white;
     text-align: center;
-    padding: 24px 15px;
+    padding: 25px 15px;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -36,7 +37,6 @@ header h1 {
 
 header p {
     margin: 6px 0 0;
-    font-size: 14px;
     opacity: .85;
 }
 
@@ -55,8 +55,8 @@ header p {
 
 .product {
     background: white;
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 13px;
+    padding: 17px;
     margin-bottom: 12px;
     box-shadow: 0 2px 7px rgba(0,0,0,.08);
 }
@@ -69,13 +69,15 @@ header p {
 .product-description {
     color: #666;
     font-size: 13px;
-    margin: 5px 0 10px;
+    margin-top: 5px;
+    line-height: 1.4;
 }
 
 .product-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 12px;
 }
 
 .price {
@@ -88,7 +90,7 @@ header p {
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 9px 16px;
+    padding: 10px 17px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -97,22 +99,23 @@ header p {
     transform: scale(.97);
 }
 
-/* VENTANA DE CONFIGURACIÓN */
+
+/* MODAL */
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,.65);
     z-index: 100;
-    padding: 20px;
+    padding: 15px;
     overflow-y: auto;
 }
 
 .modal-box {
     background: white;
-    max-width: 500px;
-    margin: 30px auto;
+    max-width: 520px;
+    margin: 20px auto;
     border-radius: 15px;
     padding: 20px;
 }
@@ -129,13 +132,26 @@ header p {
 }
 
 .modal-box select,
-.modal-box textarea,
-.modal-box input {
+.modal-box input,
+.modal-box textarea {
     width: 100%;
-    padding: 11px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
+    background: white;
+}
+
+.modal-box textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.option-box {
+    background: #f7f7f7;
+    padding: 12px;
+    border-radius: 9px;
+    margin-top: 10px;
 }
 
 .modal-buttons {
@@ -146,7 +162,7 @@ header p {
 
 .modal-buttons button {
     flex: 1;
-    padding: 13px;
+    padding: 14px;
     border: none;
     border-radius: 9px;
     font-weight: bold;
@@ -179,7 +195,7 @@ header p {
 
 .cart-item {
     border-bottom: 1px solid #eee;
-    padding: 12px 0;
+    padding: 13px 0;
 }
 
 .cart-item-top {
@@ -188,21 +204,18 @@ header p {
     gap: 10px;
 }
 
-.cart-item-info {
-    flex: 1;
-}
-
-.cart-comment {
+.cart-details {
     color: #666;
     font-size: 13px;
-    margin-top: 4px;
+    line-height: 1.5;
+    margin-top: 5px;
 }
 
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 7px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 9px;
 }
 
 .quantity-controls button {
@@ -212,19 +225,18 @@ header p {
     border-radius: 6px;
     background: #ddd;
     font-size: 18px;
-    cursor: pointer;
 }
 
 .total {
-    font-size: 22px;
-    font-weight: bold;
     text-align: right;
+    font-size: 23px;
+    font-weight: bold;
     margin-top: 15px;
 }
 
 .empty {
-    color: #777;
     text-align: center;
+    color: #777;
     padding: 15px;
 }
 
@@ -242,33 +254,30 @@ form label {
     margin-bottom: 6px;
 }
 
-input,
-textarea,
-select {
+form input,
+form textarea,
+form select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
-    background: white;
 }
 
-textarea {
-    min-height: 80px;
-    resize: vertical;
+form textarea {
+    min-height: 75px;
 }
 
 .whatsapp-btn {
     width: 100%;
     margin-top: 20px;
-    padding: 15px;
+    padding: 16px;
     border: none;
     border-radius: 10px;
     background: #25D366;
     color: white;
     font-size: 18px;
     font-weight: bold;
-    cursor: pointer;
 }
 
 .notice {
@@ -286,443 +295,929 @@ footer {
     color: #777;
     font-size: 13px;
 }
+
+.hidden {
+    display: none;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>💎 DIAMANTE FOODS</h1>
-    <p>Tu pedido fácil y rápido</p>
+
+<h1>💎 DIAMANTE FOODS</h1>
+
+<p>Tu pedido fácil y rápido</p>
+
 </header>
+
 
 <div class="container">
 
-    <!-- TACOS -->
 
-    <h2 class="category-title">🌮 Tacos de Bistec</h2>
+<!-- ========================= -->
+<!-- TACOS -->
+<!-- ========================= -->
 
-    <div class="product">
-        <div class="product-name">Taco de Bistec</div>
-        <div class="product-description">
-            Tortilla de maíz o harina.
-        </div>
+<h2 class="category-title">🌮 Tacos de Bistec</h2>
 
-        <div class="product-bottom">
-            <span class="price">$15</span>
+<div class="product">
 
-            <button class="add-btn"
-                onclick="openTacoModal('Taco de Bistec', 15)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product-name">
+Tacos de Bistec
+</div>
 
+<div class="product-description">
+Elige la cantidad y después el tipo de tortilla.
+</div>
 
-    <div class="product">
-        <div class="product-name">5 Tacos de Bistec</div>
-        <div class="product-description">
-            Tortilla de maíz, harina o mixtos.
-        </div>
+<div class="product-bottom">
 
-        <div class="product-bottom">
-            <span class="price">$70</span>
+<span class="price">
+Desde $15
+</span>
 
-            <button class="add-btn"
-                onclick="openTacoModal('5 Tacos de Bistec', 70)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<button
+class="add-btn"
+onclick="openTacos()">
 
+Agregar
 
-    <div class="product">
-        <div class="product-name">Quesadilla</div>
+</button>
 
-        <div class="product-description">
-            Tortilla de maíz o harina.
-        </div>
+</div>
 
-        <div class="product-bottom">
-            <span class="price">$45</span>
+</div>
 
-            <button class="add-btn"
-                onclick="openCommentModal('Quesadilla', 45)">
-                Agregar
-            </button>
-        </div>
-    </div>
 
+<!-- ========================= -->
+<!-- CAPRICHOS -->
+<!-- ========================= -->
 
-    <div class="product">
-        <div class="product-name">2 Quesadillas</div>
+<h2 class="category-title">🌮 Caprichos</h2>
 
-        <div class="product-description">
-            Tortilla de maíz o harina.
-        </div>
+<div class="product">
 
-        <div class="product-bottom">
-            <span class="price">$80</span>
+<div class="product-name">
+Caprichos
+</div>
 
-            <button class="add-btn"
-                onclick="openCommentModal('2 Quesadillas', 80)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product-description">
+Elige la cantidad y después el tipo de tortilla.
+</div>
 
+<div class="product-bottom">
 
-    <div class="product">
-        <div class="product-name">5 Caprichos</div>
+<span class="price">
+Desde $18
+</span>
 
-        <div class="product-bottom">
-            <span class="price">$80</span>
+<button
+class="add-btn"
+onclick="openCaprichos()">
 
-            <button class="add-btn"
-                onclick="openCommentModal('5 Caprichos', 80)">
-                Agregar
-            </button>
-        </div>
-    </div>
+Agregar
 
+</button>
 
-    <!-- ALITAS Y BONELESS -->
+</div>
 
-    <h2 class="category-title">🍗 Alitas y Boneless</h2>
+</div>
 
-    <div class="product">
-        <div class="product-name">Alitas / Boneless 300 g</div>
 
-        <div class="product-description">
-            Elige tu salsa.
-        </div>
+<!-- ========================= -->
+<!-- QUESADILLAS -->
+<!-- ========================= -->
 
-        <div class="product-bottom">
-            <span class="price">$100</span>
+<h2 class="category-title">🧀 Quesadillas</h2>
 
-            <button class="add-btn"
-                onclick="openSauceModal('Alitas / Boneless 300 g', 100)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product">
 
+<div class="product-name">
+Quesadillas
+</div>
 
-    <div class="product">
-        <div class="product-name">Alitas / Boneless 1/2 kilo</div>
+<div class="product-description">
+1 por $45 · 2 por $80
+</div>
 
-        <div class="product-description">
-            Elige tu salsa.
-        </div>
+<div class="product-bottom">
 
-        <div class="product-bottom">
-            <span class="price">$150</span>
+<span class="price">
+Desde $45
+</span>
 
-            <button class="add-btn"
-                onclick="openSauceModal('Alitas / Boneless 1/2 kilo', 150)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<button
+class="add-btn"
+onclick="openQuesadillas()">
 
+Agregar
 
-    <div class="product">
-        <div class="product-name">Alitas / Boneless 1 kilo</div>
+</button>
 
-        <div class="product-description">
-            Elige tu salsa.
-        </div>
+</div>
 
-        <div class="product-bottom">
-            <span class="price">$250</span>
+</div>
 
-            <button class="add-btn"
-                onclick="openSauceModal('Alitas / Boneless 1 kilo', 250)">
-                Agregar
-            </button>
-        </div>
-    </div>
 
+<!-- ========================= -->
+<!-- ALITAS -->
+<!-- ========================= -->
 
-    <!-- PAPAS -->
+<h2 class="category-title">🍗 Alitas y Boneless</h2>
 
-    <h2 class="category-title">🍟 Papas</h2>
+<div class="product">
 
-    <div class="product">
-        <div class="product-name">Papas Sencillas</div>
+<div class="product-name">
+Alitas y Boneless
+</div>
 
-        <div class="product-bottom">
-            <span class="price">$40</span>
+<div class="product-description">
+300 g $120 · ½ kg $180 · 1 kg $300
+</div>
 
-            <button class="add-btn"
-                onclick="openCommentModal('Papas Sencillas', 40)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product-bottom">
 
+<span class="price">
+Desde $120
+</span>
 
-    <div class="product">
-        <div class="product-name">Papas Preparadas</div>
+<button
+class="add-btn"
+onclick="openAlitas()">
 
-        <div class="product-bottom">
-            <span class="price">$50</span>
+Agregar
 
-            <button class="add-btn"
-                onclick="openCommentModal('Papas Preparadas', 50)">
-                Agregar
-            </button>
-        </div>
-    </div>
+</button>
 
+</div>
 
-    <div class="product">
-        <div class="product-name">Salchipapas</div>
+</div>
 
-        <div class="product-bottom">
-            <span class="price">$60</span>
 
-            <button class="add-btn"
-                onclick="openCommentModal('Salchipapas', 60)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<!-- ========================= -->
+<!-- COMPLEMENTOS -->
+<!-- ========================= -->
 
+<h2 class="category-title">🍟 Complementos</h2>
 
-    <div class="product">
-        <div class="product-name">Papas Locas</div>
 
-        <div class="product-bottom">
-            <span class="price">$80</span>
+<div class="product">
 
-            <button class="add-btn"
-                onclick="openCommentModal('Papas Locas', 80)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product-name">
+Papas Sencillas
+</div>
 
+<div class="product-description">
+Incluyen catsup.
+</div>
 
-    <!-- COMPLEMENTOS -->
+<div class="product-bottom">
 
-    <h2 class="category-title">🧀 Complementos</h2>
+<span class="price">$40</span>
 
-    <div class="product">
-        <div class="product-name">5 Onion Rings</div>
+<button
+class="add-btn"
+onclick="openSimple('Papas Sencillas',40,'Incluyen catsup')">
 
-        <div class="product-bottom">
-            <span class="price">$30</span>
+Agregar
 
-            <button class="add-btn"
-                onclick="openCommentModal('5 Onion Rings', 30)">
-                Agregar
-            </button>
-        </div>
-    </div>
+</button>
 
+</div>
 
-    <div class="product">
-        <div class="product-name">5 Cheese Sticks</div>
+</div>
 
-        <div class="product-bottom">
-            <span class="price">$40</span>
 
-            <button class="add-btn"
-                onclick="openCommentModal('5 Cheese Sticks', 40)">
-                Agregar
-            </button>
-        </div>
-    </div>
+<div class="product">
 
+<div class="product-name">
+Papas Preparadas
+</div>
 
-    <!-- CARRITO -->
+<div class="product-description">
+Incluyen queso amarillo y catsup.
+</div>
 
-    <div class="cart">
+<div class="product-bottom">
 
-        <h2>🛒 Tu pedido</h2>
+<span class="price">$50</span>
 
-        <div id="cartItems">
-            <div class="empty">
-                Todavía no has agregado productos.
-            </div>
-        </div>
+<button
+class="add-btn"
+onclick="openSimple('Papas Preparadas',50,'Incluyen queso amarillo y catsup')">
 
-        <div class="total">
-            Total: $<span id="total">0</span>
-        </div>
+Agregar
 
+</button>
 
-        <div class="notice">
-            Revisa tu pedido y completa tus datos antes de enviarlo por WhatsApp.
-        </div>
+</div>
 
+</div>
 
-        <form>
 
-            <label for="name">
-                Nombre
-            </label>
+<div class="product">
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Tu nombre">
+<div class="product-name">
+Salchipapas
+</div>
 
+<div class="product-description">
+Incluyen queso amarillo y catsup.
+</div>
 
-            <label for="address">
-                Dirección
-            </label>
+<div class="product-bottom">
 
-            <input
-                type="text"
-                id="address"
-                placeholder="Calle, número y colonia">
+<span class="price">$60</span>
 
+<button
+class="add-btn"
+onclick="openSimple('Salchipapas',60,'Incluyen queso amarillo y catsup')">
 
-            <label for="references">
-                Referencias
-            </label>
+Agregar
 
-            <textarea
-                id="references"
-                placeholder="Ejemplo: casa azul, frente a la tienda..."></textarea>
+</button>
 
+</div>
 
-            <label for="payment">
-                Método de pago
-            </label>
+</div>
 
-            <select id="payment">
 
-                <option value="Efectivo">
-                    Efectivo
-                </option>
+<div class="product">
 
-                <option value="Transferencia">
-                    Transferencia
-                </option>
+<div class="product-name">
+Papas Locas
+</div>
 
-            </select>
+<div class="product-description">
+Papas, salchicha y pollo.
+</div>
 
+<div class="product-bottom">
 
-            <button
-                type="button"
-                class="whatsapp-btn"
-                onclick="sendWhatsApp()">
+<span class="price">$80</span>
 
-                📲 Enviar pedido por WhatsApp
+<button
+class="add-btn"
+onclick="openPapasLocas()">
 
-            </button>
+Agregar
 
-        </form>
+</button>
 
-    </div>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-name">
+Dedos de Queso
+</div>
+
+<div class="product-description">
+Incluyen papas y un aderezo.
+</div>
+
+<div class="product-bottom">
+
+<span class="price">$90</span>
+
+<button
+class="add-btn"
+onclick="openDedos()">
+
+Agregar
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-name">
+Aros de Cebolla
+</div>
+
+<div class="product-description">
+Incluyen un aderezo.
+</div>
+
+<div class="product-bottom">
+
+<span class="price">$80</span>
+
+<button
+class="add-btn"
+onclick="openAros()">
+
+Agregar
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- EXTRAS -->
+<!-- ========================= -->
+
+<h2 class="category-title">➕ Extras</h2>
+
+<div class="product">
+
+<div class="product-name">
+Salsas y Aderezos
+</div>
+
+<div class="product-description">
+Cada salsa o aderezo adicional cuesta $15.
+</div>
+
+<div class="product-bottom">
+
+<span class="price">$15 c/u</span>
+
+<button
+class="add-btn"
+onclick="openExtras()">
+
+Agregar
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- CARRITO -->
+<!-- ========================= -->
+
+<div class="cart">
+
+<h2>🛒 Tu pedido</h2>
+
+<div id="cartItems">
+
+<div class="empty">
+Todavía no has agregado productos.
+</div>
+
+</div>
+
+<div class="total">
+
+Total: $<span id="total">0</span>
+
+</div>
+
+
+<div class="notice">
+
+Todos los productos pueden llevar comentarios o indicaciones especiales.
+
+</div>
+
+
+<form>
+
+<label>
+Nombre
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="Tu nombre">
+
+
+<label>
+Dirección
+</label>
+
+<input
+type="text"
+id="address"
+placeholder="Calle, número y colonia">
+
+
+<label>
+Referencias
+</label>
+
+<textarea
+id="references"
+placeholder="Casa azul, frente a la tienda, etc."></textarea>
+
+
+<label>
+Método de pago
+</label>
+
+<select id="payment">
+
+<option>Efectivo</option>
+
+<option>Transferencia</option>
+
+</select>
+
+
+<button
+type="button"
+class="whatsapp-btn"
+onclick="sendWhatsApp()">
+
+📲 Enviar pedido por WhatsApp
+
+</button>
+
+</form>
+
+</div>
 
 </div>
 
 
 <footer>
-    Diamante Foods · Gracias por tu preferencia ❤️
+
+Diamante Foods · Gracias por tu preferencia ❤️
+
 </footer>
 
 
+<!-- ========================= -->
 <!-- MODAL -->
+<!-- ========================= -->
 
-<div class="modal" id="productModal">
+<div
+class="modal"
+id="modal">
 
-    <div class="modal-box">
+<div class="modal-box">
 
-        <h2 id="modalTitle">
-            Configurar producto
-        </h2>
-
-
-        <div id="tacoOptions">
-
-            <label>
-                Tipo de tortilla
-            </label>
-
-            <select id="tortilla">
-
-                <option value="Maíz">
-                    Maíz
-                </option>
-
-                <option value="Harina">
-                    Harina
-                </option>
-
-                <option value="Mixtos">
-                    Mixtos
-                </option>
-
-            </select>
-
-        </div>
+<h2 id="modalTitle">
+Configurar producto
+</h2>
 
 
-        <div id="sauceOptions">
+<!-- TACOS -->
 
-            <label>
-                Salsa
-            </label>
+<div id="tacosOptions" class="hidden">
 
-            <select id="sauce">
+<label>
+Cantidad de tacos
+</label>
 
-                <option value="BBQ">
-                    BBQ
-                </option>
+<select id="tacosQty">
 
-                <option value="BBQ Hot">
-                    BBQ Hot
-                </option>
+<option value="1" data-price="15">1 taco — $15</option>
+<option value="2" data-price="30">2 tacos — $30</option>
+<option value="3" data-price="45">3 tacos — $45</option>
+<option value="4" data-price="60">4 tacos — $60</option>
+<option value="5" data-price="70">5 tacos — $70</option>
+<option value="6" data-price="85">6 tacos — $85</option>
+<option value="7" data-price="100">7 tacos — $100</option>
+<option value="8" data-price="115">8 tacos — $115</option>
+<option value="9" data-price="130">9 tacos — $130</option>
 
-                <option value="Buffalo">
-                    Buffalo
-                </option>
-
-                <option value="Mango Habanero">
-                    Mango Habanero
-                </option>
-
-            </select>
-
-        </div>
+</select>
 
 
-        <label>
-            Comentarios
-        </label>
+<label>
+Tipo de tortilla
+</label>
 
-        <textarea
-            id="productComment"
-            placeholder="Ejemplo: sin cebolla, sin cilantro, salsa aparte..."></textarea>
+<select id="tacosTortilla"
+onchange="checkMixedTacos()">
+
+<option value="Maíz">
+Todos de maíz
+</option>
+
+<option value="Harina">
+Todos de harina
+</option>
+
+<option value="Mixtos">
+Mixtos
+</option>
+
+</select>
 
 
-        <div class="modal-buttons">
+<div
+id="mixedTacos"
+class="option-box hidden">
 
-            <button
-                class="cancel-btn"
-                onclick="closeModal()">
+<label>
+¿Cuántos de maíz?
+</label>
 
-                Cancelar
+<select id="tacosMaiz"></select>
 
-            </button>
+<label>
+¿Cuántos de harina?
+</label>
+
+<select id="tacosHarina"></select>
+
+</div>
+
+</div>
 
 
-            <button
-                class="confirm-btn"
-                onclick="confirmProduct()">
+<!-- CAPRICHOS -->
 
-                Agregar al pedido
+<div id="caprichosOptions" class="hidden">
 
-            </button>
+<label>
+Cantidad de caprichos
+</label>
 
-        </div>
+<select id="capQty">
 
-    </div>
+<option value="1" data-price="18">1 capricho — $18</option>
+<option value="2" data-price="36">2 caprichos — $36</option>
+<option value="3" data-price="54">3 caprichos — $54</option>
+<option value="4" data-price="72">4 caprichos — $72</option>
+<option value="5" data-price="80">5 caprichos — $80</option>
+<option value="6" data-price="98">6 caprichos — $98</option>
+<option value="7" data-price="116">7 caprichos — $116</option>
+<option value="8" data-price="134">8 caprichos — $134</option>
+<option value="9" data-price="152">9 caprichos — $152</option>
+
+</select>
+
+
+<label>
+Tipo de tortilla
+</label>
+
+<select id="capTortilla"
+onchange="checkMixedCap()">
+
+<option value="Maíz">
+Todos de maíz
+</option>
+
+<option value="Harina">
+Todos de harina
+</option>
+
+<option value="Mixtos">
+Mixtos
+</option>
+
+</select>
+
+
+<div
+id="mixedCap"
+class="option-box hidden">
+
+<label>
+¿Cuántos de maíz?
+</label>
+
+<select id="capMaiz"></select>
+
+<label>
+¿Cuántos de harina?
+</label>
+
+<select id="capHarina"></select>
+
+</div>
+
+</div>
+
+
+<!-- QUESADILLAS -->
+
+<div id="quesOptions" class="hidden">
+
+<label>
+Cantidad
+</label>
+
+<select id="quesQty">
+
+<option value="1" data-price="45">
+1 quesadilla — $45
+</option>
+
+<option value="2" data-price="80">
+2 quesadillas — $80
+</option>
+
+</select>
+
+
+<label>
+Tipo de tortilla
+</label>
+
+<select id="quesTortilla"
+onchange="checkMixedQues()">
+
+<option value="Maíz">
+Maíz
+</option>
+
+<option value="Harina">
+Harina
+</option>
+
+<option value="Mixtas">
+Mixtas
+</option>
+
+</select>
+
+
+<div
+id="mixedQues"
+class="option-box hidden">
+
+<label>
+¿Cuántas de maíz?
+</label>
+
+<select id="quesMaiz"></select>
+
+<label>
+¿Cuántas de harina?
+</label>
+
+<select id="quesHarina"></select>
+
+</div>
+
+</div>
+
+
+<!-- ALITAS -->
+
+<div id="alitasOptions" class="hidden">
+
+<label>
+Cantidad
+</label>
+
+<select
+id="alitasQty"
+onchange="updateAlitasOptions()">
+
+<option value="300" data-price="120">
+300 g — $120
+</option>
+
+<option value="500" data-price="180">
+½ kilo — $180
+</option>
+
+<option value="1000" data-price="300">
+1 kilo — $300
+</option>
+
+</select>
+
+
+<label>
+Tipo
+</label>
+
+<select id="alitasTipo">
+
+<option>
+Boneless
+</option>
+
+<option>
+Alitas
+</option>
+
+<option id="mixedAlitasOption">
+Mixtos
+</option>
+
+</select>
+
+
+<label>
+Salsas
+</label>
+
+<div id="sauceSelectors">
+
+<select class="sauce">
+<option>BBQ</option>
+<option>BBQ Hot</option>
+<option>Buffalo</option>
+<option>Mango Habanero</option>
+</select>
+
+<select class="sauce sauce2">
+<option>BBQ</option>
+<option>BBQ Hot</option>
+<option>Buffalo</option>
+<option>Mango Habanero</option>
+</select>
+
+</div>
+
+
+<label>
+Aderezos
+</label>
+
+<div id="dressingSelectors">
+
+<select class="dressing">
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+</select>
+
+<select class="dressing dressing2">
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+</select>
+
+<select class="dressing dressing3">
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+</select>
+
+</div>
+
+
+<label>
+Salsa
+</label>
+
+<select id="sauceMode">
+
+<option>
+Bañados
+</option>
+
+<option>
+Salsa aparte
+</option>
+
+</select>
+
+</div>
+
+
+<!-- SIMPLE -->
+
+<div id="simpleOptions" class="hidden">
+
+<div id="simpleDescription"
+class="option-box">
+</div>
+
+</div>
+
+
+<!-- PAPAS LOCAS -->
+
+<div id="papasLocasOptions" class="hidden">
+
+<label>
+Salsa
+</label>
+
+<select id="papasLocasSalsa">
+
+<option>
+Sin salsa
+</option>
+
+<option>BBQ</option>
+<option>BBQ Hot</option>
+<option>Buffalo</option>
+<option>Mango Habanero</option>
+
+</select>
+
+</div>
+
+
+<!-- DEDOS -->
+
+<div id="dedosOptions" class="hidden">
+
+<label>
+Aderezo
+</label>
+
+<select id="dedosAderezo">
+
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+
+</select>
+
+</div>
+
+
+<!-- AROS -->
+
+<div id="arosOptions" class="hidden">
+
+<label>
+Aderezo
+</label>
+
+<select id="arosAderezo">
+
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+
+</select>
+
+</div>
+
+
+<!-- EXTRAS -->
+
+<div id="extrasOptions" class="hidden">
+
+<label>
+¿Qué quieres agregar?
+</label>
+
+<select id="extraType">
+
+<option>BBQ</option>
+<option>BBQ Hot</option>
+<option>Buffalo</option>
+<option>Mango Habanero</option>
+<option>Aderezo Ranch</option>
+<option>Aderezo Buffalo Ranch</option>
+<option>Queso amarillo</option>
+<option>Catsup</option>
+
+</select>
+
+</div>
+
+
+<!-- COMENTARIO -->
+
+<label>
+Comentario o indicación especial
+</label>
+
+<textarea
+id="comment"
+placeholder="Ejemplo: sin cebolla, poca salsa, etc."></textarea>
+
+
+<div class="modal-buttons">
+
+<button
+class="cancel-btn"
+onclick="closeModal()">
+
+Cancelar
+
+</button>
+
+<button
+class="confirm-btn"
+onclick="confirmProduct()">
+
+Agregar al pedido
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -731,523 +1226,1082 @@ footer {
 
 let cart = [];
 
-let currentProduct = null;
-
 let currentType = "";
 
+let currentProduct = {};
 
-/* NÚMERO DE WHATSAPP */
+const whatsappNumber =
+"528134332517";
 
-const whatsappNumber = "528134332517";
 
+/* ========================= */
+/* UTILIDADES */
+/* ========================= */
 
-/* ABRIR MODAL PARA TACOS */
+function hideAllOptions() {
 
-function openTacoModal(name, price) {
+document.querySelectorAll(
+"#tacosOptions,#caprichosOptions,#quesOptions,#alitasOptions,#simpleOptions,#papasLocasOptions,#dedosOptions,#arosOptions,#extrasOptions"
+).forEach(el => {
 
-    currentProduct = {
-        name: name,
-        price: price
-    };
+el.classList.add("hidden");
 
-    currentType = "taco";
+});
 
-    document.getElementById("modalTitle").textContent =
-        "Configurar " + name;
-
-    document.getElementById("tacoOptions").style.display =
-        "block";
-
-    document.getElementById("sauceOptions").style.display =
-        "none";
-
-    document.getElementById("productComment").value = "";
-
-    document.getElementById("productModal").style.display =
-        "block";
 }
 
 
-/* ABRIR MODAL PARA SALSAS */
+function openModal(title) {
 
-function openSauceModal(name, price) {
+hideAllOptions();
 
-    currentProduct = {
-        name: name,
-        price: price
-    };
+document.getElementById("modalTitle").textContent =
+title;
 
-    currentType = "sauce";
+document.getElementById("comment").value =
+"";
 
-    document.getElementById("modalTitle").textContent =
-        "Configurar " + name;
+document.getElementById("modal").style.display =
+"block";
 
-    document.getElementById("tacoOptions").style.display =
-        "none";
-
-    document.getElementById("sauceOptions").style.display =
-        "block";
-
-    document.getElementById("productComment").value = "";
-
-    document.getElementById("productModal").style.display =
-        "block";
 }
 
-
-/* PRODUCTOS CON SOLO COMENTARIO */
-
-function openCommentModal(name, price) {
-
-    currentProduct = {
-        name: name,
-        price: price
-    };
-
-    currentType = "comment";
-
-    document.getElementById("modalTitle").textContent =
-        "Agregar " + name;
-
-    document.getElementById("tacoOptions").style.display =
-        "none";
-
-    document.getElementById("sauceOptions").style.display =
-        "none";
-
-    document.getElementById("productComment").value = "";
-
-    document.getElementById("productModal").style.display =
-        "block";
-}
-
-
-/* CERRAR */
 
 function closeModal() {
 
-    document.getElementById("productModal").style.display =
-        "none";
+document.getElementById("modal").style.display =
+"none";
 
 }
 
 
-/* CONFIRMAR PRODUCTO */
+/* ========================= */
+/* TACOS */
+/* ========================= */
+
+function openTacos() {
+
+currentType = "tacos";
+
+openModal("Tacos de Bistec");
+
+document.getElementById("tacosOptions")
+.classList.remove("hidden");
+
+checkMixedTacos();
+
+}
+
+
+function checkMixedTacos() {
+
+const mixed =
+document.getElementById("tacosTortilla").value === "Mixtos";
+
+const box =
+document.getElementById("mixedTacos");
+
+if (mixed) {
+
+box.classList.remove("hidden");
+
+populateMix(
+"tacosQty",
+"tacosMaiz",
+"tacosHarina"
+);
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+/* ========================= */
+/* CAPRICHOS */
+/* ========================= */
+
+function openCaprichos() {
+
+currentType = "caprichos";
+
+openModal("Caprichos");
+
+document.getElementById("caprichosOptions")
+.classList.remove("hidden");
+
+checkMixedCap();
+
+}
+
+
+function checkMixedCap() {
+
+const mixed =
+document.getElementById("capTortilla").value === "Mixtos";
+
+const box =
+document.getElementById("mixedCap");
+
+if (mixed) {
+
+box.classList.remove("hidden");
+
+populateMix(
+"capQty",
+"capMaiz",
+"capHarina"
+);
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+/* ========================= */
+/* QUESADILLAS */
+/* ========================= */
+
+function openQuesadillas() {
+
+currentType = "quesadillas";
+
+openModal("Quesadillas");
+
+document.getElementById("quesOptions")
+.classList.remove("hidden");
+
+checkMixedQues();
+
+}
+
+
+function checkMixedQues() {
+
+const mixed =
+document.getElementById("quesTortilla").value === "Mixtas";
+
+const box =
+document.getElementById("mixedQues");
+
+if (mixed) {
+
+box.classList.remove("hidden");
+
+populateMix(
+"quesQty",
+"quesMaiz",
+"quesHarina"
+);
+
+} else {
+
+box.classList.add("hidden");
+
+}
+
+}
+
+
+/* ========================= */
+/* MEZCLAS */
+/* ========================= */
+
+function populateMix(
+qtyId,
+maizId,
+harinaId
+) {
+
+const qty =
+parseInt(
+document.getElementById(qtyId).value
+);
+
+const maiz =
+document.getElementById(maizId);
+
+const harina =
+document.getElementById(harinaId);
+
+maiz.innerHTML = "";
+
+harina.innerHTML = "";
+
+for(let i=0;i<=qty;i++) {
+
+if(i < qty) {
+
+maiz.innerHTML +=
+`<option value="${i}">${i}</option>`;
+
+}
+
+}
+
+for(let i=0;i<=qty;i++) {
+
+if(i < qty) {
+
+harina.innerHTML +=
+`<option value="${i}">${i}</option>`;
+
+}
+
+}
+
+maiz.value =
+Math.ceil(qty / 2);
+
+harina.value =
+Math.floor(qty / 2);
+
+}
+
+
+document.getElementById("tacosQty")
+.addEventListener("change", function(){
+
+if(
+document.getElementById("tacosTortilla").value === "Mixtos"
+) {
+
+populateMix(
+"tacosQty",
+"tacosMaiz",
+"tacosHarina"
+);
+
+}
+
+});
+
+
+document.getElementById("capQty")
+.addEventListener("change", function(){
+
+if(
+document.getElementById("capTortilla").value === "Mixtos"
+) {
+
+populateMix(
+"capQty",
+"capMaiz",
+"capHarina"
+);
+
+}
+
+});
+
+
+document.getElementById("quesQty")
+.addEventListener("change", function(){
+
+if(
+document.getElementById("quesTortilla").value === "Mixtas"
+) {
+
+populateMix(
+"quesQty",
+"quesMaiz",
+"quesHarina"
+);
+
+}
+
+});
+
+
+/* ========================= */
+/* ALITAS */
+/* ========================= */
+
+function openAlitas() {
+
+currentType = "alitas";
+
+openModal("Alitas y Boneless");
+
+document.getElementById("alitasOptions")
+.classList.remove("hidden");
+
+updateAlitasOptions();
+
+}
+
+
+function updateAlitasOptions() {
+
+const qty =
+document.getElementById("alitasQty").value;
+
+const sauce2 =
+document.querySelector(".sauce2");
+
+const dressing2 =
+document.querySelector(".dressing2");
+
+const dressing3 =
+document.querySelector(".dressing3");
+
+if(qty === "300") {
+
+sauce2.style.display = "none";
+
+dressing2.style.display = "none";
+
+dressing3.style.display = "none";
+
+document.getElementById("mixedAlitasOption")
+.style.display = "none";
+
+} else if(qty === "500") {
+
+sauce2.style.display = "block";
+
+dressing2.style.display = "block";
+
+dressing3.style.display = "none";
+
+document.getElementById("mixedAlitasOption")
+.style.display = "block";
+
+} else {
+
+sauce2.style.display = "block";
+
+dressing2.style.display = "block";
+
+dressing3.style.display = "block";
+
+document.getElementById("mixedAlitasOption")
+.style.display = "block";
+
+}
+
+}
+
+
+/* ========================= */
+/* SIMPLES */
+/* ========================= */
+
+function openSimple(
+name,
+price,
+description
+) {
+
+currentType = "simple";
+
+currentProduct = {
+name:name,
+price:price
+};
+
+openModal(name);
+
+document.getElementById("simpleOptions")
+.classList.remove("hidden");
+
+document.getElementById("simpleDescription")
+.textContent =
+description;
+
+}
+
+
+/* ========================= */
+/* PAPAS LOCAS */
+/* ========================= */
+
+function openPapasLocas() {
+
+currentType = "papasLocas";
+
+currentProduct = {
+name:"Papas Locas",
+price:80
+};
+
+openModal("Papas Locas");
+
+document.getElementById("papasLocasOptions")
+.classList.remove("hidden");
+
+}
+
+
+/* ========================= */
+/* DEDOS */
+/* ========================= */
+
+function openDedos() {
+
+currentType = "dedos";
+
+currentProduct = {
+name:"Dedos de Queso",
+price:90
+};
+
+openModal("Dedos de Queso");
+
+document.getElementById("dedosOptions")
+.classList.remove("hidden");
+
+}
+
+
+/* ========================= */
+/* AROS */
+/* ========================= */
+
+function openAros() {
+
+currentType = "aros";
+
+currentProduct = {
+name:"Aros de Cebolla",
+price:80
+};
+
+openModal("Aros de Cebolla");
+
+document.getElementById("arosOptions")
+.classList.remove("hidden");
+
+}
+
+
+/* ========================= */
+/* EXTRAS */
+/* ========================= */
+
+function openExtras() {
+
+currentType = "extra";
+
+currentProduct = {
+name:"Extra",
+price:15
+};
+
+openModal("Extra");
+
+document.getElementById("extrasOptions")
+.classList.remove("hidden");
+
+}
+
+
+/* ========================= */
+/* CONFIRMAR */
+/* ========================= */
 
 function confirmProduct() {
 
-    if (!currentProduct) {
-        return;
-    }
+let item = {};
 
-    let tortilla = "";
-
-    let sauce = "";
-
-    let comment =
-        document.getElementById("productComment")
-        .value
-        .trim();
+let comment =
+document.getElementById("comment")
+.value
+.trim();
 
 
-    if (currentType === "taco") {
+/* TACOS */
 
-        tortilla =
-            document.getElementById("tortilla").value;
+if(currentType === "tacos") {
 
-    }
+const select =
+document.getElementById("tacosQty");
 
+const option =
+select.options[select.selectedIndex];
 
-    if (currentType === "sauce") {
+const qty =
+parseInt(select.value);
 
-        sauce =
-            document.getElementById("sauce").value;
+const price =
+parseInt(option.dataset.price);
 
-    }
+const tortilla =
+document.getElementById("tacosTortilla").value;
 
+let details =
+`Cantidad: ${qty}`;
 
-    cart.push({
+if(tortilla === "Mixtos") {
 
-        name: currentProduct.name,
+const maiz =
+document.getElementById("tacosMaiz").value;
 
-        price: currentProduct.price,
+const harina =
+document.getElementById("tacosHarina").value;
 
-        quantity: 1,
+details +=
+` | Mixtos: ${maiz} maíz + ${harina} harina`;
 
-        tortilla: tortilla,
+} else {
 
-        sauce: sauce,
+details +=
+` | Todos de ${tortilla.toLowerCase()}`;
 
-        comment: comment
+}
 
-    });
-
-
-    closeModal();
-
-    renderCart();
+item = {
+name:`${qty} Tacos de Bistec`,
+price:price,
+details:details,
+comment:comment
+};
 
 }
 
 
-/* AUMENTAR */
+/* CAPRICHOS */
 
-function increase(index) {
+else if(currentType === "caprichos") {
 
-    cart[index].quantity++;
+const select =
+document.getElementById("capQty");
 
-    renderCart();
+const option =
+select.options[select.selectedIndex];
+
+const qty =
+parseInt(select.value);
+
+const price =
+parseInt(option.dataset.price);
+
+const tortilla =
+document.getElementById("capTortilla").value;
+
+let details =
+`Cantidad: ${qty}`;
+
+if(tortilla === "Mixtos") {
+
+const maiz =
+document.getElementById("capMaiz").value;
+
+const harina =
+document.getElementById("capHarina").value;
+
+details +=
+` | Mixtos: ${maiz} maíz + ${harina} harina`;
+
+} else {
+
+details +=
+` | Todos de ${tortilla.toLowerCase()}`;
+
+}
+
+item = {
+name:`${qty} Caprichos`,
+price:price,
+details:details,
+comment:comment
+};
 
 }
 
 
-/* DISMINUIR */
+/* QUESADILLAS */
 
-function decrease(index) {
+else if(currentType === "quesadillas") {
 
-    cart[index].quantity--;
+const select =
+document.getElementById("quesQty");
 
-    if (cart[index].quantity <= 0) {
+const option =
+select.options[select.selectedIndex];
 
-        cart.splice(index, 1);
+const qty =
+parseInt(select.value);
 
-    }
+const price =
+parseInt(option.dataset.price);
 
-    renderCart();
+const tortilla =
+document.getElementById("quesTortilla").value;
+
+let details =
+`Cantidad: ${qty}`;
+
+if(tortilla === "Mixtas") {
+
+const maiz =
+document.getElementById("quesMaiz").value;
+
+const harina =
+document.getElementById("quesHarina").value;
+
+details +=
+` | Mixtas: ${maiz} maíz + ${harina} harina`;
+
+} else {
+
+details +=
+` | ${tortilla}`;
+
+}
+
+item = {
+name:`${qty} Quesadilla${qty > 1 ? "s":""}`,
+price:price,
+details:details,
+comment:comment
+};
 
 }
 
 
-/* MOSTRAR CARRITO */
+/* ALITAS */
+
+else if(currentType === "alitas") {
+
+const qtySelect =
+document.getElementById("alitasQty");
+
+const option =
+qtySelect.options[
+qtySelect.selectedIndex
+];
+
+const qty =
+qtySelect.value;
+
+const price =
+parseInt(option.dataset.price);
+
+const tipo =
+document.getElementById("alitasTipo")
+.value;
+
+const mode =
+document.getElementById("sauceMode")
+.value;
+
+const sauces =
+Array.from(
+document.querySelectorAll(".sauce")
+)
+.filter(x => x.style.display !== "none")
+.map(x => x.value);
+
+const dressings =
+Array.from(
+document.querySelectorAll(".dressing")
+)
+.filter(x => x.style.display !== "none")
+.map(x => x.value);
+
+item = {
+
+name:
+`Alitas y Boneless ${qty === "300" ? "300 g" : qty === "500" ? "½ kilo" : "1 kilo"}`,
+
+price:price,
+
+details:
+`Tipo: ${tipo} | Salsas: ${sauces.join(", ")} | Aderezos: ${dressings.join(", ")} | ${mode}`,
+
+comment:comment
+
+};
+
+}
+
+
+/* SIMPLE */
+
+else if(currentType === "simple") {
+
+item = {
+
+name:currentProduct.name,
+
+price:currentProduct.price,
+
+details:
+document.getElementById("simpleDescription")
+.textContent,
+
+comment:comment
+
+};
+
+}
+
+
+/* PAPAS LOCAS */
+
+else if(currentType === "papasLocas") {
+
+item = {
+
+name:"Papas Locas",
+
+price:80,
+
+details:
+`Salsa: ${document.getElementById("papasLocasSalsa").value}`,
+
+comment:comment
+
+};
+
+}
+
+
+/* DEDOS */
+
+else if(currentType === "dedos") {
+
+item = {
+
+name:"Dedos de Queso",
+
+price:90,
+
+details:
+`Incluye papas | Aderezo: ${document.getElementById("dedosAderezo").value}`,
+
+comment:comment
+
+};
+
+}
+
+
+/* AROS */
+
+else if(currentType === "aros") {
+
+item = {
+
+name:"Aros de Cebolla",
+
+price:80,
+
+details:
+`Aderezo: ${document.getElementById("arosAderezo").value}`,
+
+comment:comment
+
+};
+
+}
+
+
+/* EXTRA */
+
+else if(currentType === "extra") {
+
+item = {
+
+name:
+`Extra ${document.getElementById("extraType").value}`,
+
+price:15,
+
+details:"$15",
+
+comment:comment
+
+};
+
+}
+
+
+cart.push(item);
+
+closeModal();
+
+renderCart();
+
+}
+
+
+/* ========================= */
+/* CARRITO */
+/* ========================= */
 
 function renderCart() {
 
-    const cartContainer =
-        document.getElementById("cartItems");
+const container =
+document.getElementById("cartItems");
 
-    const totalElement =
-        document.getElementById("total");
+const totalElement =
+document.getElementById("total");
 
+container.innerHTML = "";
 
-    cartContainer.innerHTML = "";
-
-
-    if (cart.length === 0) {
-
-        cartContainer.innerHTML =
-            '<div class="empty">Todavía no has agregado productos.</div>';
-
-        totalElement.textContent = "0";
-
-        return;
-
-    }
+let total = 0;
 
 
-    let total = 0;
+if(cart.length === 0) {
 
+container.innerHTML =
+'<div class="empty">Todavía no has agregado productos.</div>';
 
-    cart.forEach((item, index) => {
+totalElement.textContent =
+"0";
 
-        const subtotal =
-            item.price * item.quantity;
-
-        total += subtotal;
-
-
-        let details = "";
-
-
-        if (item.tortilla) {
-
-            details +=
-                "Tortilla: " +
-                item.tortilla +
-                "<br>";
-
-        }
-
-
-        if (item.sauce) {
-
-            details +=
-                "Salsa: " +
-                item.sauce +
-                "<br>";
-
-        }
-
-
-        if (item.comment) {
-
-            details +=
-                '<div class="cart-comment">' +
-                "💬 " +
-                item.comment +
-                "</div>";
-
-        }
-
-
-        const div =
-            document.createElement("div");
-
-
-        div.className =
-            "cart-item";
-
-
-        div.innerHTML = `
-
-            <div class="cart-item-top">
-
-                <div class="cart-item-info">
-
-                    <strong>
-                        ${item.name}
-                    </strong>
-
-                    <div style="font-size:13px;color:#666;">
-                        ${details}
-                    </div>
-
-                    <div>
-                        $${item.price} c/u
-                    </div>
-
-                </div>
-
-                <strong>
-                    $${subtotal}
-                </strong>
-
-            </div>
-
-
-            <div class="quantity-controls">
-
-                <button onclick="decrease(${index})">
-                    −
-                </button>
-
-                <strong>
-                    ${item.quantity}
-                </strong>
-
-                <button onclick="increase(${index})">
-                    +
-                </button>
-
-            </div>
-
-        `;
-
-
-        cartContainer.appendChild(div);
-
-    });
-
-
-    totalElement.textContent =
-        total;
+return;
 
 }
 
 
-/* ENVIAR A WHATSAPP */
+cart.forEach((item,index)=>{
+
+total += item.price;
+
+
+const div =
+document.createElement("div");
+
+div.className =
+"cart-item";
+
+
+div.innerHTML = `
+
+<div class="cart-item-top">
+
+<div>
+
+<strong>
+${item.name}
+</strong>
+
+<div class="cart-details">
+${item.details}
+</div>
+
+${
+item.comment
+?
+`<div class="cart-details">💬 ${item.comment}</div>`
+:
+""
+}
+
+</div>
+
+<strong>
+$${item.price}
+</strong>
+
+</div>
+
+
+<div class="quantity-controls">
+
+<button onclick="removeItem(${index})">
+✕
+</button>
+
+</div>
+
+`;
+
+
+container.appendChild(div);
+
+});
+
+
+totalElement.textContent =
+total;
+
+}
+
+
+/* ========================= */
+/* ELIMINAR */
+/* ========================= */
+
+function removeItem(index) {
+
+cart.splice(index,1);
+
+renderCart();
+
+}
+
+
+/* ========================= */
+/* WHATSAPP */
+/* ========================= */
 
 function sendWhatsApp() {
 
-    if (cart.length === 0) {
+if(cart.length === 0) {
 
-        alert(
-            "Primero agrega algún producto al pedido."
-        );
+alert(
+"Primero agrega algún producto."
+);
 
-        return;
+return;
 
-    }
+}
 
 
-    const name =
-        document.getElementById("name")
-        .value
-        .trim();
+const name =
+document.getElementById("name")
+.value
+.trim();
 
+const address =
+document.getElementById("address")
+.value
+.trim();
 
-    const address =
-        document.getElementById("address")
-        .value
-        .trim();
+const references =
+document.getElementById("references")
+.value
+.trim();
 
+const payment =
+document.getElementById("payment")
+.value;
 
-    const references =
-        document.getElementById("references")
-        .value
-        .trim();
 
+if(!name) {
 
-    const payment =
-        document.getElementById("payment")
-        .value;
+alert("Escribe tu nombre.");
 
+return;
 
-    if (!name) {
+}
 
-        alert(
-            "Escribe tu nombre."
-        );
 
-        return;
+if(!address) {
 
-    }
+alert("Escribe tu dirección.");
 
+return;
 
-    if (!address) {
+}
 
-        alert(
-            "Escribe tu dirección."
-        );
 
-        return;
+let message =
+"🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
 
-    }
+message +=
+"━━━━━━━━━━━━━━%0A%0A";
 
+message +=
+"*Cliente:* " +
+encodeURIComponent(name) +
+"%0A";
 
-    let message =
-        "🍽️ *NUEVO PEDIDO DIAMANTE FOODS*%0A";
+message +=
+"*Dirección:* " +
+encodeURIComponent(address) +
+"%0A";
 
-    message +=
-        "━━━━━━━━━━━━━━%0A%0A";
 
+if(references) {
 
-    message +=
-        "*Cliente:* " +
-        encodeURIComponent(name) +
-        "%0A";
+message +=
+"*Referencia:* " +
+encodeURIComponent(references) +
+"%0A";
 
+}
 
-    message +=
-        "*Dirección:* " +
-        encodeURIComponent(address) +
-        "%0A";
 
+message +=
+"*Pago:* " +
+encodeURIComponent(payment) +
+"%0A%0A";
 
-    if (references) {
 
-        message +=
-            "*Referencias:* " +
-            encodeURIComponent(references) +
-            "%0A";
+message +=
+"*PEDIDO:*%0A%0A";
 
-    }
 
+let total = 0;
 
-    message +=
-        "*Pago:* " +
-        encodeURIComponent(payment) +
-        "%0A%0A";
 
+cart.forEach(item=>{
 
-    message +=
-        "*PEDIDO:*%0A";
+total += item.price;
 
 
-    let total = 0;
+message +=
+encodeURIComponent(
+"• " +
+item.name +
+" — $" +
+item.price
+) +
+"%0A";
 
 
-    cart.forEach(item => {
+if(item.details) {
 
-        const subtotal =
-            item.price *
-            item.quantity;
+message +=
+encodeURIComponent(
+"  " +
+item.details
+) +
+"%0A";
 
+}
 
-        total +=
-            subtotal;
 
+if(item.comment) {
 
-        message +=
-            encodeURIComponent(
-                item.quantity +
-                " x " +
-                item.name
-            );
+message +=
+encodeURIComponent(
+"  Comentario: " +
+item.comment
+) +
+"%0A";
 
+}
 
-        message +=
-            encodeURIComponent(
-                " — $" +
-                subtotal
-            );
 
+message +=
+"%0A";
 
-        message +=
-            "%0A";
+});
 
 
-        if (item.tortilla) {
+message +=
+"━━━━━━━━━━━━━━%0A";
 
-            message +=
-                encodeURIComponent(
-                    "   Tortilla: " +
-                    item.tortilla
-                ) +
-                "%0A";
+message +=
+"*TOTAL: $" +
+total +
+"*";
 
-        }
 
+const url =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
 
-        if (item.sauce) {
 
-            message +=
-                encodeURIComponent(
-                    "   Salsa: " +
-                    item.sauce
-                ) +
-                "%0A";
-
-        }
-
-
-        if (item.comment) {
-
-            message +=
-                encodeURIComponent(
-                    "   Comentario: " +
-                    item.comment
-                ) +
-                "%0A";
-
-        }
-
-
-        message += "%0A";
-
-    });
-
-
-    message +=
-        "━━━━━━━━━━━━━━%0A";
-
-
-    message +=
-        "*TOTAL: $" +
-        total +
-        "*%0A";
-
-
-    const url =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        message;
-
-
-    window.open(
-        url,
-        "_blank"
-    );
+window.open(
+url,
+"_blank"
+);
 
 }
 
